@@ -4,14 +4,17 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  
   <servlet>
   	<servlet-name>AleAppServlet</servlet-name>
   	<display-name>AleAppServlet</display-name>
   	<description></description>
   	<servlet-class>org.ale.app.AleAppServlet</servlet-class>
   </servlet>
+  
   <servlet-mapping>
   	<servlet-name>AleAppServlet</servlet-name>
-  	<url-pattern>/</url-pattern>
+  	<url-pattern>/main</url-pattern>
   </servlet-mapping>
+  
 </web-app>
