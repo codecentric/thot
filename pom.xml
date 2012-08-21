@@ -20,10 +20,16 @@
 	    <version>2.5</version>
 	    <scope>provided</scope>
 		</dependency>
+		<dependency>
+  		<groupId>org.twitter4j</groupId>
+  		<artifactId>twitter4j-core</artifactId>
+  		<version>2.2.0</version>
+  	</dependency>
   </dependencies>
   
   <build>
     <finalName>ale-app</finalName>
+     <defaultGoal>install</defaultGoal>
   </build>
   
 </project>
