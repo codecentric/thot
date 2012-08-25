@@ -3,8 +3,7 @@
 <div class="container-fluid">
 
 		<!--/span-->
-		<div class="span9">
-			<div class="hero-unit">
+			<div class="well well-small">
 				<h1>Program outline</h1>
 				<br />
 				<p>For more details on content, please click the description
@@ -68,7 +67,6 @@
 
 			</div>
 			<!--/.fluid-container-->
-			</div>
 			</div>
 
 			<%@ include file="footer.html"%>

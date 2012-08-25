@@ -1,6 +1,6 @@
 <%@ include file="header.jsp"  %>
 
-<div class="hero-unit">
+<div class="well well-small">
       <h1>Already implemented features</h1>
 </div>
 
