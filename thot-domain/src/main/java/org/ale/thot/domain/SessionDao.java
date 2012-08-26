@@ -1,0 +1,18 @@
+package org.ale.thot.domain;
+
+import java.util.Date;
+import java.util.List;
+
+import org.ale.thot.domain.Session;
+
+/**
+ * DAO to handle {@link Session} related stuff.
+ */
+public interface SessionDao {
+
+	/** returns all sessions for a specific date */
+	List<Session> getSessionsByDate(Date date);
+	
+	void saveSession(Session session);
+	
+}
