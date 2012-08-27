@@ -1,7 +1,11 @@
+<%@ include file="header.jsp"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ page session="false"%>
+
+<!--
 <html>
 <head>
 <title>Thot - Add Session Data</title>
@@ -9,6 +13,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
+-->
+
 <p>
 	<form:form commandName="sessionDataFormData" method="POST">
 	
@@ -47,5 +53,4 @@
 	</form:form>
 </p>
 
-</body>
-</html>
+<%@ include file="footer.html"%>

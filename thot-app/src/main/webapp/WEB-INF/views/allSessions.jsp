@@ -1,7 +1,11 @@
+<%@ include file="header.jsp"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ page session="false"%>
+
+<!--
 <html>
 <head>
 <title>Thot - All Sessions</title>
@@ -9,6 +13,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
+-->
 
 <table>
 <thead>  
@@ -35,9 +40,4 @@
 </tbody>
 </table>
 
-<p>
-<a href="addSession">Add a new Session</a>
-</p>
-
-</body>
-</html>
+<%@ include file="footer.html"%>
