@@ -30,10 +30,10 @@
 <c:forEach items="${sessions}" var="session">
 	<tr>
 		<td>${session.date}</td>
-		<td>${session.startTime}</td>
-		<td>${session.endTime}</td>
+		<td>${session.start}</td>
+		<td>${session.end}</td>
 		<td>${session.title}</td>
-		<td>${session.speaker}</td>
+		<td>${session.author}</td>
 		<td>${session.description}</td>
 	</tr>
 </c:forEach>
