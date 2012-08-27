@@ -14,7 +14,10 @@
 					inside the cells</p>
 			</div>
 <%! 	
-			
+      private String emptyIfNull(String s) {
+				return s == null ? "" : s;
+			}
+
 			final XlsSessionReader sessionReader = new XlsSessionReader();
 			final List<Session> sessions = sessionReader.readAllSessions();
 %>			 
@@ -31,41 +34,114 @@
 							<table class="table table-striped">
 								<thead>
 									<tr>
-										<th>Date</th>
 										<th>Start</th>
 										<th>End</th>
 										<th>Title</th>
 										<th>Speaker</th>
+										<th>Location</th>										
+									</tr>
+								</thead>
+								<tbody>
+<% 
+	for(Session s : sessions) {
+		if("29. Aug.".equals(s.getDate())) {	
+%>
+									<tr>
+										<td><%=emptyIfNull(s.getStart())%></td>
+										<td><%=emptyIfNull(s.getEnd())%></td>
+										<td>
+<!-- 										<a href="#myModal" onClick="$('#myModal').modal('show')" data-toggle="modal">  -->
+										   <%=emptyIfNull(s.getTitle())%>
+<!--										   </a> -->
+										 </td>
+										<td><%=emptyIfNull(s.getAuthor())%></td>
+										<td><%=emptyIfNull(s.getLocation())%></td>
+										<td></td>
+									</tr>
+<!-- 									
+										<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+												<h3 id="myModalLabel"></h3>
+											</div>
+											<div class="modal-body">
+												<p><%=emptyIfNull(s.getDescription())%></p>
+											</div>
+										</div>							
+ -->									
+<%
+		  }
+		} // end iterate over sessions
+%>									
+								</tbody>
+							</table>
+						</div>
+						<div class="tab-pane" id="2">
+							<p>You are watching Day 2, August 30th.</p>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Start</th>
+										<th>End</th>
+										<th>Title</th>
+										<th>Speaker</th>
+										<th>Location</th>
 										<th>Description</th>
 									</tr>
 								</thead>
 								<tbody>
 <% 
 	for(Session s : sessions) {
+		if("30. Aug.".equals(s.getDate())) {	
 %>
 									<tr>
-										<td><%=s.getDate()%></td>
-										<td><%=s.getStart()%></td>
-										<td><%=s.getEnd()%></td>
-										<td><%=s.getTitle()%></td>
-										<td><%=s.getAuthor()%></td>
-										<td><%=s.getDescription()%></td>
-<!-- 
-										<td><a href="session.html">Validate Your Influence</a></td>
-										<td>Ivana Gancheva</td>
- -->										
+										<td><%=emptyIfNull(s.getStart())%></td>
+										<td><%=emptyIfNull(s.getEnd())%></td>
+										<td><%=emptyIfNull(s.getTitle())%></td>
+										<td><%=emptyIfNull(s.getAuthor())%></td>
+										<td><%=emptyIfNull(s.getLocation())%></td>
+										<td><%=emptyIfNull(s.getDescription())%></td>
 									</tr>
 <%
-	} // end iterate over sessions
+		  }
+		} // end iterate over sessions
 %>									
 								</tbody>
 							</table>
 						</div>
-						<div class="tab-pane" id="2">
-							<p>You are watching Day 2.</p>
-						</div>
 						<div class="tab-pane" id="3">
-							<p>You are watching Day 3.</p>
+							<p>You are watching Day 3, August the 31st.</p>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Start</th>
+										<th>End</th>
+										<th>Title</th>
+										<th>Speaker</th>
+										<th>Location</th>
+										<th>Description</th>
+									</tr>
+								</thead>
+								<tbody>
+<% 
+	for(Session s : sessions) {
+		if("31. Aug.".equals(s.getDate())) {	
+%>
+									<tr>
+										<td><%=emptyIfNull(s.getStart())%></td>
+										<td><%=emptyIfNull(s.getEnd())%></td>
+										<td><%=emptyIfNull(s.getTitle())%></td>
+										<td><%=emptyIfNull(s.getAuthor())%></td>
+										<td><%=emptyIfNull(s.getLocation())%></td>
+										<td><%=emptyIfNull(s.getDescription())%></td>
+									</tr>
+<%
+		  }
+		} // end iterate over sessions
+%>									
+								</tbody>
+							</table>
+
 						</div>
 					</div>
 
