@@ -2,11 +2,13 @@ package org.ale.thot.web.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.ale.thot.domain.Session;
 import org.ale.thot.domain.SessionDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -17,8 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/addSession")
 public class AddSessionController {
 
-	//@Inject
-	//@Autowired
+	@Autowired
 	private SessionDao sessionDao;
 
 	public AddSessionController() {
@@ -31,14 +32,16 @@ public class AddSessionController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String setupForm(ModelMap modelMap) {
-		return "addSession";
+	public void setupForm(ModelMap modelMap) {
+		modelMap.put("sessionDataFormData", new SessionDataFormData());
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String processSubmit(HttpServletRequest request, ModelMap modelMap, BindingResult result) {
-		//TODO read data and submit to repo
-		return null;
+	public String processSubmit(HttpServletRequest request, ModelMap modelMap,
+			@ModelAttribute("sessionDataFormData") SessionDataFormData cmd, BindingResult result) {
+		Session session = new Session(cmd.getDate(), cmd.getStart(), cmd.getEnd(), cmd.getTitle(), cmd.getSpeaker(), cmd.getDescription());
+		sessionDao.saveSession(session);
+		return "allSessions";
 	}
 
 }

@@ -14,7 +14,8 @@ import javax.persistence.NamedQuery;
  */
 @Entity(name="session")
 @NamedQueries({
-	@NamedQuery(name = "findSessionsForDate", query = "from session where date=:date")
+	@NamedQuery(name = "findSessionsForDate", query = "from session where date=:date"),
+	@NamedQuery(name = "findAllSessions", query = "from session order by date")
 })
 public class Session {
 
@@ -22,13 +23,15 @@ public class Session {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
-	private final Date date;
-	private final String startTime;
-	private final String endTime;
+	private Date date;
+	private String startTime;
+	private String endTime;
 	
-	private final String title;
-	private final String speaker;
-	private final String description;
+	private String title;
+	private String speaker;
+	private String description;
+	
+	public Session() { }
 	
 	public Session(Date date, String startTime, String endTime, String title, String speaker, String description) {
 		super();

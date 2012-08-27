@@ -17,6 +17,9 @@ public class JpaSessionDao implements SessionDao {
 	@PersistenceContext
 	private EntityManager em;
 	
+	public JpaSessionDao() { }
+	
+	// test constructor
 	public JpaSessionDao(EntityManager em) {
 		this.em = em;
 	}
@@ -27,6 +30,11 @@ public class JpaSessionDao implements SessionDao {
 		return query.setParameter("date", date).getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<Session> getAllSessions() {
+		return em.createNamedQuery("findAllSessions").getResultList();
+	}
+	
 	public void saveSession(Session session) {
 		em.merge(session);
 	}
