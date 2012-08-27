@@ -1,13 +1,12 @@
 package org.ale.thot.domain;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+
 
 /**
  * Domain object to represent data for a session.
@@ -23,46 +22,146 @@ public class Session {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
-	private Date date;
-	private String startTime;
-	private String endTime;
+	private String date;
+	private String start;
+	private String end;
 	
 	private String title;
-	private String speaker;
+	private String author;
+	private String author2;
 	private String description;
+	private String location;
+	private String type;
+	private String authorInfo;
+	private String author2Info;
+	private String authorImgUrl;
+	private String author2ImgUrl;
 	
 	public Session() { }
 	
-	public Session(Date date, String startTime, String endTime, String title, String speaker, String description) {
+	public Session(String date, String startTime, String endTime, String title, String author, String description) {
 		super();
 		this.date = date;
-		this.startTime = startTime;
-		this.endTime = endTime;
+		this.start = startTime;
+		this.end = endTime;
 		this.title = title;
-		this.speaker = speaker;
+		this.author = author;
 		this.description = description;
+	}
+	
+	public Session(String date, String start, String end, String title,
+			String author, String author2, String description, String location,
+			String type, String authorInfo, String author2Info,
+			String authorImgUrl, String author2ImgUrl) {
+		this.date = date;
+		this.start = start;
+		this.end = end;
+		this.title = title;
+		this.author = author;
+		this.author2 = author2;
+		this.description = description;
+		this.location = location;
+		this.type = type;
+		this.authorInfo = authorInfo;
+		this.author2Info = author2Info;
+		this.authorImgUrl = authorImgUrl;
+		this.author2ImgUrl = author2ImgUrl;
 	}
 	
 	public long getId() {
 		return id;
 	}
-	public Date getDate() {
-		return date;
-	}
-	public String getStartTime() {
-		return startTime;
-	}
-	public String getEndTime() {
-		return endTime;
-	}
 	public String getTitle() {
 		return title;
 	}
-	public String getSpeaker() {
-		return speaker;
+	public String getAuthor() {
+		return author;
 	}
 	public String getDescription() {
 		return description;
 	}
 	
+	public String getDate() {
+		return date;
+	}
+
+	public String getStart() {
+		return start;
+	}
+
+	public String getEnd() {
+		return end;
+	}
+
+	public String getAuthor2() {
+		return author2;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public String getAuthorInfo() {
+		return authorInfo;
+	}
+
+	public String getAuthor2Info() {
+		return author2Info;
+	}
+
+	public String getAuthorImgUrl() {
+		return authorImgUrl;
+	}
+
+	public String getAuthor2ImgUrl() {
+		return author2ImgUrl;
+	}
+	
+	@Override
+	public String toString() {
+		return "Session [title=" + title + ", author=" + author
+				+ ", description=" + description + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((author == null) ? 0 : author.hashCode());
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		return result;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Session other = (Session) obj;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (author == null) {
+			if (other.author != null)
+				return false;
+		} else if (!author.equals(other.author))
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		return true;
+	}
 }

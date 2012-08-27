@@ -4,17 +4,17 @@ import java.util.Date;
 
 public class SessionDataFormData {
 
-	private Date date;
+	private String date;
 	private String title;
 	private String speaker;
 	private String description;
 	private String start;
 	private String end;
 	
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public String getTitle() {
