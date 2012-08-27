@@ -1,38 +1,74 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   
-  <parent>
-  	<groupId>org.ale.thot</groupId>
-  	<artifactId>thot-parent</artifactId>
-  	<version>1.0.0-SNAPSHOT</version>
-  	<relativePath>../thot-parent</relativePath>
-  </parent>
-  
-  <artifactId>thot-web</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <groupId>org.ale.thot</groupId>
+  <artifactId>thot-app</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
   <packaging>war</packaging>
-  <name>Thot web application</name>
+  <name>Thot application</name>
+  
+  <properties>
+  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  	<spring.version>3.1.2.RELEASE</spring.version>
+  	<hibernate.version>4.1.6.Final</hibernate.version>
+  </properties>
   
   <dependencies>
-  	<dependency>
-		<groupId>org.ale.thot</groupId>
-		<artifactId>thot-domain</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</dependency>
-	
+  
+  	<!-- Spring -->
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-context</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-tx</artifactId>
+		<version>${spring.version}</version>
 	</dependency>
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-webmvc</artifactId>
+		<version>${spring.version}</version>
 	</dependency>
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-orm</artifactId>
+		<version>${spring.version}</version>
 	</dependency>
 	
+	<!-- Hibernate -->
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-core</artifactId>
+		<version>${hibernate.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-entitymanager</artifactId>
+		<version>${hibernate.version}</version>
+	</dependency>
+	
+	<!-- Servlet & Co. -->
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>servlet-api</artifactId>
+		<version>2.5</version>
+		<scope>provided</scope>
+	</dependency>
+	<dependency>
+		<groupId>javax.servlet.jsp</groupId>
+		<artifactId>jsp-api</artifactId>
+		<version>2.1</version>
+		<scope>provided</scope>
+	</dependency>
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>jstl</artifactId>
+		<version>1.2</version>
+	</dependency>
+	
+	<!-- Other -->
 	<dependency>
 		<groupId>mysql</groupId>
 		<artifactId>mysql-connector-java</artifactId>
@@ -44,20 +80,20 @@
 		<version>1.4</version>
 	</dependency>
 	
+	<!-- Test -->
 	<dependency>
-		<groupId>javax.servlet</groupId>
-		<artifactId>servlet-api</artifactId>
-		<scope>provided</scope>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>4.10</version>
+		<scope>test</scope>
 	</dependency>
 	<dependency>
-		<groupId>javax.servlet.jsp</groupId>
-		<artifactId>jsp-api</artifactId>
-		<scope>provided</scope>
+		<groupId>org.mockito</groupId>
+		<artifactId>mockito-core</artifactId>
+		<version>1.9.0</version>
+		<scope>test</scope>
 	</dependency>
-	<dependency>
-		<groupId>javax.servlet</groupId>
-		<artifactId>jstl</artifactId>
-	</dependency>
+	
   </dependencies>
   
   <build>
@@ -67,6 +103,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.9</version>
 				<configuration>
 					<wtpversion>2.0</wtpversion>
 				</configuration>
@@ -74,6 +111,7 @@
 			<plugin>
 				<groupId>org.codehaus.cargo</groupId>
 				<artifactId>cargo-maven2-plugin</artifactId>
+				<version>1.2.4</version>
 				<configuration>
 					<container>
 						<containerId>tomcat7x</containerId>
@@ -94,8 +132,8 @@
 					</deployer>
 					<deployables>
 						<deployable>
-							<groupId>${groupId}</groupId>
-							<artifactId>${artifactId}</artifactId>
+							<groupId>${project.groupId}</groupId>
+							<artifactId>${project.artifactId}</artifactId>
 							<type>war</type>
 							<!-- <properties>
 								<context>optional root context</context>

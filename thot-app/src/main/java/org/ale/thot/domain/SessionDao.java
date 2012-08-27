@@ -10,6 +10,8 @@ import org.ale.thot.domain.Session;
  */
 public interface SessionDao {
 
+	List<Session> getAllSessions();
+	
 	/** returns all sessions for a specific date */
 	List<Session> getSessionsByDate(Date date);
 	
