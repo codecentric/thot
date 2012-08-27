@@ -17,9 +17,20 @@ import org.apache.poi.ss.usermodel.Row;
 
 public class XlsSessionReader {
 
-	private static final short ROW_TITLE = 0;
-	private static final short ROW_SPEAKER = 1;
-	private static final short ROW_DESCRIPTION = 2;
+	private static final short COL_DATE = 0;
+	private static final short COL_START = 1;
+	private static final short COL_END = 2;
+	private static final short COL_TOPIC = 3;
+	private static final short COL_AUTHOR = 4;
+	private static final short COL_AUTHOR2 = 5;
+	private static final short COL_DESCRIPTION = 6;
+	private static final short COL_LOCATION = 7;
+	private static final short COL_TYPE = 8;
+	private static final short COL_AUTHORINFO = 9;
+	private static final short COL_AUTHOR2INFO = 10;
+	private static final short COL_AUTHORIMAGEURL = 11; 
+	private static final short COL_AUHTOR2IMAGEURL = 12;
+	
 
 	private POIFSFileSystem fileSystem; 
 	
@@ -59,9 +70,9 @@ public class XlsSessionReader {
 	}
 
 	private Session getSessionFromRow(HSSFRow row) {		
-		final String title = getCellValue(row.getCell(ROW_TITLE, Row.RETURN_BLANK_AS_NULL));
-		final String speaker = getCellValue(row.getCell(ROW_SPEAKER, Row.RETURN_BLANK_AS_NULL));
-		final String description = getCellValue(row.getCell(ROW_DESCRIPTION, Row.RETURN_BLANK_AS_NULL));
+		final String title = getCellValue(row.getCell(COL_TOPIC, Row.RETURN_BLANK_AS_NULL));
+		final String speaker = getCellValue(row.getCell(COL_AUTHOR, Row.RETURN_BLANK_AS_NULL));
+		final String description = getCellValue(row.getCell(COL_DESCRIPTION, Row.RETURN_BLANK_AS_NULL));
 		
 		if(title != null || speaker != null || description != null) {
 			return new Session(title, speaker, description);	
