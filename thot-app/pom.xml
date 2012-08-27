@@ -131,11 +131,11 @@
 					<configuration>
 						<type>runtime</type>
 						<properties>
-							<cargo.hostname>10.2.3.11</cargo.hostname>
+							<cargo.hostname>${cargo.host}</cargo.hostname>
                         	<cargo.protocol>http</cargo.protocol>
                         	<cargo.servlet.port>8080</cargo.servlet.port>
-							<cargo.remote.username>admin</cargo.remote.username>
-							<cargo.remote.password>admin</cargo.remote.password>
+							<cargo.remote.username>${cargo.user}</cargo.remote.username>
+							<cargo.remote.password>${cargo.pwd}</cargo.remote.password>
 						</properties>
 					</configuration>
 					<deployer>
@@ -160,4 +160,25 @@
 		</plugins>
 	</build>
 	
+	<profiles>
+		<profile>
+			<id>local</id>
+      		<activation>
+      			<activeByDefault>true</activeByDefault>
+      		</activation>
+      		<properties>
+      			<cargo.host>localhost</cargo.host>
+      			<cargo.user>admin</cargo.user>
+      			<cargo.pwd>admin</cargo.pwd>
+      		</properties>
+    	</profile>
+    	<profile>
+			<id>test</id>
+      		<properties>
+      			<cargo.host>50.16.218.76</cargo.host>
+      			<cargo.user>admin</cargo.user>
+      			<cargo.pwd>admin</cargo.pwd>
+      		</properties>
+    	</profile>
+	</profiles>
 </project>
