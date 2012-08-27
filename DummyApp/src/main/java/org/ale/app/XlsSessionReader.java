@@ -1,11 +1,11 @@
 package org.ale.app;
 
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.ale.domain.Session;
+import org.apache.commons.codec.binary.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -47,8 +47,6 @@ public class XlsSessionReader {
 	
 	public List<Session> readAllSessions() {
 		try {
-			//final InputStream is = new java.io.FileInputStream("C:/cc/projects/wrkspc_ale/thot/DummyApp/src/main/resources/program.xls");
-			//final InputStream is = ClassLoader.class.getResourceAsStream("program.xls");
 			final InputStream is = this.getClass().getClassLoader().getResourceAsStream("program.xls");
 			return readAllSessions(is);
 		} catch (Exception e) {
@@ -58,7 +56,7 @@ public class XlsSessionReader {
 	
 	public List<Session> readAllSessions(InputStream is) {
 		final List<Session> result = new ArrayList<Session>();
-		
+	
 		try {
 			final POIFSFileSystem fileSystem = new POIFSFileSystem(is);
 			final HSSFWorkbook workBook = new HSSFWorkbook(fileSystem);
