@@ -13,7 +13,7 @@
   <#list sessions as session>
   	<p>
   		<span class="title">${session.title}</span> <br/>
-  		by <span class="speaker">${session.speaker}</span> <br/>
+  		by <span class="speaker">${session.author}</span> <br/>
   		<div class="description">
   			${session.description}
   		</p>

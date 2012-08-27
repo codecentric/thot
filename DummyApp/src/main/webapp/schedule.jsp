@@ -1,4 +1,8 @@
 <%@ include file="header.jsp"%>
+<%@ page import="java.io.InputStream" %>
+<%@ page import="java.util.List" %>
+<%@ page import="org.ale.domain.Session" %>
+<%@ page import="org.ale.app.XlsSessionReader" %>
 
 <div class="container-fluid">
 
@@ -9,7 +13,11 @@
 				<p>For more details on content, please click the description
 					inside the cells</p>
 			</div>
+<%! 	
 			
+			final XlsSessionReader sessionReader = new XlsSessionReader();
+			final List<Session> sessions = sessionReader.readAllSessions();
+%>			 
 			<div class="row-fluid">
 				<div class="tabbable">
 					<ul class="nav nav-tabs">
@@ -23,32 +31,33 @@
 							<table class="table table-striped">
 								<thead>
 									<tr>
+										<th>Date</th>
 										<th>Start</th>
 										<th>End</th>
-										<th>Talk</th>
+										<th>Title</th>
 										<th>Speaker</th>
+										<th>Description</th>
 									</tr>
 								</thead>
 								<tbody>
+<% 
+	for(Session s : sessions) {
+%>
 									<tr>
-										<td>11:00</td>
-										<td>11:30</td>
+										<td><%=s.getDate()%></td>
+										<td><%=s.getStart()%></td>
+										<td><%=s.getEnd()%></td>
+										<td><%=s.getTitle()%></td>
+										<td><%=s.getAuthor()%></td>
+										<td><%=s.getDescription()%></td>
+<!-- 
 										<td><a href="session.html">Validate Your Influence</a></td>
 										<td>Ivana Gancheva</td>
+ -->										
 									</tr>
-									<tr>
-										<td>11:00</td>
-										<td>11:30</td>
-										<td>Spreading collaboration - Dissolving vs Bullying
-											Product Owners</td>
-										<td>Konrad Pogorzala, Christian Kaemmerer</td>
-									</tr>
-									<tr>
-										<td>11:00</td>
-										<td>11:30</td>
-										<td>The Pirate Metrics - AARRR</td>
-										<td>Jurgen De Smet</td>
-									</tr>
+<%
+	} // end iterate over sessions
+%>									
 								</tbody>
 							</table>
 						</div>

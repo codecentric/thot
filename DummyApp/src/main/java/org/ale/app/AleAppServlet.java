@@ -1,9 +1,8 @@
 package org.ale.app;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.InputStream;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletConfig;
@@ -11,8 +10,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.ale.domain.Session;
 
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
@@ -46,12 +43,10 @@ public class AleAppServlet extends HttpServlet {
 		Template template = cfg.getTemplate("sessions.ftl");
 		
 		Map<String, Object> model = new HashMap<String, Object>();
-		Session s1 = new Session("Title 1", "Speaker 1", "some description ...");
-		Session s2 = new Session("Title 2", "Speaker 2", "some other description ...");
-		List<Session> sessions = new ArrayList<Session>();
-		sessions.add(s1);
-		sessions.add(s2);
-		model.put("sessions", sessions);
+		final InputStream is = ClassLoader.class.getResourceAsStream("program.xls");
+		final XlsSessionReader sessionReader = new XlsSessionReader(); 
+		
+		model.put("sessions", sessionReader.readAllSessions(is));
 		
 		try {
 			template.process(model, response.getWriter());
