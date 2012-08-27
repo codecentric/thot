@@ -27,7 +27,7 @@ Then, go into the <tt>thot-app</tt> directory and execute <br/><br/>
 
 Finally you need to setup a database and the appropriate user. This can be done in the same directoy with the command <br/><br/>
 
-<code>mysql -u root -p \< src/main/resources/sql/init-db.sql</code>
+<code>mysql -u root -p \\< src/main/resources/sql/init-db.sql</code>
 
 After that simple import the project into Eclipse, add the Tomcat to your Servers tab and you're ready to get started.
 </p>
