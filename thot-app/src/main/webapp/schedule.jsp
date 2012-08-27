@@ -44,31 +44,24 @@
 								<tbody>
 <% 
 	for(Session s : sessions) {
-		if("29. Aug.".equals(s.getDate())) {	
+		if("29. Aug.".equals(s.getDate())) {
+			int i = sessions.indexOf(s);
 %>
 									<tr>
 										<td><%=emptyIfNull(s.getStart())%></td>
 										<td><%=emptyIfNull(s.getEnd())%></td>
 										<td>
-<!-- 										<a href="#myModal" onClick="$('#myModal').modal('show')" data-toggle="modal">  -->
-										   <%=emptyIfNull(s.getTitle())%>
-<!--										   </a> -->
+						 <% if(s.getDescription() != null) {
+              %>	
+											<a href="#myModal_<%=i%>" role="button" class="btn" data-toggle="modal"><%=emptyIfNull(s.getTitle())%></a> 
+							<%} else { %>
+							        <%=emptyIfNull(s.getTitle()) %>
+							 <%}  %>
 										 </td>
 										<td><%=emptyIfNull(s.getAuthor())%></td>
 										<td><%=emptyIfNull(s.getLocation())%></td>
 										<td></td>
 									</tr>
-<!-- 									
-										<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-											<div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-												<h3 id="myModalLabel"></h3>
-											</div>
-											<div class="modal-body">
-												<p><%=emptyIfNull(s.getDescription())%></p>
-											</div>
-										</div>							
- -->									
 <%
 		  }
 		} // end iterate over sessions
@@ -86,21 +79,29 @@
 										<th>Title</th>
 										<th>Speaker</th>
 										<th>Location</th>
-										<th>Description</th>
 									</tr>
 								</thead>
 								<tbody>
 <% 
 	for(Session s : sessions) {
 		if("30. Aug.".equals(s.getDate())) {	
+			int i = sessions.indexOf(s);
+
 %>
 									<tr>
 										<td><%=emptyIfNull(s.getStart())%></td>
 										<td><%=emptyIfNull(s.getEnd())%></td>
-										<td><%=emptyIfNull(s.getTitle())%></td>
+										<td>
+						 <% if(s.getDescription() != null) {
+              %>	
+											<a href="#myModal_<%=i%>" role="button" class="btn" data-toggle="modal"><%=emptyIfNull(s.getTitle())%></a> 
+							<%} else { %>
+							        <%=emptyIfNull(s.getTitle()) %>
+							 <%}  %>
+										 </td>
 										<td><%=emptyIfNull(s.getAuthor())%></td>
 										<td><%=emptyIfNull(s.getLocation())%></td>
-										<td><%=emptyIfNull(s.getDescription())%></td>
+										<td></td>
 									</tr>
 <%
 		  }
@@ -119,21 +120,28 @@
 										<th>Title</th>
 										<th>Speaker</th>
 										<th>Location</th>
-										<th>Description</th>
 									</tr>
 								</thead>
 								<tbody>
 <% 
 	for(Session s : sessions) {
-		if("31. Aug.".equals(s.getDate())) {	
+		if("31. Aug.".equals(s.getDate())) {
+			int i = sessions.indexOf(s);
 %>
 									<tr>
 										<td><%=emptyIfNull(s.getStart())%></td>
 										<td><%=emptyIfNull(s.getEnd())%></td>
-										<td><%=emptyIfNull(s.getTitle())%></td>
+										<td>
+						 <% if(s.getDescription() != null) {
+              %>	
+											<a href="#myModal_<%=i%>" role="button" class="btn" data-toggle="modal"><%=emptyIfNull(s.getTitle())%></a> 
+							<%} else { %>
+							        <%=emptyIfNull(s.getTitle()) %>
+							 <%}  %>
+										 </td>
 										<td><%=emptyIfNull(s.getAuthor())%></td>
 										<td><%=emptyIfNull(s.getLocation())%></td>
-										<td><%=emptyIfNull(s.getDescription())%></td>
+										<td></td>
 									</tr>
 <%
 		  }
@@ -153,5 +161,24 @@
 			</div>
 			<!--/.fluid-container-->
 			</div>
+
+<% 
+	for(Session s : sessions) {
+		if(s.getDescription() != null) {
+		  int i = sessions.indexOf(s);
+%>
+			<div id="myModal_<%=i%>" class="modal hide" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" >
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h3 id="myModalLabel_<%=i%>"><%=s.getTitle()%></h3>
+				</div>
+				<div class="modal-body">
+					<p><%=s.getDescription()%></p>
+				</div>
+			</div>
+<%
+		}
+  }
+%>
 
 			<%@ include file="footer.html"%>
