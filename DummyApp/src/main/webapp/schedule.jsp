@@ -38,8 +38,7 @@
 										<th>End</th>
 										<th>Title</th>
 										<th>Speaker</th>
-										<th>Location</th>
-										<th>Description</th>
+										<th>Location</th>										
 									</tr>
 								</thead>
 								<tbody>
@@ -50,11 +49,26 @@
 									<tr>
 										<td><%=emptyIfNull(s.getStart())%></td>
 										<td><%=emptyIfNull(s.getEnd())%></td>
-										<td><%=emptyIfNull(s.getTitle())%></td>
+										<td>
+<!-- 										<a href="#myModal" onClick="$('#myModal').modal('show')" data-toggle="modal">  -->
+										   <%=emptyIfNull(s.getTitle())%>
+<!--										   </a> -->
+										 </td>
 										<td><%=emptyIfNull(s.getAuthor())%></td>
 										<td><%=emptyIfNull(s.getLocation())%></td>
-										<td><%=emptyIfNull(s.getDescription())%></td>
+										<td></td>
 									</tr>
+<!-- 									
+										<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+												<h3 id="myModalLabel"></h3>
+											</div>
+											<div class="modal-body">
+												<p><%=emptyIfNull(s.getDescription())%></p>
+											</div>
+										</div>							
+ -->									
 <%
 		  }
 		} // end iterate over sessions
