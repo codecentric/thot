@@ -15,13 +15,13 @@ public class XlsSessionReaderTest {
 	public void testSessionCount() {
 		XlsSessionReader reader = null;
 		try {
-			reader = new XlsSessionReader("./src/test/resources/sessions.xls");
+			reader = new XlsSessionReader("./src/test/resources/program.xls");
 			List<Session> sessions = reader.readAllSessions();
 		
 			for (Session session : sessions) {
 				System.out.println(session);
 			}
-			assertEquals(5, sessions.size());
+			assertEquals(35, sessions.size());
 		} catch (IOException e) {
 			fail(e.getMessage());
 		}
