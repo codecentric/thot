@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<link href="assets/css/bootstrap.css" rel="stylesheet">
+<link href="<%= request.getContextPath() %>/assets/css/bootstrap.css" rel="stylesheet">
 <style type="text/css">
 body {
 	padding-top: 60px;
@@ -21,7 +21,7 @@ body {
 	padding: 9px 0;
 }
 </style>
-<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="<%= request.getContextPath() %>/assets/css/bootstrap-responsive.css" rel="stylesheet">
 </head>
 
 <body>
@@ -32,7 +32,8 @@ body {
 				<a class="btn btn-navbar" data-toggle="collapse"
 					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a class="brand" href="#">Agile Lean Europe 2012</a>
+				</a> <a class="brand" href="<%= request.getContextPath() %>">Agile Lean Europe 2012</a>
+				
 				<div class="btn-group pull-right">
 					<%if(null == session.getAttribute("twitter")){%>
 					<a class="btn btn-info btn-large" href="signin">Sign in with
@@ -51,6 +52,7 @@ body {
 					<%}%>
 				</div>
 				
+				
 				<div class="nav-collapse">
 					<ul class="nav">
 						<li class="active"><a href="home.jsp">Home</a></li>
@@ -59,11 +61,10 @@ body {
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown">More <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Action</a></li>
-								<li><a href="#">Another action</a></li>
+								<li class="nav-header">Open Spaces</li>
+								<li><a href="<%= request.getContextPath() %>/addSession">Add OpenSpace</a></li>
+								<li><a href="<%= request.getContextPath() %>/allSessions">List all OpenSpaces</a></li>
 								<li class="divider"></li>
-								<li class="nav-header">Nav header</li>
-								<li><a href="#">Separated link</a></li>
 							</ul></li>
 					</ul>
 				</div>

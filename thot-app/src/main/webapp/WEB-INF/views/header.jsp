@@ -31,25 +31,24 @@ body {
 				<a class="btn btn-navbar" data-toggle="collapse"
 					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a class="brand" href="#">Agile Lean Europe 2012</a>
+				</a> <a class="brand" href="<%= request.getContextPath() %>">Agile Lean Europe 2012</a>
 				
 				<div class="nav-collapse">
 					<ul class="nav">
-						<li><a href="allSessions">All sessions</a></li>
-						<li><a href="addSession">Add a new session</a></li>
-						<!--
+						<li class="active"><a href="home.jsp">Home</a></li>
+						<li><a href="schedule.jsp">Sessions</a></li>
+						<li><a href="features.jsp">Features</a></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown">More <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Action</a></li>
-								<li><a href="#">Another action</a></li>
+								<li class="nav-header">Open Spaces</li>
+								<li><a href="<%= request.getContextPath() %>/addSession">Add OpenSpace</a></li>
+								<li><a href="<%= request.getContextPath() %>/allSessions">List all OpenSpaces</a></li>
 								<li class="divider"></li>
-								<li class="nav-header">Nav header</li>
-								<li><a href="#">Separated link</a></li>
 							</ul></li>
-						-->
 					</ul>
 				</div>
+				<!--/.nav-collapse -->
 			</div>
 		</div>
 	</div>

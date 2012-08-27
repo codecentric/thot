@@ -180,5 +180,13 @@
       			<cargo.pwd>admin</cargo.pwd>
       		</properties>
     	</profile>
+    	<profile>
+			<id>prod</id>
+      		<properties>
+      			<cargo.host>50.19.217.158</cargo.host>
+      			<cargo.user>admin</cargo.user>
+      			<cargo.pwd>admin</cargo.pwd>
+      		</properties>
+    	</profile>
 	</profiles>
 </project>
