@@ -32,36 +32,14 @@
 						<div class="tab-pane active" id="1">
 							<p>You are watching Day 1, August 29th.</p>
 							<table class="table table-striped">
-								<thead>
-									<tr>
-										<th>Start</th>
-										<th>End</th>
-										<th>Title</th>
-										<th>Speaker</th>
-										<th>Location</th>										
-									</tr>
-								</thead>
+								<%@ include file="schedule_tableheader.html" %>	
 								<tbody>
 <% 
 	for(Session s : sessions) {
 		if("29. Aug.".equals(s.getDate())) {
 			int i = sessions.indexOf(s);
 %>
-									<tr>
-										<td><%=emptyIfNull(s.getStart())%></td>
-										<td><%=emptyIfNull(s.getEnd())%></td>
-										<td>
-						 <% if(s.getDescription() != null) {
-              %>	
-											<a href="#myModal_<%=i%>" role="button" class="btn" data-toggle="modal"><%=emptyIfNull(s.getTitle())%></a> 
-							<%} else { %>
-							        <%=emptyIfNull(s.getTitle()) %>
-							 <%}  %>
-										 </td>
-										<td><%=emptyIfNull(s.getAuthor())%></td>
-										<td><%=emptyIfNull(s.getLocation())%></td>
-										<td></td>
-									</tr>
+<%@ include file="schedule_row.jsp" %>	
 <%
 		  }
 		} // end iterate over sessions
@@ -73,14 +51,7 @@
 							<p>You are watching Day 2, August 30th.</p>
 							<table class="table table-striped">
 								<thead>
-									<tr>
-										<th>Start</th>
-										<th>End</th>
-										<th>Title</th>
-										<th>Speaker</th>
-										<th>Location</th>
-									</tr>
-								</thead>
+								<%@ include file="schedule_tableheader.html" %>	
 								<tbody>
 <% 
 	for(Session s : sessions) {
@@ -88,21 +59,7 @@
 			int i = sessions.indexOf(s);
 
 %>
-									<tr>
-										<td><%=emptyIfNull(s.getStart())%></td>
-										<td><%=emptyIfNull(s.getEnd())%></td>
-										<td>
-						 <% if(s.getDescription() != null) {
-              %>	
-											<a href="#myModal_<%=i%>" role="button" class="btn" data-toggle="modal"><%=emptyIfNull(s.getTitle())%></a> 
-							<%} else { %>
-							        <%=emptyIfNull(s.getTitle()) %>
-							 <%}  %>
-										 </td>
-										<td><%=emptyIfNull(s.getAuthor())%></td>
-										<td><%=emptyIfNull(s.getLocation())%></td>
-										<td></td>
-									</tr>
+<%@ include file="schedule_row.jsp" %>	
 <%
 		  }
 		} // end iterate over sessions
@@ -113,36 +70,14 @@
 						<div class="tab-pane" id="3">
 							<p>You are watching Day 3, August the 31st.</p>
 							<table class="table table-striped">
-								<thead>
-									<tr>
-										<th>Start</th>
-										<th>End</th>
-										<th>Title</th>
-										<th>Speaker</th>
-										<th>Location</th>
-									</tr>
-								</thead>
+								<%@ include file="schedule_tableheader.html" %>	
 								<tbody>
 <% 
 	for(Session s : sessions) {
 		if("31. Aug.".equals(s.getDate())) {
 			int i = sessions.indexOf(s);
 %>
-									<tr>
-										<td><%=emptyIfNull(s.getStart())%></td>
-										<td><%=emptyIfNull(s.getEnd())%></td>
-										<td>
-						 <% if(s.getDescription() != null) {
-              %>	
-											<a href="#myModal_<%=i%>" role="button" class="btn" data-toggle="modal"><%=emptyIfNull(s.getTitle())%></a> 
-							<%} else { %>
-							        <%=emptyIfNull(s.getTitle()) %>
-							 <%}  %>
-										 </td>
-										<td><%=emptyIfNull(s.getAuthor())%></td>
-										<td><%=emptyIfNull(s.getLocation())%></td>
-										<td></td>
-									</tr>
+<%@ include file="schedule_row.jsp" %>	
 <%
 		  }
 		} // end iterate over sessions
