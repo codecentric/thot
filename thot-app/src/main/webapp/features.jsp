@@ -19,7 +19,7 @@
 
 	 <h3>Product Backlog</h3>
       <ul>
-       <li>xyz</li>
+       <li>Great new feature</li>
 	  </ul>
 	  	 
     </div> <!-- /container -->

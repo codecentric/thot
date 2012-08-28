@@ -18,8 +18,8 @@
 				return s == null ? "" : s;
 			}
 
-			final XlsSessionReader sessionReader = new XlsSessionReader();
-			final List<Session> sessions = sessionReader.readAllSessions();
+			final XlsSessionReader sessionReader = XlsSessionReader.getInstance();
+			final List<Session> sessions = sessionReader.getAllSessions();
 %>
 	<div class="row-fluid">
 		<div class="tabbable">

@@ -15,6 +15,9 @@ import org.apache.poi.ss.usermodel.Row;
 
 public class XlsSessionReader {
 
+	private static XlsSessionReader instance;
+	private List<Session>sessions; 
+	
 	private static final short COL_DATE = 0;
 	private static final short COL_START = 1;
 	private static final short COL_END = 2;
@@ -29,23 +32,18 @@ public class XlsSessionReader {
 	private static final short COL_AUTHORIMAGEURL = 11; 
 	private static final short COL_AUHTOR2IMAGEURL = 12;
 	
-	public XlsSessionReader() {
-		
+	private XlsSessionReader() {
+		this.sessions=readAllSessions();
 	}
-/*
-	private POIFSFileSystem fileSystem; 
 	
-	
-	public XlsSessionReader(InputStream is) {
-		try {
-			fileSystem = new POIFSFileSystem(is);
-		} catch (IOException e) {
-			throw new RuntimeException("Failed to read InputStream", e);
+	public synchronized static XlsSessionReader getInstance() {
+		if(instance == null) {
+			instance = new XlsSessionReader();
 		}
+		return instance;
 	}
-*/
 	
-	public List<Session> readAllSessions() {
+	private List<Session> readAllSessions() {
 		try {
 			final InputStream is = this.getClass().getClassLoader().getResourceAsStream("program.xls");
 			return readAllSessions(is);
@@ -54,7 +52,7 @@ public class XlsSessionReader {
 		}
 	}
 	
-	public List<Session> readAllSessions(InputStream is) {
+	private List<Session> readAllSessions(InputStream is) {
 		final List<Session> result = new ArrayList<Session>();
 	
 		try {
@@ -81,9 +79,6 @@ public class XlsSessionReader {
 	}
 
 	private Session getSessionFromRow(HSSFRow row) {		
-		
-		
-
 		final String date = getCellValue(row.getCell(COL_DATE, Row.RETURN_BLANK_AS_NULL));
 		final String start = getCellValue(row.getCell(COL_START, Row.RETURN_BLANK_AS_NULL));
 		final String end = getCellValue(row.getCell(COL_END, Row.RETURN_BLANK_AS_NULL));
@@ -128,5 +123,7 @@ public class XlsSessionReader {
 		return result;
 	}
 
-
+	public List<Session>getAllSessions() {
+		return this.sessions;
+	}
 }
