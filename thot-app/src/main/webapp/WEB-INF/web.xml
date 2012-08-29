@@ -31,7 +31,7 @@
 	</servlet-mapping>
 
 	<welcome-file-list>
-		<welcome-file>home.jsp</welcome-file>
+		<welcome-file>dummy.jsp</welcome-file>
 	</welcome-file-list>
 	
 <!-- 
