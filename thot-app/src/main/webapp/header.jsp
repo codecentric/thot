@@ -33,26 +33,7 @@ body {
 					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
 				</a> <a class="brand" href="<%= request.getContextPath() %>">Agile Lean Europe 2012</a>
-				
-				<div class="btn-group pull-right">
-					<%if(null == session.getAttribute("twitter")){%>
-					<a class="btn btn-info btn-large" href="signin">Sign in with
-						Twitter</a>
-					<%}%>
-					<%if(null != session.getAttribute("twitter")){
-						Twitter twitter = (Twitter) request.getSession().getAttribute("twitter");%>
-					<a class="btn btn-info btn-large dropdown-toggle"
-						data-toggle="dropdown" href=""> <i class="icon-user"></i>@<%=twitter.getScreenName() %>
-						<span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu">
-						<li class="divider"></li>
-						<li><a href="./logout">Sign Out</a></li>
-					</ul>
-					<%}%>
-				</div>
-				
-				
+								
 				<div class="nav-collapse">
 					<ul class="nav">
 						<li class="active"><a href="home.jsp">Home</a></li>
