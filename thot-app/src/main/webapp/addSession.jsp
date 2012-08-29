@@ -23,9 +23,9 @@
 	<div class="row-fluid">
 	<form:form commandName="sessionDataFormData" method="POST">
 	
-	 <form:radiobutton id="date" path="date" value="Day1" />&nbsp;Day1&nbsp;&nbsp;
-   <form:radiobutton id="date" path="date" value="Day2" />&nbsp;Day2&nbsp;&nbsp;
-   <form:radiobutton id="date" path="date" value="Day3" />&nbsp;Day3&nbsp;&nbsp;
+	 <form:radiobutton id="date" path="date" value="Wed" />&nbsp;Wed&nbsp;&nbsp;
+   <form:radiobutton id="date" path="date" value="Thu" />&nbsp;Thu&nbsp;&nbsp;
+   <form:radiobutton id="date" path="date" value="Fri" />&nbsp;Fri&nbsp;&nbsp;
        
 		<form:errors class="form-error" path="date" />
 		<br />
