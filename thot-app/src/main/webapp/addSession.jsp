@@ -23,15 +23,37 @@
 	<div class="row-fluid">
 	<form:form commandName="sessionDataFormData" method="POST">
 	
-	 	<form:radiobutton id="date" path="date" value="Wed" />&nbsp;Wed&nbsp;&nbsp;
+    <div>Topic:(*)</div>
+        <form:input id="title" path="title" />
+		<form:errors class="form-error" path="title" />
+		
+	 	<div>Day</div>
+	 	<form:radiobutton id="date" path="date" value="Wed" checked="checked" />&nbsp;Wed&nbsp;&nbsp;
    		<form:radiobutton id="date" path="date" value="Thu" />&nbsp;Thu&nbsp;&nbsp;
    		<form:radiobutton id="date" path="date" value="Fri" />&nbsp;Fri&nbsp;&nbsp;
 		<form:errors class="form-error" path="date" />
 		<br />
 		
-        <div>Topic:(*)</div>
-        <form:input id="title" path="title" />
-		<form:errors class="form-error" path="title" />
+		<div>Slot:</div>
+		<form:select id="start" path="start" >
+		<form:option value="15:30" label="15:30 - 16:00"/>
+		<form:option value="16:00" label="16:00 - 16:30"/>
+		<form:option value="16:30" label="16:30 - 17:00"/>
+		</form:select>
+		<form:errors class="form-error" path="start" />
+		
+		<div>Location:</div>
+		<form:select id="location" path="location" >
+		<form:option value="Red" label="Red"/>
+		<form:option value="Orange" label="Orange"/>
+		<form:option value="Brown" label="Brown"/>
+		<form:option value="Green" label="Green"/>
+		<form:option value="Blue" label="Blue"/>
+		<form:option value="Purple" label="Purple"/>
+		<form:option value="Grey" label="Grey"/>
+		</form:select>
+		<form:errors class="form-error" path="start" />
+
 		<br />
         
         <div>Proposed by:</div>
@@ -44,13 +66,6 @@
 		<form:errors class="form-error" path="description" />
 		<br />
         
-		<div>Slot:</div>
-		<form:select id="start" path="start" />
-		<form:option value="15:30" label="15:30 - 16:00"/>
-		<form:option value="16:00" label="16:00 - 16:30"/>
-		<form:option value="16:30" label="16:30 - 17:00"/>
-		
-		<form:errors class="form-error" path="start" />
 		<br />
 		
 		<input type="submit" id="addSession" value="Add session" />

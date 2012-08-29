@@ -9,7 +9,7 @@ public class SessionDataFormData {
 	private String speaker;
 	private String description;
 	private String start;
-	private String end;
+	private String location;
 	
 	public String getDate() {
 		return date;
@@ -41,11 +41,11 @@ public class SessionDataFormData {
 	public void setStart(String start) {
 		this.start = start;
 	}
-	public String getEnd() {
-		return end;
+	public String getLocation() {
+		return location;
 	}
-	public void setEnd(String end) {
-		this.end = end;
+	public void setLocation(String location) {
+		this.location = location;
 	}
 	
 }

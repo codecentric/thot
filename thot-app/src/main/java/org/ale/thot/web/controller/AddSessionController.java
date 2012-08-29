@@ -51,7 +51,7 @@ public class AddSessionController {
 		}
 		
 		// save the data
-		Session session = new Session(cmd.getDate(), cmd.getStart(), cmd.getEnd(), cmd.getTitle(), cmd.getSpeaker(), cmd.getDescription());
+		Session session = new Session(cmd.getDate(), cmd.getStart(), cmd.getLocation(), cmd.getTitle(), cmd.getSpeaker(), cmd.getDescription());
 		sessionDao.saveSession(session);
 		
 		// show the updated list

@@ -39,11 +39,11 @@ public class Session {
 	
 	public Session() { }
 	
-	public Session(String date, String startTime, String endTime, String title, String author, String description) {
+	public Session(String date, String startTime, String location, String title, String author, String description) {
 		super();
 		this.date = date;
 		this.start = startTime;
-		this.end = endTime;
+		this.location = location;
 		this.title = title;
 		this.author = author;
 		this.description = description;
