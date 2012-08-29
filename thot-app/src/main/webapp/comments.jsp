@@ -5,6 +5,8 @@
 <%@ page session="false"%>
 
 <%@ include file="header.jsp"%>
+<body onload="JavaScript:timedRefresh(5000);">
+<%@ include file="menu.jsp"%>
 
 <div class="container-fluid">
 
@@ -54,4 +56,13 @@
 </tbody>
 </table>
 </div></div>
+
+<script type="text/JavaScript">
+<!--
+function timedRefresh(timeoutPeriod) {
+	setTimeout("location.reload(true);",timeoutPeriod);
+}
+//   -->
+</script>
+
 <%@ include file="footer.html"%>

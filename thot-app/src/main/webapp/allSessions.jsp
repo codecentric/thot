@@ -4,6 +4,8 @@
 <%@ page session="false"%>
 
 <%@ include file="header.jsp"%>
+<body>
+<%@ include file="menu.jsp"%>
 
 
 <div class="container-fluid">

@@ -1,8 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ include file="header.jsp"%>
 <%@ page import="java.util.List"%>
 <%@ page import="org.ale.thot.domain.Session"%>
 <%@ page import="org.ale.app.XlsSessionReader"%>
+
+<%@ include file="header.jsp"%>
+<body>
+<%@ include file="menu.jsp"%>
 
 <div class="container-fluid">
 
