@@ -14,7 +14,14 @@
 </head>
 <body>
 -->
+<div class="container-fluid">
 
+	<!--/span-->
+	<div class="well well-small">
+	<h1>All Sessions</h1>
+	</div>
+	
+	<div class="row-fluid">
 <table>
 <thead>  
 	<tr>
@@ -39,5 +46,5 @@
 </c:forEach>
 </tbody>
 </table>
-
+</div></div>
 <%@ include file="footer.html"%>

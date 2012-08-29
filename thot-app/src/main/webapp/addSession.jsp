@@ -13,8 +13,14 @@
 </head>
 <body>
 -->
+<div class="container-fluid">
 
-<p>
+	<!--/span-->
+	<div class="well well-small">
+	<h1>Add Session Data</h1>
+	</div>
+	
+	<div class="row-fluid">
 	<form:form commandName="sessionDataFormData" method="POST">
 	
         <div>Date:</div>
@@ -50,6 +56,7 @@
 		<input type="submit" id="addSession" value="Add session" />
 
 	</form:form>
-</p>
+</div>
+</div>
 
 <%@ include file="footer.html"%>
