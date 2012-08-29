@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="header.jsp"%>
 <%@ page import="java.io.InputStream"%>
 <%@ page import="java.util.List"%>
@@ -111,7 +112,8 @@
 	</div>
 	<div class="modal-body">
 		<p><%=s.getDescription()%></p>
-	</div>
+	</div> 
+	
 </div>
 <%
 		}

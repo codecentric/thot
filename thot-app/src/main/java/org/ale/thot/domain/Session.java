@@ -52,7 +52,7 @@ public class Session {
 	public Session(String date, String start, String end, String title,
 			String author, String author2, String description, String location,
 			String type, String authorInfo, String author2Info,
-			String authorImgUrl, String author2ImgUrl) {
+			String authorImgUrl, String author2ImgUrl, int id) {
 		this.date = date;
 		this.start = start;
 		this.end = end;
@@ -66,6 +66,7 @@ public class Session {
 		this.author2Info = author2Info;
 		this.authorImgUrl = authorImgUrl;
 		this.author2ImgUrl = author2ImgUrl;
+		this.id = id;
 	}
 	
 	public long getId() {

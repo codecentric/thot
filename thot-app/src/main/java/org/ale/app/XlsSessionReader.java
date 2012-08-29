@@ -67,7 +67,7 @@ public class XlsSessionReader {
 				if (row == null) {
 					continue;
 				}
-				final Session session  = getSessionFromRow(row);
+				final Session session  = getSessionFromRow(row,r);
 				if(session != null) {
 					result.add(session);
 				}
@@ -78,7 +78,7 @@ public class XlsSessionReader {
 		return result;
 	}
 
-	private Session getSessionFromRow(HSSFRow row) {		
+	private Session getSessionFromRow(HSSFRow row, int id) {		
 		final String date = getCellValue(row.getCell(COL_DATE, Row.RETURN_BLANK_AS_NULL));
 		final String start = getCellValue(row.getCell(COL_START, Row.RETURN_BLANK_AS_NULL));
 		final String end = getCellValue(row.getCell(COL_END, Row.RETURN_BLANK_AS_NULL));
@@ -94,7 +94,7 @@ public class XlsSessionReader {
 		final String author2ImgUrl = getCellValue(row.getCell(COL_AUHTOR2IMAGEURL, Row.RETURN_BLANK_AS_NULL));
 		
 		if(title != null || author != null || description != null) {
-			return new Session(date, start, end, title, author, author2, description, location, type, authorInfo, author2Info, authorImgUrl, author2ImgUrl);	
+			return new Session(date, start, end, title, author, author2, description, location, type, authorInfo, author2Info, authorImgUrl, author2ImgUrl, id);	
 		}
 		
 		return null;

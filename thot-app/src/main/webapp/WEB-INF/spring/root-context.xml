@@ -35,6 +35,7 @@
 		p:entityManagerFactory-ref="entityManagerFactory" />
 
 	<bean id="sessionDao" class="org.ale.thot.domain.JpaSessionDao" />
+	<bean id="commentDao" class="org.ale.thot.domain.JpaCommentDao" />
 	
 	<!-- <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" /> -->
 	
