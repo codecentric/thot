@@ -1,5 +1,4 @@
 <%@ include file="header.jsp"%>
-<%@ page import="java.io.InputStream"%>
 <%@ page import="java.util.List"%>
 <%@ page import="org.ale.thot.domain.Session"%>
 <%@ page import="org.ale.app.XlsSessionReader"%>
