@@ -23,17 +23,19 @@
 	<div class="row-fluid">
 	<form:form commandName="sessionDataFormData" method="POST">
 	
-        <div>Date:</div>
-        <form:input id="date" path="date" />
+	 <form:radiobutton id="date" path="date" value="Day1" />&nbsp;Day1&nbsp;&nbsp;
+   <form:radiobutton id="date" path="date" value="Day2" />&nbsp;Day2&nbsp;&nbsp;
+   <form:radiobutton id="date" path="date" value="Day3" />&nbsp;Day3&nbsp;&nbsp;
+       
 		<form:errors class="form-error" path="date" />
 		<br />
 		
-        <div>Title:</div>
+        <div>Topic:(*)</div>
         <form:input id="title" path="title" />
 		<form:errors class="form-error" path="title" />
 		<br />
         
-        <div>Speaker:</div>
+        <div>Proposed by:</div>
         <form:input id="speaker" path="speaker" />
 		<form:errors class="form-error" path="speaker" />
 		<br />

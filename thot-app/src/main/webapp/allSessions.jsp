@@ -31,11 +31,11 @@
 <table class="table table-striped">
 <thead>  
 	<tr>
-		<th>Date</th>
+		<th>Day</th>
 		<th>Start</th>
 		<th>End</th>
 		<th>Title</th>
-		<th>Speaker</th>
+		<th>Proposed by</th>
 		<th>Description</th>
 	</tr>
 </thead>
