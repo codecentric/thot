@@ -23,9 +23,10 @@
 	<div class="row-fluid">
 	<form:form commandName="sessionDataFormData" method="POST">
 	
-	 <form:radiobutton id="date" path="date" value="Wed" />&nbsp;Wed&nbsp;&nbsp;
-   <form:radiobutton id="date" path="date" value="Thu" />&nbsp;Thu&nbsp;&nbsp;
-   <form:radiobutton id="date" path="date" value="Fri" />&nbsp;Fri&nbsp;&nbsp;
+	 	<form:radiobutton id="date" path="date" value="Wed" />&nbsp;Wed&nbsp;&nbsp;
+   	<form:radiobutton id="date" path="date" value="Thu" />&nbsp;Thu&nbsp;&nbsp;
+ 		<form:radiobutton id="date" path="date" value="Fri" />&nbsp;Fri&nbsp;&nbsp;
+
        
 		<form:errors class="form-error" path="date" />
 		<br />
@@ -45,14 +46,13 @@
 		<form:errors class="form-error" path="description" />
 		<br />
         
-		<div>Start:</div>
-		<form:input id="start" path="start" />
-		<form:errors class="form-error" path="start" />
-		<br />
+		<div>Slot:</div>
+		<form:select id="start" path="start" />
+		<form:option value="15:30" label="15:30 - 16:00"/>
+		<form:option value="16:00" label="16:00 - 16:30"/>
+		<form:option value="16:30" label="16:30 - 17:00"/>
 		
-        <div>End:</div>
-        <form:input id="end" path="end" />
-		<form:errors class="form-error" path="end" />
+		<form:errors class="form-error" path="start" />
 		<br />
 		
 		<input type="submit" id="addSession" value="Add session" />
