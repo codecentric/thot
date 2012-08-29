@@ -36,10 +36,9 @@
 		
 		<div>Slot:</div>
 		<form:select id="start" path="start" >
-		<form:option value="15:30" label="15:30 - 16:00"/>
-		<form:option value="16:00" label="16:00 - 16:30"/>
-		<form:option value="16:30" label="16:30 - 17:00"/>
-		<form:option value="17:30" label="17:30 - 18:00"/>
+		<form:option value="15:30" label="15:30 - 16:15"/>
+		<form:option value="16:15" label="16:15 - 17:00"/>
+		<form:option value="evening" label="Evening"/>
 		</form:select>
 		<form:errors class="form-error" path="start" />
 		
