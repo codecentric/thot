@@ -27,7 +27,7 @@
 		<br />
         
         <div>Comment:</div>
-        <form:input id="text" path="text" />
+        <form:textarea id="text" path="text" />
 		<form:errors class="form-error" path="text" />
         
 		<br />
