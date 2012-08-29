@@ -24,15 +24,8 @@
 	<form:form commandName="sessionDataFormData" method="POST">
 	
 	 	<form:radiobutton id="date" path="date" value="Wed" />&nbsp;Wed&nbsp;&nbsp;
-<<<<<<< HEAD
-   	<form:radiobutton id="date" path="date" value="Thu" />&nbsp;Thu&nbsp;&nbsp;
- 		<form:radiobutton id="date" path="date" value="Fri" />&nbsp;Fri&nbsp;&nbsp;
-
-       
-=======
    		<form:radiobutton id="date" path="date" value="Thu" />&nbsp;Thu&nbsp;&nbsp;
    		<form:radiobutton id="date" path="date" value="Fri" />&nbsp;Fri&nbsp;&nbsp;
->>>>>>> 771ca4751c5888e6f71cb90e0659cad93edded0b
 		<form:errors class="form-error" path="date" />
 		<br />
 		
