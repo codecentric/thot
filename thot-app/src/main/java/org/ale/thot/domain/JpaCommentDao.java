@@ -26,7 +26,6 @@ public class JpaCommentDao implements CommentDao {
 	/* (non-Javadoc)
 	 * @see org.ale.thot.domain.CommentDao#getCommentsBySessionId(java.lang.Long)
 	 */
-	@Override
 	@SuppressWarnings("unchecked")
 	public List<Comment> getCommentsBySessionId(Long sessionId) {
 		Query query = em.createNamedQuery("findCommentForSession");
@@ -36,7 +35,6 @@ public class JpaCommentDao implements CommentDao {
 	/* (non-Javadoc)
 	 * @see org.ale.thot.domain.CommentDao#saveComment(org.ale.thot.domain.Comment)
 	 */
-	@Override
 	public void saveComment(Comment comment) {
 		em.merge(comment);
 	}
