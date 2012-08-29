@@ -32,6 +32,8 @@ Finally you need to setup a database and the appropriate user. This can be done 
 After that, simply import the project into Eclipse, add the Tomcat to your Servers tab and you're ready to get started.
 </p>
 
+<h3>Git repo in USB</h3>
+There's a USB with the git repo. Ask for it ;) !
 <h2>Further information</h2>
 
 <p>
