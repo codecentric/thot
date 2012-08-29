@@ -18,7 +18,7 @@
 
 	<!--/span-->
 	<div class="well well-small">
-	<h1>All Sessions</h1>
+	<h1>All Open Spaces</h1>
 	</div>
 	
 	<div style="float: right;">
