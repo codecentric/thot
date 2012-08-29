@@ -5,6 +5,28 @@
 </div>
 
 <div class="container">
+   <h3>Version 1.4 at 17:00</h3>
+      <ul>
+       <li>changed order of the menu items</li>
+       <li>added page to handle to during deployment</li>
+	  </ul>
+    <h3>Version 1.3 at 15:40</h3>
+      <ul>
+       <li>added all open spaces to the list</li>
+       <li>updated value list for available slots on wednesday</li>
+	  </ul>
+    <h3>Version 1.2 at 15:10</h3>
+      <ul>
+       <li>additional value list for room names</li>
+       <li>added value list for slots instead of start and end date</li>
+	  </ul>
+    <h3>Version 1.1 at 13:40</h3>
+      <ul>
+       <li>Different labels in OpenSpace form</li>
+       <li>Options for choosing the day in OpenSpace form</li>
+	  </ul>
+ 
+
   <h3>Version 1.0 at 12:40</h3>
       <ul>
        <li>Simplified menu bar for Open Space Sessions</li>

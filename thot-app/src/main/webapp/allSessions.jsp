@@ -32,11 +32,11 @@
 <thead>  
 	<tr>
 		<th>Day</th>
-		<th>Start</th>
-		<th>End</th>
+		<th>Slot</th>
+		<th>Location</th>
 		<th>Title</th>
-		<th>Proposed by</th>
 		<th>Description</th>
+		<th>Proposed by</th>
 	</tr>
 </thead>
 <tbody>
@@ -44,7 +44,7 @@
 	<tr>
 		<td>${session.date}</td>
 		<td>${session.start}</td>
-		<td>${session.end}</td>
+		<td>${session.location}</td>
 		<td>${session.title}</td>
 		<td>${session.author}</td>
 		<td>${session.description}</td>

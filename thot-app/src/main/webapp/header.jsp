@@ -38,8 +38,8 @@ body {
 					<ul class="nav">
 						<li class="active"><a href="home.jsp">Home</a></li>
 						<li><a href="schedule.jsp">Sessions</a></li>
-						<li><a href="features.jsp">Features</a></li>
 						<li><a href="<%= request.getContextPath() %>/allSessions">OpenSpaces</a></li>
+						<li><a href="features.jsp">Features</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->

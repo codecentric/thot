@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -40,10 +41,21 @@ public class AddSessionController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView processSubmit(HttpServletRequest request, ModelMap modelMap,
 			@ModelAttribute("sessionDataFormData") SessionDataFormData cmd, BindingResult result) {
-		Session session = new Session(cmd.getDate(), cmd.getStart(), cmd.getEnd(), cmd.getTitle(), cmd.getSpeaker(), cmd.getDescription());
+		
+		modelMap.put("sessionDataFormData", cmd);
+		
+		// validation
+		if ( cmd.getTitle() == null || cmd.getTitle().isEmpty() ) {
+			ValidationUtils.rejectIfEmpty (result, "title", null, "Title cannot be empty!");
+			return new ModelAndView("addSession"); 
+		}
+		
+		// save the data
+		Session session = new Session(cmd.getDate(), cmd.getStart(), cmd.getLocation(), cmd.getTitle(), cmd.getSpeaker(), cmd.getDescription());
 		sessionDao.saveSession(session);
-		return new ModelAndView("redirect:allSessions"); 
-		//return "allSessions";
+		
+		// show the updated list
+		return new ModelAndView("redirect:allSessions");
 	}
 
 }
