@@ -7,6 +7,15 @@
 </div>
 
 <div class="container">
+   <h3>Version 1.5 at Day 2 0:59</h3>
+      <ul>
+       <li>Added automatic reload for Market Place entries</li>
+       <li>Removed Session data</li>
+       <li>Removed Home Page</li>
+       <li>added comments for OpenSpaces</li>
+       <li>renamed "Open Spaces" to "Market Place"</li>
+	  </ul>
+
    <h3>Version 1.4 at 17:00</h3>
       <ul>
        <li>changed order of the menu items</li>
