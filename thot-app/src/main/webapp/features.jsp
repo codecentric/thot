@@ -5,6 +5,11 @@
 </div>
 
 <div class="container">
+    <h3>Version 1.2 at 15:10</h3>
+      <ul>
+       <li>additional value list for room names</li>
+       <li>added value list for slots instead of start and end date</li>
+	  </ul>
     <h3>Version 1.1 at 13:40</h3>
       <ul>
        <li>Different labels in OpenSpace form</li>
