@@ -39,14 +39,7 @@ body {
 						<li class="active"><a href="home.jsp">Home</a></li>
 						<li><a href="schedule.jsp">Sessions</a></li>
 						<li><a href="features.jsp">Features</a></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown">More <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li class="nav-header">Open Spaces</li>
-								<li><a href="<%= request.getContextPath() %>/addSession">Add OpenSpace</a></li>
-								<li><a href="<%= request.getContextPath() %>/allSessions">List all OpenSpaces</a></li>
-								<li class="divider"></li>
-							</ul></li>
+						<li><a href="<%= request.getContextPath() %>/allSessions">OpenSpaces</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->

@@ -21,6 +21,12 @@
 	<h1>All Sessions</h1>
 	</div>
 	
+	<div style="float: right;">
+			<a class="btn btn-primary" href="<%= request.getContextPath() %>/addSession">Add OpenSpace</a>
+	</div>
+
+	<br style="clear: both;"/>
+
 	<div class="row-fluid">
 <table class="table table-striped">
 <thead>  
