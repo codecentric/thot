@@ -22,7 +22,7 @@
 	</div>
 	
 	<div class="row-fluid">
-<table>
+<table class="table table-striped">
 <thead>  
 	<tr>
 		<th>Date</th>
