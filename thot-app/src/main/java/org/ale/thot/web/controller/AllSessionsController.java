@@ -20,7 +20,8 @@ public class AllSessionsController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public void setupForm(ModelMap modelMap) {
-		modelMap.put("sessions", sessionDao.getAllSessions());
+		modelMap.put("sessionsDay1", sessionDao.getSessionsByDate("Wed"));
+		modelMap.put("sessionsDay2", sessionDao.getSessionsByDate("Thu"));
+		modelMap.put("sessionsDay3", sessionDao.getSessionsByDate("Fri"));
 	}
-
 }

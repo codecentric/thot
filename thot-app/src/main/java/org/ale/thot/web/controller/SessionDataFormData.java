@@ -1,6 +1,5 @@
 package org.ale.thot.web.controller;
 
-import java.util.Date;
 
 public class SessionDataFormData {
 

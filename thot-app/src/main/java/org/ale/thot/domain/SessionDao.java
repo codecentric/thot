@@ -13,7 +13,7 @@ public interface SessionDao {
 	List<Session> getAllSessions();
 	
 	/** returns all sessions for a specific date */
-	List<Session> getSessionsByDate(Date date);
+	List<Session> getSessionsByDate(String date);
 	
 	void saveSession(Session session);
 	
