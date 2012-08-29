@@ -30,7 +30,7 @@
 				<li class=""><a href="#3" data-toggle="tab">Day 3</a></li>
 			</ul>
 			<div class="tab-content">
-				<div class="tab-pane active" id="1">
+				<div class="tab-pane" id="1">
 					<p>You are watching Day 1, August 29th.</p>
 					<table class="table table-striped">
 						<%@ include file="openspace_tableheader.html"%>
@@ -43,12 +43,13 @@
 								<td>${session.title}</td>
 								<td>${session.author}</td>
 								<td>${session.description}</td>
+								<td><a href='comments?sessionId=${session.id}&title=${session.title}' role="button" class="btn">Comments</a></td>
 							</tr>
 						</c:forEach>
 						</tbody>
 					</table>
 				</div>
-								<div class="tab-pane" id="2">
+								<div class="tab-pane active" id="2">
 					<p>You are watching Day 2, August 30th.</p>
 					<table class="table table-striped">
 						<%@ include file="openspace_tableheader.html"%>
@@ -61,6 +62,7 @@
 								<td>${session.title}</td>
 								<td>${session.author}</td>
 								<td>${session.description}</td>
+								<td><a href='comments?sessionId=${session.id}&title=${session.title}' role="button" class="btn">Comments</a></td>
 							</tr>
 						</c:forEach>
 						</tbody>
@@ -79,6 +81,7 @@
 								<td>${session.title}</td>
 								<td>${session.author}</td>
 								<td>${session.description}</td>
+								<td><a href='comments?sessionId=${session.id}&title=${session.title}' role="button" class="btn">Comments</a></td>
 							</tr>
 						</c:forEach>
 						</tbody>
