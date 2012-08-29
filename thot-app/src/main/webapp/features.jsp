@@ -5,6 +5,13 @@
 </div>
 
 <div class="container">
+    <h3>Version 1.1 at 13:40</h3>
+      <ul>
+       <li>Different labels in OpenSpace form</li>
+       <li>Options for choosing the day in OpenSpace form</li>
+	  </ul>
+ 
+
   <h3>Version 1.0 at 12:40</h3>
       <ul>
        <li>Simplified menu bar for Open Space Sessions</li>
