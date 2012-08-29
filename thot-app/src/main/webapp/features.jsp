@@ -5,6 +5,11 @@
 </div>
 
 <div class="container">
+   <h3>Version 1.4 at 17:00</h3>
+      <ul>
+       <li>changed order of the menu items</li>
+       <li>added page to handle to during deployment</li>
+	  </ul>
     <h3>Version 1.3 at 15:40</h3>
       <ul>
        <li>added all open spaces to the list</li>
