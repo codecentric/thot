@@ -5,21 +5,25 @@
 </div>
 
 <div class="container">
-      <h3>Startup features</h3>
+  <h3>Version 1.0 at 12:40</h3>
+      <ul>
+       <li>Simplified menu bar for Open Space Sessions</li>
+       <li>Make "Add Open Space" available from the list of Open Spaces</li>
+	  </ul>
+ 
+     <h3>Startup features</h3>
       <ul>
        <li>List of planned sessions</li>
        <li>Add additional Open Spaces</li>
        <li>List of additional Open Spaces</li>
       </ul>
 
-	 <h3>Features after Sprint 1</h3>
-      <ul>
-       <li>xyz</li>
-	  </ul>
+	
 
 	 <h3>Product Backlog</h3>
       <ul>
-       <li>Great new feature</li>
+       <li>As a user I want to choose the day for a new OpenSpace so that I do not have to type in the date</li>
+       <li>As a user I want to add comments to sessions I have visited.</li>
 	  </ul>
 	  	 
     </div> <!-- /container -->
