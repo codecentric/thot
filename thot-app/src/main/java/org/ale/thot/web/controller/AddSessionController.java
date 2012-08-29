@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Handles requests for the application home page.
@@ -37,11 +38,12 @@ public class AddSessionController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String processSubmit(HttpServletRequest request, ModelMap modelMap,
+	public ModelAndView processSubmit(HttpServletRequest request, ModelMap modelMap,
 			@ModelAttribute("sessionDataFormData") SessionDataFormData cmd, BindingResult result) {
 		Session session = new Session(cmd.getDate(), cmd.getStart(), cmd.getEnd(), cmd.getTitle(), cmd.getSpeaker(), cmd.getDescription());
 		sessionDao.saveSession(session);
-		return "allSessions";
+		return new ModelAndView("redirect:allSessions"); 
+		//return "allSessions";
 	}
 
 }
