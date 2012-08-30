@@ -14,7 +14,6 @@
 										<td>
 										<c:url value="comments" var="url" scope="page">
 											<c:param name="sessionId" value="<%=String.valueOf(s.getId()) %>"/>
-											<c:param name="title" value="<%= java.net.URLEncoder.encode(emptyIfNull(s.getTitle()))%>"/> 
 										</c:url>
 										
 										
