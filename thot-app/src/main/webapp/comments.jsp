@@ -5,6 +5,8 @@
 <%@ page session="false"%>
 
 <%@ include file="header.jsp"%>
+<body onload="JavaScript:timedRefresh(20000);">
+<%@ include file="menu.jsp"%>
 
 <div class="container-fluid">
 
@@ -19,22 +21,9 @@
 	<br style="clear: both;"/>
 
 	<div class="row-fluid">
-	<!-- commit form -->
-	<form:form commandName="commentFormData" method="POST">
-        <div>Name:(*)</div>
-        <form:input id="author" path="author" />
-		<form:errors class="form-error" path="author" />
-		<br />
-        
-        <div>Comment:</div>
-        <form:input id="text" path="text" />
-		<form:errors class="form-error" path="text" />
-        
-		<br />
-		
-		<input type="submit" id="addComment" value="Add comment" />
-
-	</form:form>
+	<div style="float: right;">
+			<a class="btn btn-primary" href="<%= request.getContextPath() %>/addComment?sessionId=<%= request.getParameter("sessionId")%>&title=${sessionTitle}">Add Comment</a>
+	</div>
 <table class="table table-striped">
 <thead>  
 	<tr>  
@@ -54,4 +43,13 @@
 </tbody>
 </table>
 </div></div>
+
+<script type="text/JavaScript">
+<!--
+function timedRefresh(timeoutPeriod) {
+	setTimeout("location.reload(true);",timeoutPeriod);
+}
+//   -->
+</script>
+
 <%@ include file="footer.html"%>

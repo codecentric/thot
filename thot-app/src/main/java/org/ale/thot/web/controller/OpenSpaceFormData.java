@@ -1,7 +1,7 @@
 package org.ale.thot.web.controller;
 
 
-public class SessionDataFormData {
+public class OpenSpaceFormData {
 
 	private String date;
 	private String title;

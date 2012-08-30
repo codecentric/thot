@@ -2,6 +2,7 @@ package org.ale.thot.domain;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,6 +30,8 @@ public class Comment {
 	private Date date;
 	
 	private String author;
+	
+	@Column(length = 2048)
 	private String text;
 	private Long sessionId;
 	

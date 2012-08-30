@@ -1,4 +1,6 @@
 <%@ include file="header.jsp"%>
+<body>
+<%@ include file="menu.jsp"%>
 
 	
 	<div class="well well-small">

@@ -4,7 +4,7 @@
 										<td>
 						 <% if(s.getDescription() != null) {
               %>	
-											<a href="#myModal_<%=i%>" role="button" class="btn" data-toggle="modal"><%=emptyIfNull(s.getTitle())%></a> 
+											<a href="sessionDetails.jsp?sessionId=<%=s.getId() %>" role="button" class="btn"><%=emptyIfNull(s.getTitle())%></a> 
 							<%} else { %>
 							        <%=emptyIfNull(s.getTitle()) %>
 							 <%}  %>

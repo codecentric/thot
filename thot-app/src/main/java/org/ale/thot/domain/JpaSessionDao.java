@@ -25,7 +25,7 @@ public class JpaSessionDao implements SessionDao {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Session> getSessionsByDate(Date date) {
+	public List<Session> getSessionsByDate(String date) {
 		Query query = em.createNamedQuery("findSessionsForDate");
 		return query.setParameter("date", date).getResultList();
 	}

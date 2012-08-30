@@ -4,15 +4,9 @@
 <%@ page session="false"%>
 
 <%@ include file="header.jsp"%>
-<!--
-<html>
-<head>
-<title>Thot - Add Session Data</title>
-<link rel="stylesheet" type="text/css" href="assets/bootstrap.css" media="screen" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-</head>
 <body>
--->
+<%@ include file="menu.jsp"%>
+
 <div class="container-fluid">
 
 	<!--/span-->

@@ -1,10 +1,26 @@
 <%@ include file="header.jsp"  %>
+<body>
+<%@ include file="menu.jsp"%>
 
 <div class="well well-small">
-      <h1>Already implemented features</h1>
+      <h1>Version history</h1>
 </div>
 
 <div class="container">
+   <h3>Version 1.6 at Day 2 08:40</h3>
+      <ul>
+       <li>added the session data again</li>
+       <li>change refresh interval to 20 secs</li>
+	  </ul>
+   <h3>Version 1.5 at Day 2 0:59</h3>
+      <ul>
+       <li>Added automatic reload for Market Place entries</li>
+       <li>Removed Session data</li>
+       <li>Removed Home Page</li>
+       <li>added comments for OpenSpaces</li>
+       <li>renamed "Open Spaces" to "Market Place"</li>
+	  </ul>
+
    <h3>Version 1.4 at 17:00</h3>
       <ul>
        <li>changed order of the menu items</li>

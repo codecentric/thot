@@ -1,14 +1,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ include file="header.jsp"%>
 <%@ page import="java.util.List"%>
 <%@ page import="org.ale.thot.domain.Session"%>
 <%@ page import="org.ale.app.XlsSessionReader"%>
+
+<%@ include file="header.jsp"%>
+<body>
+<%@ include file="menu.jsp"%>
 
 <div class="container-fluid">
 
 	<!--/span-->
 	<div class="well well-small">
-		<h1>Program outline</h1>
+		<h1>Sessions</h1>
 		<br />
 		<p>For more details on content, please click the description
 			inside the cells</p>
@@ -24,12 +27,12 @@
 	<div class="row-fluid">
 		<div class="tabbable">
 			<ul class="nav nav-tabs">
-				<li class="active"><a href="#1" data-toggle="tab">Day 1</a></li>
-				<li class=""><a href="#2" data-toggle="tab">Day 2</a></li>
-				<li class=""><a href="#3" data-toggle="tab">Day 3</a></li>
+				<li><a href="#1" data-toggle="tab">Day 1</a></li>
+				<li class="active"><a href="#2" data-toggle="tab">Day 2</a></li>
+				<li><a href="#3" data-toggle="tab">Day 3</a></li>
 			</ul>
 			<div class="tab-content">
-				<div class="tab-pane active" id="1">
+				<div class="tab-pane" id="1">
 					<p>You are watching Day 1, August 29th.</p>
 					<table class="table table-striped">
 						<%@ include file="schedule_tableheader.html"%>
@@ -47,7 +50,7 @@
 						</tbody>
 					</table>
 				</div>
-				<div class="tab-pane" id="2">
+				<div class="tab-pane active" id="2">
 					<p>You are watching Day 2, August 30th.</p>
 					<table class="table table-striped">
 						<thead>

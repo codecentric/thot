@@ -17,18 +17,18 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
-@RequestMapping("/comments")
-public class CommentsController {
+@RequestMapping("/addComment")
+public class AddCommentsController {
 
 	@Autowired
 	private CommentDao commentDao; 
-	public CommentsController() {
+	public AddCommentsController() {
 		super();
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public void setupForm(ModelMap modelMap, HttpServletRequest request) {
-		String sessionId = request.getParameter("sessionId"); 
+		//String sessionId = request.getParameter("sessionId"); 
 		String sessionTitle = request.getParameter("title"); 
 		try {
 			sessionTitle = URLDecoder.decode(sessionTitle, "UTF-8");
@@ -36,8 +36,20 @@ public class CommentsController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		modelMap.put("comments", commentDao.getCommentsBySessionId(Long.valueOf(sessionId)));
+        modelMap.put("commentFormData", new CommentFormData());
         modelMap.put("sessionTitle", sessionTitle);
 	}
    
+	
+	@RequestMapping(method = RequestMethod.POST)
+	public ModelAndView processSubmit(final HttpServletRequest request, ModelMap modelMap,final
+			@ModelAttribute("commentFormData") CommentFormData cmd, BindingResult result) {
+		Comment comment = new Comment(new Date(), cmd.getAuthor(), cmd.getText(),  Long.valueOf(cmd.getSessionId()) );
+		commentDao.saveComment(comment);
+		return new ModelAndView(new RedirectView("comments"){{
+			this.getAttributesMap().put("sessionId", cmd.getSessionId());
+			this.getAttributesMap().put("title", request.getParameter("title"));
+		}});
+	}
+	
 }
