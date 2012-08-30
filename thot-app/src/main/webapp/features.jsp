@@ -7,6 +7,11 @@
 </div>
 
 <div class="container">
+   <h3>Version 1.6 at Day 2 08:40</h3>
+      <ul>
+       <li>added the schedule again</li>
+       <li>change refresh interval to 20 secs</li>
+	  </ul>
    <h3>Version 1.5 at Day 2 0:59</h3>
       <ul>
        <li>Added automatic reload for Market Place entries</li>
