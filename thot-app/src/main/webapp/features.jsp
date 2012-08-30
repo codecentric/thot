@@ -8,7 +8,13 @@
 
 <div class="container">
 
-<h3>Version 1.9 at Day 2 16:45</h3>
+	<h3>Version 1.10 at Day 2 17:41</h3>
+	<ul>
+		<li>Navbar fixed</li>
+		<li>Commenter name remembered after first comment</li>
+	</ul>
+	
+	<h3>Version 1.9 at Day 2 16:45</h3>
 	<ul>
 		<li>Recent comment list - timeline</li>
 		<li>Resized map image</li>
