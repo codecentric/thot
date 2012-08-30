@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import org.ale.thot.domain.Comment;
 import org.ale.thot.domain.CommentDao;
+import org.ale.thot.domain.Session;
+import org.ale.thot.domain.SessionDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,7 +23,10 @@ import org.springframework.web.servlet.view.RedirectView;
 public class CommentsController {
 
 	@Autowired
-	private CommentDao commentDao; 
+	private CommentDao commentDao;
+	@Autowired
+	private SessionDao sessionDao;
+
 	public CommentsController() {
 		super();
 	}
@@ -29,15 +34,21 @@ public class CommentsController {
 	@RequestMapping(method = RequestMethod.GET)
 	public void setupForm(ModelMap modelMap, HttpServletRequest request) {
 		String sessionId = request.getParameter("sessionId"); 
-		String sessionTitle = request.getParameter("title"); 
-		try {
-			sessionTitle = URLDecoder.decode(sessionTitle, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		Session session = sessionDao.getSessionById(sessionId);
+
 		modelMap.put("comments", commentDao.getCommentsBySessionId(Long.valueOf(sessionId)));
-        modelMap.put("sessionTitle", sessionTitle);
+        modelMap.put("sessionTitle", utf8(session.getTitle()));
+        modelMap.put("sessionDescription", utf8(session.getDescription()));
+	}
+
+	private String utf8(String text) {
+		String out = text;
+		try {
+			out = URLDecoder.decode(text, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();			
+		}
+		return out;
 	}
    
 }

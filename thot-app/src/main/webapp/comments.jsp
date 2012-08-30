@@ -15,7 +15,7 @@
 	<h2>Comments for session:</h2>
 	<p>
     <h3>${sessionTitle}</h3> 
-	<p>
+	<p>${sessionDescription}</p>
 	</div>
 	
 	<br style="clear: both;"/>
