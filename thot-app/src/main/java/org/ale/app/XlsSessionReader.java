@@ -127,4 +127,17 @@ public class XlsSessionReader {
 	public List<Session>getAllSessions() {
 		return this.sessions;
 	}
+	
+	public Session getSession(long sessionId) {
+		for (Session session : this.sessions) {
+			if(session.getId() == sessionId) {
+				return session;
+			}
+		} 
+		return null;
+	}
+
+	public Session getSession(String sessionId) {
+		return getSession(Long.valueOf(sessionId));
+	}
 }
