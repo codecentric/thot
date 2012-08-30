@@ -13,7 +13,7 @@
 
 	<!--/span-->
 	<div class="well well-small">
-	<h1>Market Place</h1>
+	<h1><spring:message code="marketplace" text="marketplace"/></h1>
 	</div>
 	
 	<div style="float: right;">

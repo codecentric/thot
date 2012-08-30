@@ -11,7 +11,7 @@
 
 	<!--/span-->
 	<div class="well well-small">
-		<h1>Sessions</h1>
+		<h1><spring:message code="sessions" text="sessions"/></h1>
 		<br />
 		<p>For more details on content, please click the description
 			inside the cells</p>

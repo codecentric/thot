@@ -19,7 +19,7 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
  */
 @Entity(name="comment")
 @NamedQueries({
-	@NamedQuery(name = "findCommentForSession", query = "from comment where sessionId=:sessionId")
+	@NamedQuery(name = "findCommentForSession", query = "from comment where sessionId=:sessionId order by date desc")
 })
 public class Comment {
 
