@@ -13,7 +13,7 @@
 		<li>new table view layout for the open space page</li>
 		<li>new layout for the menu bar</li>
 		<li>French i18n</li>
-		<li>Venue map</li>
+		<li>venue map</li>
 		<li>fixed bug with the order of comments</li>
 	</ul>
 		<h3>Version 1.7 at Day 2 11:20</h3>
