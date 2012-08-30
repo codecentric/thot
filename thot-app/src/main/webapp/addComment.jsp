@@ -27,12 +27,12 @@
 	<!-- commit form -->
 	<form:form commandName="commentFormData" method="POST">
         <div>Name:(*)</div>
-        <form:input id="author" path="author"/>
+        <form:input maxlength="255" id="author" path="author"/>
 		<form:errors class="form-error" path="author" />
 		<br />
         
         <div>Comment:</div>
-        <form:textarea id="text" path="text" />
+        <form:textarea maxlength="255" id="text" path="text" />
 		<form:errors class="form-error" path="text" />
         
 		<br />

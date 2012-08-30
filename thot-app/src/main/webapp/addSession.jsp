@@ -18,7 +18,7 @@
 	<form:form commandName="sessionDataFormData" method="POST">
 	
     <div>Topic:(*)</div>
-        <form:input id="title" path="title" />
+        <form:input maxlength="255" id="title" path="title" />
 		<form:errors class="form-error" path="title" />
 		
 	 	<div>Day</div>
@@ -51,12 +51,12 @@
 		<br />
         
         <div>Proposed by:</div>
-        <form:input id="speaker" path="speaker" />
+        <form:input maxlength="255" id="speaker" path="speaker" />
 		<form:errors class="form-error" path="speaker" />
 		<br />
         
         <div>Description:</div>
-        <form:textarea cols="30" rows="4" id="description" path="description" />
+        <form:textarea  maxlength="255" cols="30" rows="4" id="description" path="description" />
 		<form:errors class="form-error" path="description" />
 		<br />
         
