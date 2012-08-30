@@ -9,10 +9,11 @@
 				<div class="nav-collapse">
 					<ul class="nav">
 						<li><a href="<%= request.getContextPath() %>/allSessions">Market Place</a></li>
+						<li><a href="schedule.jsp">Sessions</a></li>
 						<li><a href="features.jsp">Features</a></li>
 <!-- 
 						<li class="active"><a href="home.jsp">Home</a></li>
-						<li><a href="schedule.jsp">Sessions</a></li>
+						
 -->
 					</ul>
 				</div>
