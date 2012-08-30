@@ -13,7 +13,7 @@
 
 	<!--/span-->
 	<div class="well well-small">
-	<h1>All Open Spaces</h1>
+	<h1>Market Place</h1>
 	</div>
 	
 	<div style="float: right;">
