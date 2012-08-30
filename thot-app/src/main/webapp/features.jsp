@@ -7,6 +7,14 @@
 </div>
 
 <div class="container">
+   <h3>Version 1.7 at Day 2 11:20</h3>
+      <ul>
+       <li>fixed encoding and timezone</li>
+       <li>seperated comment input from comment list</li>
+       <li>added important program points (lunch!)</li>
+       <li>fixed navbar bug and removed modal layer</li>
+       <li>added internationalization ability</li>
+	  </ul>	
    <h3>Version 1.6 at Day 2 08:40</h3>
       <ul>
        <li>added the session data again</li>
