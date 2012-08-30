@@ -1,12 +1,14 @@
 package org.ale.thot.domain;
 
 import java.util.List;
+import java.util.Map;
 
 public interface CommentDao {
 
-	@SuppressWarnings("unchecked")
-	public abstract List<Comment> getCommentsBySessionId(Long sessionId);
+	public List<Comment> getCommentsBySessionId(Long sessionId);
+	
+	public Map<String, Integer> getCommentCountForSessions();
 
-	public abstract void saveComment(Comment comment);
+	public void saveComment(Comment comment);
 
 }
