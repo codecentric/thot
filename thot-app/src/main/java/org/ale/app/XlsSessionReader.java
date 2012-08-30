@@ -18,7 +18,7 @@ public class XlsSessionReader {
 	private static XlsSessionReader instance;
 	private List<Session>sessions; 
 	
-	private static int ID_OFFSET = 1000000;
+	public static int ID_OFFSET = 1000000;
 	private static final short COL_DATE = 0;
 	private static final short COL_START = 1;
 	private static final short COL_END = 2;
