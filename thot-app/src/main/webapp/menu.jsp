@@ -8,6 +8,8 @@
 				<a class="brand" href="<%= request.getContextPath() %>">ALE 2012</a>
 				<div class="nav-collapse">
 					<ul class="nav">
+						<li><a href="<%= request.getContextPath() %>/timeline">
+						<spring:message code="timeline" text="Recent comments"/></a></li>
 						<li><a href="<%= request.getContextPath() %>/allSessions">
 						<spring:message code="marketplace" text="marketplace"/></a></li>
 						<li><a href="schedule.jsp"><spring:message code="sessions" text="sessions"/></a></li>
