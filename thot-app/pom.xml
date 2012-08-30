@@ -157,6 +157,14 @@
 					</deployables>
 				</configuration>
 			</plugin>
+
+			<!-- Run the application using "mvn jetty:run" -->
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>7.6.5.v20120716</version>
+			</plugin>
+
 		</plugins>
 	</build>
 	
