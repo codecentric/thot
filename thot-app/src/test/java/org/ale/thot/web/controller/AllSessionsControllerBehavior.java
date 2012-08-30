@@ -53,4 +53,5 @@ public class AllSessionsControllerBehavior {
 		Assert.isTrue(transformedSessions.size() == 1);
 		Assert.isTrue(transformedSessions.get("red").size() == 2);
 	}
+	
 }

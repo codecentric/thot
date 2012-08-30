@@ -36,6 +36,7 @@
 
 	<bean id="sessionDao" class="org.ale.thot.domain.JpaSessionDao" />
 	<bean id="commentDao" class="org.ale.thot.domain.JpaCommentDao" />
+	<bean id="timeslotDao" class="org.ale.thot.domain.StaticTimeslotDao" />
 	
 	<!-- <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" /> -->
 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
