@@ -7,6 +7,7 @@ import java.util.Map;
 import org.ale.thot.domain.CommentDao;
 import org.ale.thot.domain.Session;
 import org.ale.thot.domain.SessionDao;
+import org.ale.thot.domain.TimeslotDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,6 +22,8 @@ public class AllSessionsController {
 	private SessionDao sessionDao;
 	@Autowired
 	private CommentDao commentDao;
+	@Autowired
+	private TimeslotDao timeslotDao;
 	
 	public AllSessionsController() {
 		super();
@@ -34,6 +37,10 @@ public class AllSessionsController {
 		modelMap.put("sessionsDay2", groupSessionsByLocationsSlots(thu));
 		List<Session> fri = sessionDao.getSessionsByDate("Fri");
 		modelMap.put("sessionsDay3", groupSessionsByLocationsSlots(fri));
+		
+		modelMap.put("wedTimeslots", timeslotDao.GetTimeslots("Wed"));
+		modelMap.put("thuTimeslots", timeslotDao.GetTimeslots("Thu"));
+		modelMap.put("friTimeslots", timeslotDao.GetTimeslots("Fri"));
 		
 		// removing it for the moment
 		//modelMap.put("commentCount", commentDao.getCommentCountForSessions());
