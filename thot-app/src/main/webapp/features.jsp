@@ -8,6 +8,23 @@
 
 <div class="container">
 
+	<h3>Version 1.10 at Day 2 17:41</h3>
+	<ul>
+		<li>Navbar fixed</li>
+		<li>Commenter name remembered after first comment</li>
+	</ul>
+	
+	<h3>Version 1.9 at Day 2 16:45</h3>
+	<ul>
+		<li>Recent comment list - timeline</li>
+		<li>Resized map image</li>
+		<li>Relocated comment button on the schedule site</li>
+		<li>Back button on the session details page</li>
+		<li>Display  open space description</li>
+		<li>Removed title get parameter</li>
+		<li>Spanish and italien i18n</li>
+	</ul>
+
 	<h3>Version 1.8 at Day 2 12:45</h3>
 	<ul>
 		<li>new table view layout for the open space page</li>

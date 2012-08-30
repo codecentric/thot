@@ -24,4 +24,8 @@
 	
 </div>
 
+<div class="container">
+	<p class="pull-right"><a href="javascript:history.back();" class="btn">back</a></p>
+</div>
+
 <%@ include file="footer.html"%>
