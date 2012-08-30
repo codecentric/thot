@@ -18,6 +18,7 @@ public class XlsSessionReader {
 	private static XlsSessionReader instance;
 	private List<Session>sessions; 
 	
+	private static int ID_OFFSET = 1000000;
 	private static final short COL_DATE = 0;
 	private static final short COL_START = 1;
 	private static final short COL_END = 2;
@@ -94,7 +95,7 @@ public class XlsSessionReader {
 		final String author2ImgUrl = getCellValue(row.getCell(COL_AUHTOR2IMAGEURL, Row.RETURN_BLANK_AS_NULL));
 		
 		if(title != null || author != null || description != null) {
-			return new Session(date, start, end, title, author, author2, description, location, type, authorInfo, author2Info, authorImgUrl, author2ImgUrl, id);	
+			return new Session(date, start, end, title, author, author2, description, location, type, authorInfo, author2Info, authorImgUrl, author2ImgUrl, id+ID_OFFSET);	
 		}
 		
 		return null;
