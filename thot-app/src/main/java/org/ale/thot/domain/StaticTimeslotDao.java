@@ -17,7 +17,7 @@ public class StaticTimeslotDao implements TimeslotDao {
 		List<String> thuTimeSlots = new ArrayList<String>();
 		thuTimeSlots.add("15:30 - 16:15");
 		thuTimeSlots.add("16:15 - 17:00");
-		thuTimeSlots.add("17:15 - 18:00");
+		thuTimeSlots.add("17:00 - 17:45");
 		thuTimeSlots.add("Evening");
 		
 		List<String> friTimeSlots = new ArrayList<String>();

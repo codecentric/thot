@@ -11,7 +11,11 @@
 <meta name="author" content="">
 
 <link href="<%= request.getContextPath() %>/assets/css/bootstrap.css" rel="stylesheet">
-<style type="text/css">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="<%= request.getContextPath() %>/assets/img/favicon.png"/>
+
+	<style type="text/css">
 body {
 	padding-top: 60px;
 	padding-bottom: 40px;
