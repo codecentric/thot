@@ -22,17 +22,17 @@
 		<form:errors class="form-error" path="title" />
 		
 	 	<div>Day</div>
-	 	<form:radiobutton id="date" path="date" value="Wed" checked="checked" />&nbsp;Wed&nbsp;&nbsp;
-   		<form:radiobutton id="date" path="date" value="Thu" />&nbsp;Thu&nbsp;&nbsp;
+	 	<form:radiobutton id="date" path="date" value="Wed"  />&nbsp;Wed&nbsp;&nbsp;
+   		<form:radiobutton id="date" path="date" value="Thu" checked="checked"/>&nbsp;Thu&nbsp;&nbsp;
    		<form:radiobutton id="date" path="date" value="Fri" />&nbsp;Fri&nbsp;&nbsp;
 		<form:errors class="form-error" path="date" />
 		<br />
 		
 		<div>Slot:</div>
 		<form:select id="start" path="start" >
-		<form:option value="15:30" label="15:30 - 16:15"/>
-		<form:option value="16:15" label="16:15 - 17:00"/>
-		<form:option value="evening" label="Evening"/>
+		<c:forEach items="${timeslots}" var="timeslot">
+		<form:option value="${timeslot.substring(0,5)}" label="${timeslot}"/>
+		</c:forEach>
 		</form:select>
 		<form:errors class="form-error" path="start" />
 		

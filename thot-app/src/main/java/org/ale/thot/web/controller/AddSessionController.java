@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.ale.thot.domain.Session;
 import org.ale.thot.domain.SessionDao;
+import org.ale.thot.domain.TimeslotDao;
 import org.ale.thot.web.validate.OpenSpaceValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +24,9 @@ public class AddSessionController {
 
 	@Autowired
 	private SessionDao sessionDao;
-
+	@Autowired
+	private TimeslotDao timeslotDao;
+	
 	public AddSessionController() {
 		super();
 	}
@@ -36,6 +39,7 @@ public class AddSessionController {
 	@RequestMapping(method = RequestMethod.GET)
 	public void setupForm(ModelMap modelMap) {
 		modelMap.put("sessionDataFormData", new OpenSpaceFormData());
+		modelMap.put("timeslots", timeslotDao.GetTimeslots("Thu"));
 	}
 
 	@RequestMapping(method = RequestMethod.POST)

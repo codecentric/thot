@@ -79,6 +79,8 @@
 								<th>Location</th>
 								<th>15:30 - 16:15</th>
 								<th>16:15 - 17:00</th>
+								<th>17:15 - 18:00</th>
+								<th>Evening</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -95,6 +97,24 @@
 								</c:otherwise>
 								</c:choose>
 								<c:set var="session" value="${entry.value.get('16:15')}"></c:set>
+								<c:choose>
+								<c:when test="${session != null}">
+								<td><a href='comments?sessionId=${session.id}&title=${session.title}'>${session.title}</a></td>
+								</c:when>
+								<c:otherwise>
+									<td><i>Available slot</i></td>
+								</c:otherwise>
+								</c:choose>
+								<c:set var="session" value="${entry.value.get('17:15')}"></c:set>
+								<c:choose>
+								<c:when test="${session != null}">
+								<td><a href='comments?sessionId=${session.id}&title=${session.title}'>${session.title}</a></td>
+								</c:when>
+								<c:otherwise>
+									<td><i>Available slot</i></td>
+								</c:otherwise>
+								</c:choose>
+								<c:set var="session" value="${entry.value.get('Eveni')}"></c:set>
 								<c:choose>
 								<c:when test="${session != null}">
 								<td><a href='comments?sessionId=${session.id}&title=${session.title}'>${session.title}</a></td>
