@@ -16,5 +16,6 @@ public interface SessionDao {
 	List<Session> getSessionsByDate(String date);
 	
 	void saveSession(Session session);
-	
+
+	Session getSessionById(String id);	
 }
