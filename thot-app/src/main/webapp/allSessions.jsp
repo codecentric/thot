@@ -26,68 +26,135 @@
 	<div class="row-fluid">
 		<div class="tabbable">
 			<ul class="nav nav-tabs">
-				<li><a href="#1" data-toggle="tab">Day 1</a></li>
-				<li  class="active"><a href="#2" data-toggle="tab">Day 2</a></li>
-				<li><a href="#3" data-toggle="tab">Day 3</a></li>
+				<li><a href="#1" data-toggle="tab">Wed</a></li>
+				<li  class="active"><a href="#2" data-toggle="tab">Thu</a></li>
+				<li><a href="#3" data-toggle="tab">Fri</a></li>
 			</ul>
 			<div class="tab-content">
 				<div class="tab-pane" id="1">
-					<p>You are watching Day 1, August 29th.</p>
 					<table class="table table-striped">
-						<%@ include file="openspace_tableheader.html"%>
-						<tbody>
-						<c:forEach items="${sessionsDay1}" var="session">
+						<thead>
 							<tr>
-								<td>${session.date}</td>
-								<td>${session.start}</td>
-								<td>${session.location}</td>
-								<td>${session.title}</td>
-								<td>${session.author}</td>
-								<td>${session.description}</td>
-								<td><a href='comments?sessionId=${session.id}&title=${session.title}' role="button" class="btn">Comments</a></td>
+								<th>Location</th>
+								<th>15:30 - 16:15</th>
+								<th>16:15 - 17:00</th>
+							</tr>
+						</thead>
+						<tbody>
+						<c:forEach items="${sessionsDay1}" var="entry">
+							<tr>
+								<td>${entry.key}</td>
+								<c:set var="session" value="${entry.value.get('15:30')}"></c:set>
+								<c:choose>
+								<c:when test="${session != null}">
+								<td><a href='comments?sessionId=${session.id}&title=${session.title}'>${session.title}</a></td>
+								</c:when>
+								<c:otherwise>
+									<td><i>Available slot</i></td>
+								</c:otherwise>
+								</c:choose>
+								<c:set var="session" value="${entry.value.get('16:15')}"></c:set>
+								<c:choose>
+								<c:when test="${session != null}">
+								<td><a href='comments?sessionId=${session.id}&title=${session.title}'>${session.title}</a></td>
+								</c:when>
+								<c:otherwise>
+									<td><i>Available slot</i></td>
+								</c:otherwise>
+								</c:choose>
 							</tr>
 						</c:forEach>
 						</tbody>
 					</table>
 				</div>
 				<div class="tab-pane active" id="2">
-					<p>You are watching Day 2, August 30th.</p>
+					<c:choose>
+					<c:when test="${sessionsDay2.size()==0}">
+						No sessions defined for this day
+					</c:when>
+					<c:otherwise>
 					<table class="table table-striped">
-						<%@ include file="openspace_tableheader.html"%>
-						<tbody>
-						<c:forEach items="${sessionsDay2}" var="session">
+						<thead>
 							<tr>
-								<td>${session.date}</td>
-								<td>${session.start}</td>
-								<td>${session.location}</td>
-								<td>${session.title}</td>
-								<td>${session.author}</td>
-								<td>${session.description}</td>
-								<td><a href='comments?sessionId=${session.id}&title=${session.title}' role="button" class="btn">Comments</a></td>
+								<th>Location</th>
+								<th>15:30 - 16:15</th>
+								<th>16:15 - 17:00</th>
+							</tr>
+						</thead>
+						<tbody>
+						<c:forEach items="${sessionsDay2}" var="entry">
+							<tr>
+								<td>${entry.key}</td>
+								<c:set var="session" value="${entry.value.get('15:30')}"></c:set>
+								<c:choose>
+								<c:when test="${session != null}">
+								<td><a href='comments?sessionId=${session.id}&title=${session.title}'>${session.title}</a></td>
+								</c:when>
+								<c:otherwise>
+									<td><i>Available slot</i></td>
+								</c:otherwise>
+								</c:choose>
+								<c:set var="session" value="${entry.value.get('16:15')}"></c:set>
+								<c:choose>
+								<c:when test="${session != null}">
+								<td><a href='comments?sessionId=${session.id}&title=${session.title}'>${session.title}</a></td>
+								</c:when>
+								<c:otherwise>
+									<td><i>Available slot</i></td>
+								</c:otherwise>
+								</c:choose>
 							</tr>
 						</c:forEach>
 						</tbody>
 					</table>
+					</c:otherwise>
+					</c:choose>
 				</div>
 				<div class="tab-pane" id="3">
-					<p>You are watching Day 3, August 31th.</p>
+					<c:choose>
+					<c:when test="${sessionsDay3.size()==0}">
+						No sessions defined for this day
+					</c:when>
+					<c:otherwise>
 					<table class="table table-striped">
-						<%@ include file="openspace_tableheader.html"%>
-						<tbody>
-						<c:forEach items="${sessionsDay3}" var="session">
+						<thead>
 							<tr>
-								<td>${session.date}</td>
-								<td>${session.start}</td>
-								<td>${session.location}</td>
-								<td>${session.title}</td>
-								<td>${session.author}</td>
-								<td>${session.description}</td>
-								<td><a href='comments?sessionId=${session.id}&title=${session.title}' role="button" class="btn">Comments</a></td>
+								<th>Location</th>
+								<th>15:30 - 16:15</th>
+								<th>16:15 - 17:00</th>
+							</tr>
+						</thead>
+						<tbody>
+						<c:forEach items="${sessionsDay3}" var="entry">
+							<tr>
+								<td>${entry.key}</td>
+								<c:set var="session" value="${entry.value.get('15:30')}"></c:set>
+								<c:choose>
+								<c:when test="${session != null}">
+								<td><a href='comments?sessionId=${session.id}&title=${session.title}'>${session.title}</a></td>
+								</c:when>
+								<c:otherwise>
+									<td><i>Available slot</i></td>
+								</c:otherwise>
+								</c:choose>
+								<c:set var="session" value="${entry.value.get('16:15')}"></c:set>
+								<c:choose>
+								<c:when test="${session != null}">
+								<td><a href='comments?sessionId=${session.id}&title=${session.title}'>${session.title}</a></td>
+								</c:when>
+								<c:otherwise>
+									<td><i>Available slot</i></td>
+								</c:otherwise>
+								</c:choose>
 							</tr>
 						</c:forEach>
 						</tbody>
 					</table>
+					</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
+		</div>
+	</div>
 </div>
 <%@ include file="footer.html"%>
