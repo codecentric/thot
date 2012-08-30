@@ -2,6 +2,7 @@ package org.ale.thot.web.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.ale.app.XlsSessionReader;
 import org.ale.thot.domain.Session;
 import org.ale.thot.domain.SessionDao;
 import org.ale.thot.domain.TimeslotDao;
@@ -37,9 +38,18 @@ public class AddSessionController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public void setupForm(ModelMap modelMap) {
+	public void setupForm(ModelMap modelMap, HttpServletRequest request) {
+
 		modelMap.put("sessionDataFormData", new OpenSpaceFormData());
 		modelMap.put("timeslots", timeslotDao.GetTimeslots("Thu"));
+
+		String sessionId = request.getParameter("sessionId");
+		if (sessionId != null) {
+			Session session = sessionDao.getSessionById(sessionId);
+			modelMap.put("session", session);
+			modelMap.put("sessionDataFormData", new OpenSpaceFormData(session));
+		}
+
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
@@ -53,10 +63,19 @@ public class AddSessionController {
 		if ( result.hasErrors() ) {
 			return new ModelAndView("addSession");
 		}
-		
-		// save the data
-		Session session = new Session(cmd.getDate(), cmd.getStart(), cmd.getLocation(), cmd.getTitle(), cmd.getSpeaker(), cmd.getDescription());
-		sessionDao.saveSession(session);
+
+		String sessionId = request.getParameter("sessionId");
+		if (sessionId != null) {
+			Session session = sessionDao.getSessionById(sessionId);
+			session.setAuthor(cmd.getSpeaker());
+			session.setTitle(cmd.getTitle());
+			session.setDescription(cmd.getDescription());
+			sessionDao.saveSession(session);
+		} else {
+			// save the data
+			Session session = new Session(cmd.getDate(), cmd.getStart(), cmd.getLocation(), cmd.getTitle(), cmd.getSpeaker(), cmd.getDescription());
+			sessionDao.saveSession(session);
+		}
 		
 		// show the updated list
 		return new ModelAndView("redirect:allSessions");

@@ -121,7 +121,24 @@ public class Session {
 	public String getAuthor2ImgUrl() {
 		return author2ImgUrl;
 	}
-	
+
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
 	@Override
 	public String toString() {
 		return "Session [title=" + title + ", author=" + author
