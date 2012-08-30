@@ -3,13 +3,13 @@
 <%@ include file="menu.jsp"%>
 
 <div class="well well-small">
-      <h1>Already implemented features</h1>
+      <h1>Version history</h1>
 </div>
 
 <div class="container">
    <h3>Version 1.6 at Day 2 08:40</h3>
       <ul>
-       <li>added the schedule again</li>
+       <li>added the session data again</li>
        <li>change refresh interval to 20 secs</li>
 	  </ul>
    <h3>Version 1.5 at Day 2 0:59</h3>
