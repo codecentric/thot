@@ -38,5 +38,10 @@
 	<bean id="commentDao" class="org.ale.thot.domain.JpaCommentDao" />
 	
 	<!-- <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" /> -->
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+    <property name="basenames">
+        <value>/WEB-INF/messages/msg</value>
+    </property>
+</bean> 
 	
 </beans>
