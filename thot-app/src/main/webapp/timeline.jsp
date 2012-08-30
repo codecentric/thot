@@ -23,7 +23,7 @@
 			<div class="tab-content">
 				<table>
 				<c:forEach items="${recentComments}" var="entry">
-					<span style="font-style: bold; font-size: 1.2em;">${entry.sessionTitle}</span>, <small>${entry.date}</small>
+					<span style="font-style: bold; font-size: 1.2em;"><a href='comments?sessionId=${entry.sessionId}'>${entry.sessionTitle}</a></span>, <small>${entry.date}</small>
 				    <blockquote>
 					    <p>${entry.comment}</p>
 					    <small>${entry.user}</small>
