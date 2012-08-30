@@ -35,7 +35,8 @@ public class AllSessionsController {
 		List<Session> fri = sessionDao.getSessionsByDate("Fri");
 		modelMap.put("sessionsDay3", groupSessionsByLocationsSlots(fri));
 		
-		modelMap.put("commentCount", commentDao.getCommentCountForSessions());
+		// removing it for the moment
+		//modelMap.put("commentCount", commentDao.getCommentCountForSessions());
 	}
 	
 	public static Map<String, Map<String, Session>> groupSessionsByLocationsSlots(
