@@ -40,7 +40,7 @@ public class JpaSessionDao implements SessionDao {
 	}
 
 	public Session getSessionById(String id) {
-		return em.find(Session.class, id);
+		return em.find(Session.class, Long.parseLong(id));
 	}
 	
 }
