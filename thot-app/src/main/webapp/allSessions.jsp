@@ -49,7 +49,7 @@
 								<c:set var="session" value="${entry.value.get(timeslot.substring(0,5))}"></c:set>
 								<c:choose>
 								<c:when test="${session != null}">
-								<td><a href='comments?sessionId=${session.id}&title=${session.title}'>${session.title}</a></td>
+								<td><a href='comments?sessionId=${session.id}'>${session.title}</a></td>
 								</c:when>
 								<c:otherwise>
 									<td><i>Available slot</i></td>
@@ -84,7 +84,7 @@
 								<c:set var="session" value="${entry.value.get(timeslot.substring(0,5))}"></c:set>
 								<c:choose>
 								<c:when test="${session != null}">
-								<td><a href='comments?sessionId=${session.id}&title=${session.title}'>${session.title}</a></td>
+								<td><a href='comments?sessionId=${session.id}'>${session.title}</a></td>
 								</c:when>
 								<c:otherwise>
 									<td><i>Available slot</i></td>
@@ -121,7 +121,7 @@
 								<c:set var="session" value="${entry.value.get(timeslot.substring(0,5))}"></c:set>
 								<c:choose>
 								<c:when test="${session != null}">
-								<td><a href='comments?sessionId=${session.id}&title=${session.title}'>${session.title}</a></td>
+								<td><a href='comments?sessionId=${session.id}'>${session.title}</a></td>
 								</c:when>
 								<c:otherwise>
 									<td><i>Available slot</i></td>
