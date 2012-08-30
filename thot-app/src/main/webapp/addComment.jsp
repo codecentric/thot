@@ -17,7 +17,10 @@
     <h3>${sessionTitle}</h3> 
 	<p>
 	</div>
+
 	
+	
+
 	<br style="clear: both;"/>
 
 	<div class="row-fluid">

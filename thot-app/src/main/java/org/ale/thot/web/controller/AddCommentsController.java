@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
-@RequestMapping("/addComments")
+@RequestMapping("/addComment")
 public class AddCommentsController {
 
 	@Autowired
@@ -28,7 +28,7 @@ public class AddCommentsController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public void setupForm(ModelMap modelMap, HttpServletRequest request) {
-		String sessionId = request.getParameter("sessionId"); 
+		//String sessionId = request.getParameter("sessionId"); 
 		String sessionTitle = request.getParameter("title"); 
 		try {
 			sessionTitle = URLDecoder.decode(sessionTitle, "UTF-8");
@@ -37,6 +37,7 @@ public class AddCommentsController {
 			e.printStackTrace();
 		}
         modelMap.put("commentFormData", new CommentFormData());
+        modelMap.put("sessionTitle", sessionTitle);
 	}
    
 	
