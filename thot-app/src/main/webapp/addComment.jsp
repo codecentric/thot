@@ -27,7 +27,7 @@
 	<!-- commit form -->
 	<form:form commandName="commentFormData" method="POST">
         <div>Name:(*)</div>
-        <form:input id="author" path="author" />
+        <form:input id="author" path="author"/>
 		<form:errors class="form-error" path="author" />
 		<br />
         
