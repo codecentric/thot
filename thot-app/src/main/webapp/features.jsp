@@ -3,7 +3,7 @@
 <%@ include file="menu.jsp"%>
 
 <div class="well well-small">
-      <h1>Version history</h1>
+      <h1><spring:message code="versionhistory" text="versionhistory"/></h1>
 </div>
 
 <div class="container">
