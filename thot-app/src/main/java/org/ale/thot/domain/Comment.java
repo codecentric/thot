@@ -10,16 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
-
 
 /**
  * Domain object to represent data for a comment.
  */
 @Entity(name="comment")
 @NamedQueries({
-	@NamedQuery(name = "findCommentForSession", query = "from comment where sessionId=:sessionId order by date desc")
+	@NamedQuery(name = "findCommentForSession", query = "from comment where sessionId=:sessionId order by date desc"),
+	@NamedQuery(name = "findAllComments", query = "from comment order by sessionId")
 })
 public class Comment {
 

@@ -1,10 +1,10 @@
 package org.ale.thot.web.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.ale.thot.domain.CommentDao;
 import org.ale.thot.domain.Session;
 import org.ale.thot.domain.SessionDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,9 @@ public class AllSessionsController {
 
 	@Autowired
 	private SessionDao sessionDao;
-
+	@Autowired
+	private CommentDao commentDao;
+	
 	public AllSessionsController() {
 		super();
 	}
@@ -32,6 +34,9 @@ public class AllSessionsController {
 		modelMap.put("sessionsDay2", groupSessionsByLocationsSlots(thu));
 		List<Session> fri = sessionDao.getSessionsByDate("Fri");
 		modelMap.put("sessionsDay3", groupSessionsByLocationsSlots(fri));
+		
+		// removing it for the moment
+		//modelMap.put("commentCount", commentDao.getCommentCountForSessions());
 	}
 	
 	public static Map<String, Map<String, Session>> groupSessionsByLocationsSlots(
@@ -47,4 +52,5 @@ public class AllSessionsController {
 		}
 		return transformedSessions;
 	}
+	
 }

@@ -7,7 +7,16 @@
 </div>
 
 <div class="container">
-   <h3>Version 1.7 at Day 2 11:20</h3>
+
+	<h3>Version 1.8 at Day 2 12:45</h3>
+	<ul>
+		<li>new table view layout for the open space page</li>
+		<li>new layout for the menu bar</li>
+		<li>French i18n</li>
+		<li>venue map</li>
+		<li>fixed bug with the order of comments</li>
+	</ul>
+		<h3>Version 1.7 at Day 2 11:20</h3>
       <ul>
        <li>fixed encoding and timezone</li>
        <li>seperated comment input from comment list</li>
