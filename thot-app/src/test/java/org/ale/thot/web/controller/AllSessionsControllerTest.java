@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.util.Assert;
 
-public class AllSessionsControllerBehavior {
+public class AllSessionsControllerTest {
 
 	@Before
 	public void setUp() throws Exception {

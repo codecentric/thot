@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class TimeslotBehavior {
+public class TimeslotTest {
 
 	@Test
 	public void shouldFormatStringForTimeslotWithStartAndEnd() {

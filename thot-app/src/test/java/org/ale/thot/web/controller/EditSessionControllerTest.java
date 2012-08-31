@@ -15,7 +15,7 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-public class EditSessionControllerBehavior {
+public class EditSessionControllerTest {
 
 	@Mock
 	private SessionDao sessionDao;

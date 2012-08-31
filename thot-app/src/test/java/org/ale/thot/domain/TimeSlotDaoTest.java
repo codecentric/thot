@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class TimeSlotDaoBehavior {
+public class TimeSlotDaoTest {
 
 	@Test
 	public void shouldReturnWednesdayTimeSlot() {
