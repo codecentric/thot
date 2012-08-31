@@ -4,34 +4,34 @@ import java.util.*;
 
 public class StaticTimeslotDao implements TimeslotDao {
 	
-	private Map<String, List<String>> timeslotsPerDay;
+	private Map<String, List<Timeslot>> timeslotsPerDay;
 	
 	public StaticTimeslotDao() {
-		timeslotsPerDay = new HashMap<String, List<String>>();
+		timeslotsPerDay = new HashMap<String, List<Timeslot>>();
 		
-		List<String> wedTimeSlots = new ArrayList<String>();
-		wedTimeSlots.add("15:30 - 16:15");
-		wedTimeSlots.add("16:15 - 17:00");
-		wedTimeSlots.add("Evening");		
+		List<Timeslot> wedTimeSlots = new ArrayList<Timeslot>();
+		wedTimeSlots.add(new Timeslot("15:30", "16:15"));
+		wedTimeSlots.add(new Timeslot("16:15", "17:00"));
+		wedTimeSlots.add(new Timeslot("Evening"));		
 
-		List<String> thuTimeSlots = new ArrayList<String>();
-		thuTimeSlots.add("15:30 - 16:15");
-		thuTimeSlots.add("16:15 - 17:00");
-		thuTimeSlots.add("17:00 - 17:45");
-		thuTimeSlots.add("Evening");
+		List<Timeslot> thuTimeSlots = new ArrayList<Timeslot>();
+		thuTimeSlots.add(new Timeslot("15:30", "16:15"));
+		thuTimeSlots.add(new Timeslot("16:15", "17:00"));
+		thuTimeSlots.add(new Timeslot("17:00", "17:45"));
+		thuTimeSlots.add(new Timeslot("Evening"));
 		
-		List<String> friTimeSlots = new ArrayList<String>();
-		friTimeSlots.add("15:30 - 16:15");
-		friTimeSlots.add("16:15 - 17:00");
-		friTimeSlots.add("17:15 - 18:00");
-		friTimeSlots.add("Evening");
+		List<Timeslot> friTimeSlots = new ArrayList<Timeslot>();
+		friTimeSlots.add(new Timeslot("15:30", "16:15"));
+		friTimeSlots.add(new Timeslot("16:15", "17:00"));
+		friTimeSlots.add(new Timeslot("17:00", "17:45"));
+		friTimeSlots.add(new Timeslot("Evening"));
 		
 		timeslotsPerDay.put("Wed", wedTimeSlots);
 		timeslotsPerDay.put("Thu", thuTimeSlots);
 		timeslotsPerDay.put("Fri", friTimeSlots);
 	}
 	
-	public List<String> GetTimeslots(String day) {
+	public List<Timeslot> GetTimeslots(String day) {
 		
 		return timeslotsPerDay.get(day);
 	}

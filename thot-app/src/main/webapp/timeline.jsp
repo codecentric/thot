@@ -4,7 +4,7 @@
 <%@ page session="false"%>
 
 <%@ include file="header.jsp"%>
-<body>
+<body  onload="JavaScript:timedRefresh(10000);">
 <%@ include file="menu.jsp"%>
 
 

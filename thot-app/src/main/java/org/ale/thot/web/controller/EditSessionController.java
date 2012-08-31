@@ -31,9 +31,10 @@ public class EditSessionController {
 		super();
 	}
 	
-	public EditSessionController(SessionDao sessionDao) {
+	public AddSessionController(SessionDao sessionDao, TimeslotDao timeslotDao) {
 		this();
 		this.sessionDao = sessionDao;
+		this.timeslotDao = timeslotDao;
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
@@ -79,6 +80,19 @@ public class EditSessionController {
 		
 		// show the updated list
 		return new ModelAndView("redirect:allSessions");
+	}
+
+	@RequestMapping(value="/timeslotsPerDay", method=RequestMethod.GET)
+	public @ResponseBody Map<String, String> GetTimeslotForDay(@RequestParam("day") String day) {
+		
+		List<Timeslot> timeslots = timeslotDao.GetTimeslots(day);
+		Map<String, String> timeslotsProjected = new HashMap<String, String>();
+		
+		for(Timeslot timeslot : timeslots) {
+			timeslotsProjected.put(timeslot.getStart(), timeslot.toString());
+		}
+		
+		return timeslotsProjected;
 	}
 
 }

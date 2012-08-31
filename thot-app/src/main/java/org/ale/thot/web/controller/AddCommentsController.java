@@ -4,6 +4,8 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.ale.thot.domain.Comment;
 import org.ale.thot.domain.CommentDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,8 @@ import org.springframework.web.servlet.view.RedirectView;
 @RequestMapping("/addComment")
 public class AddCommentsController {
 
+	private static final String THOT_USERNAME = "THOT_username";
+	
 	@Autowired
 	private CommentDao commentDao; 
 	public AddCommentsController() {
@@ -28,6 +32,8 @@ public class AddCommentsController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public void setupForm(ModelMap modelMap, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		
 		//String sessionId = request.getParameter("sessionId"); 
 		String sessionTitle = request.getParameter("title"); 
 		try {
@@ -36,7 +42,13 @@ public class AddCommentsController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        modelMap.put("commentFormData", new CommentFormData());
+		
+		CommentFormData commentFormData = new CommentFormData();
+		if ( session.getAttribute(THOT_USERNAME) != null ) {
+			commentFormData.setAuthor((String) session.getAttribute(THOT_USERNAME));
+		}
+
+        modelMap.put("commentFormData", commentFormData);
         modelMap.put("sessionTitle", sessionTitle);
 	}
    
@@ -44,6 +56,9 @@ public class AddCommentsController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView processSubmit(final HttpServletRequest request, ModelMap modelMap,final
 			@ModelAttribute("commentFormData") CommentFormData cmd, BindingResult result) {
+		
+		request.getSession().setAttribute(THOT_USERNAME, cmd.getAuthor());
+		
 		Comment comment = new Comment(new Date(), cmd.getAuthor(), cmd.getText(),  Long.valueOf(cmd.getSessionId()) );
 		commentDao.saveComment(comment);
 		return new ModelAndView(new RedirectView("comments"){{

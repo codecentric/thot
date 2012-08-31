@@ -12,7 +12,7 @@ public class TimeSlotDaoBehavior {
 	public void shouldReturnWednesdayTimeSlot() {
 		TimeslotDao dao = new StaticTimeslotDao();
 		
-		List<String> timeslots = dao.GetTimeslots("Wed");
+		List<Timeslot> timeslots = dao.GetTimeslots("Wed");
 		
 		assertEquals(timeslots.size(), 3);
 	}
