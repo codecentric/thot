@@ -1,9 +1,14 @@
 package org.ale.thot.web.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.ale.thot.domain.Session;
 import org.ale.thot.domain.SessionDao;
+import org.ale.thot.domain.Timeslot;
 import org.ale.thot.domain.TimeslotDao;
 import org.ale.thot.web.validate.OpenSpaceValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +18,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -31,9 +38,10 @@ public class AddSessionController {
 		super();
 	}
 	
-	public AddSessionController(SessionDao sessionDao) {
+	public AddSessionController(SessionDao sessionDao, TimeslotDao timeslotDao) {
 		this();
 		this.sessionDao = sessionDao;
+		this.timeslotDao = timeslotDao;
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
@@ -60,6 +68,19 @@ public class AddSessionController {
 		
 		// show the updated list
 		return new ModelAndView("redirect:allSessions");
+	}
+
+	@RequestMapping(value="/timeslotsPerDay", method=RequestMethod.GET)
+	public @ResponseBody Map<String, String> GetTimeslotForDay(@RequestParam("day") String day) {
+		
+		List<Timeslot> timeslots = timeslotDao.GetTimeslots(day);
+		Map<String, String> timeslotsProjected = new HashMap<String, String>();
+		
+		for(Timeslot timeslot : timeslots) {
+			timeslotsProjected.put(timeslot.getStart(), timeslot.toString());
+		}
+		
+		return timeslotsProjected;
 	}
 
 }

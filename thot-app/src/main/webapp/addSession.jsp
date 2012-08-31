@@ -22,16 +22,16 @@
 		<form:errors class="form-error" path="title" />
 		
 	 	<div>Day</div>
-	 	<form:radiobutton id="date" path="date" value="Wed"  />&nbsp;Wed&nbsp;&nbsp;
-   		<form:radiobutton id="date" path="date" value="Thu" checked="checked"/>&nbsp;Thu&nbsp;&nbsp;
-   		<form:radiobutton id="date" path="date" value="Fri" />&nbsp;Fri&nbsp;&nbsp;
+	 	<form:radiobutton id="date" path="date" value="Wed" class="date" />&nbsp;Wed&nbsp;&nbsp;
+   		<form:radiobutton id="date" path="date" value="Thu" class="date" />&nbsp;Thu&nbsp;&nbsp;
+   		<form:radiobutton id="date" path="date" value="Fri" class="date" checked="checked" />&nbsp;Fri&nbsp;&nbsp;
 		<form:errors class="form-error" path="date" />
 		<br />
 		
 		<div>Slot:</div>
 		<form:select id="start" path="start" >
 		<c:forEach items="${timeslots}" var="timeslot">
-		<form:option value="${timeslot.substring(0,5)}" label="${timeslot}"/>
+		<form:option value="${timeslot.getStart()}" label="${timeslot.toString()}"/>
 		</c:forEach>
 		</form:select>
 		<form:errors class="form-error" path="start" />
@@ -68,4 +68,23 @@
 </div>
 </div>
 
+
 <%@ include file="footer.html"%>
+
+<script type="text/JavaScript">
+	$(document).ready(function() {
+		$(".date").change(function(){
+			$.getJSON('./addSession/timeslotsPerDay?day=' + $(this).val(), function(timeslots) {
+				var items = [];
+
+				$.each(timeslots, function(key, value) {
+				    items.push('<option value="' + key + '">' + value + '</option>');
+				  });
+				
+				$("#start").empty();
+
+				$("#start").append(items.join(''));
+			});
+		});
+	});
+</script>

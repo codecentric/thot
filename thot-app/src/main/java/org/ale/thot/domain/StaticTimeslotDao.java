@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class StaticTimeslotDao implements TimeslotDao {
 	
-	private Map<String, List<String>> timeslotsPerDay;
+	private Map<String, List<Timeslot>> timeslotsPerDay;
 	
 	public StaticTimeslotDao() {
 		timeslotsPerDay = new HashMap<String, List<Timeslot>>();
@@ -23,7 +23,7 @@ public class StaticTimeslotDao implements TimeslotDao {
 		thuTimeSlots.add(new Timeslot("17:00", "17:45"));
 		thuTimeSlots.add(new Timeslot("Evening"));
 		
-		List<Timeslot> friTimeSlots = new ArrayList<String>();
+		List<Timeslot> friTimeSlots = new ArrayList<Timeslot>();
 		friTimeSlots.add(new Timeslot("11:30 - 12:10"));
 		friTimeSlots.add(new Timeslot("12:15 - 13:00"));
 		
@@ -32,7 +32,7 @@ public class StaticTimeslotDao implements TimeslotDao {
 		timeslotsPerDay.put("Fri", friTimeSlots);
 	}
 	
-	public List<String> GetTimeslots(String day) {
+	public List<Timeslot> GetTimeslots(String day) {
 		
 		return timeslotsPerDay.get(day);
 	}
