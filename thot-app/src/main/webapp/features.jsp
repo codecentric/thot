@@ -8,6 +8,13 @@
 
 <div class="container">
 
+	<h3>Version 1.11-* at Day 3 since 10:00</h3>
+	<ul>
+		<li>Editing open space sessions</li>
+		<li>Lots of fixes</li>
+		<li>...</li>
+	</ul>
+	
 	<h3>Version 1.10 at Day 2 17:41</h3>
 	<ul>
 		<li>Navbar fixed</li>
