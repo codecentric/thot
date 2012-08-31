@@ -28,8 +28,8 @@
 		<div class="tabbable">
 			<ul class="nav nav-tabs">
 				<li><a href="#1" data-toggle="tab">Day 1</a></li>
-				<li class="active"><a href="#2" data-toggle="tab">Day 2</a></li>
-				<li><a href="#3" data-toggle="tab">Day 3</a></li>
+				<li><a href="#2" data-toggle="tab">Day 2</a></li>
+				<li class="active"><a href="#3" data-toggle="tab">Day 3</a></li>
 			</ul>
 			<div class="tab-content">
 				<div class="tab-pane" id="1">
@@ -50,7 +50,7 @@
 						</tbody>
 					</table>
 				</div>
-				<div class="tab-pane active" id="2">
+				<div class="tab-pane" id="2">
 					<p>You are watching Day 2, August 30th.</p>
 					<table class="table table-striped">
 						<thead>
@@ -70,7 +70,7 @@
 						</tbody>
 					</table>
 				</div>
-				<div class="tab-pane" id="3">
+				<div class="tab-pane active" id="3">
 					<p>You are watching Day 3, August the 31st.</p>
 					<table class="table table-striped">
 						<%@ include file="schedule_tableheader.html"%>
