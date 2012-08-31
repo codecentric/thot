@@ -25,7 +25,7 @@
 						<li><a href="<%= request.getContextPath() %>/timeline">
 						<spring:message code="timeline" text="timeline"/></a></li>
 						<li><a href="features.jsp"><spring:message code="versionhistory" text="versionhistory"/></a></li>
-						
+						<li><a href="impressions.jsp"><spring:message code="impressions" text="Impressions"/></a></li>
 					</ul>
 				</div>
 			</div>
