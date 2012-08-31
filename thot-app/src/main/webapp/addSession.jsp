@@ -23,8 +23,8 @@
 		
 	 	<div>Day</div>
 	 	<form:radiobutton id="date" path="date" value="Wed" class="date" />&nbsp;Wed&nbsp;&nbsp;
-   		<form:radiobutton id="date" path="date" value="Thu" class="date" checked="checked"/>&nbsp;Thu&nbsp;&nbsp;
-   		<form:radiobutton id="date" path="date" value="Fri" class="date" />&nbsp;Fri&nbsp;&nbsp;
+   		<form:radiobutton id="date" path="date" value="Thu" class="date" />&nbsp;Thu&nbsp;&nbsp;
+   		<form:radiobutton id="date" path="date" value="Fri" class="date" checked="checked" />&nbsp;Fri&nbsp;&nbsp;
 		<form:errors class="form-error" path="date" />
 		<br />
 		

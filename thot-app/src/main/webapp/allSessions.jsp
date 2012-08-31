@@ -27,8 +27,8 @@
 		<div class="tabbable">
 			<ul class="nav nav-tabs">
 				<li><a href="#1" data-toggle="tab">Wed</a></li>
-				<li  class="active"><a href="#2" data-toggle="tab">Thu</a></li>
-				<li><a href="#3" data-toggle="tab">Fri</a></li>
+				<li><a href="#2" data-toggle="tab">Thu</a></li>
+				<li class="active"><a href="#3" data-toggle="tab">Fri</a></li>
 			</ul>
 			<div class="tab-content">
 				<div class="tab-pane" id="1">
@@ -61,7 +61,7 @@
 						</tbody>
 					</table>
 				</div>
-				<div class="tab-pane active" id="2">
+				<div class="tab-pane" id="2">
 					<c:choose>
 					<c:when test="${sessionsDay2.size()==0}">
 						No sessions defined for this day
@@ -98,7 +98,7 @@
 					</c:otherwise>
 					</c:choose>
 				</div>
-				<div class="tab-pane" id="3">
+				<div class="tab-pane active" id="3">
 					<c:choose>
 					<c:when test="${sessionsDay3.size()==0}">
 						No sessions defined for this day
