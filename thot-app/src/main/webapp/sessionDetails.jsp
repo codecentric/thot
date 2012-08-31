@@ -20,6 +20,9 @@
 	<div class="row-fluid">
 		<h3><%=ses.getTitle()%></h3>
 		<p><%=ses.getDescription()%></p>
+		<br/>
+		<h4><%=ses.getLocation()  + "&nbsp;&nbsp;&nbsp; at &nbsp;&nbsp;&nbsp;" + ses.getStart() + "-" + ses.getEnd() %></h4>
+		<h4><%="Speaker: " + ses.getAuthor()%></h4>
 	</div>
 	
 </div>
