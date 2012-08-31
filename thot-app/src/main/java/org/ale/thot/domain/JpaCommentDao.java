@@ -41,10 +41,10 @@ public class JpaCommentDao implements CommentDao {
 		for ( Object[] entry : resultList ) {
 			result.add(new TimelineEntry(
 				entry[0] != null ? entry[0].toString() : "", 
-				entry[0] != null ? entry[0].toString() : "",
-				entry[0] != null ? entry[0].toString() : "",
-				entry[0] != null ? entry[0].toString() : "", 
-				entry[0] != null ? entry[0].toString() : ""));
+				entry[0] != null ? entry[1].toString() : "",
+				entry[0] != null ? entry[2].toString() : "",
+				entry[0] != null ? entry[3].toString() : "", 
+				entry[0] != null ? entry[4].toString() : ""));
 		}
 		
 		return result;
