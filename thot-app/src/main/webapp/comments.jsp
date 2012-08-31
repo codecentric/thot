@@ -10,6 +10,11 @@
 
 <div class="container-fluid">
 
+	<div style="float: right;">
+		<a class="btn btn-primary" href="<%= request.getContextPath() %>/editSession?sessionId=${sessionId}">Edit
+			session data</a>
+	</div>
+
 	<!--/span-->
 	<div class="well well-small">
 	<h2>Comments for session:</h2>

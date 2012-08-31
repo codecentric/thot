@@ -15,17 +15,17 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-public class AddSessionControllerBehavior {
+public class EditSessionControllerBehavior {
 
 	@Mock
 	private SessionDao sessionDao;
 	private TimeslotDao timeslotDao;
-	private AddSessionController controller;
+	private EditSessionController controller;
 	
 	@Before
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
-		controller = new AddSessionController(sessionDao, new StaticTimeslotDao());
+		controller = new EditSessionController(sessionDao, new StaticTimeslotDao());
 	}
 	
 	@Test

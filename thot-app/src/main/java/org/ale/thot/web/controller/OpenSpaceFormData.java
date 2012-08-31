@@ -1,15 +1,31 @@
 package org.ale.thot.web.controller;
 
 
+import org.ale.thot.domain.Session;
+
 public class OpenSpaceFormData {
 
+	private Long sessionId;
 	private String date;
 	private String title;
 	private String speaker;
 	private String description;
 	private String start;
 	private String location;
-	
+
+	public OpenSpaceFormData() {
+	}
+
+	public OpenSpaceFormData(Session session) {
+		this.sessionId = session.getId();
+		this.date = session.getDate();
+		this.title = session.getTitle();
+		this.speaker = session.getAuthor();
+		this.description = session.getDescription();
+		this.start = session.getStart();
+		this.location = session.getLocation();
+	}
+
 	public String getDate() {
 		return date;
 	}
