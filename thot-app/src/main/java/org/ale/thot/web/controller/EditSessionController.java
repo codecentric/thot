@@ -47,11 +47,16 @@ public class EditSessionController {
 		modelMap.put("timeslots", timeslotDao.GetTimeslots("Fri"));
 
 		String sessionId = request.getParameter("sessionId");
+
 		if (sessionId != null) {
-			Session session = sessionDao.getSessionById(sessionId);
-			modelMap.put("session", session);
-			modelMap.put("sessionDataFormData", new OpenSpaceFormData(session));
-			modelMap.put("sessionId", sessionId);
+			try {
+				Session session = sessionDao.getSessionById(sessionId);
+				modelMap.put("session", session);
+				modelMap.put("sessionDataFormData", new OpenSpaceFormData(session));
+				modelMap.put("sessionId", sessionId);
+			} catch (Exception e) {
+				e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+			}
 		}
 
 	}
@@ -70,19 +75,24 @@ public class EditSessionController {
 
 		String sessionId = request.getParameter("sessionId");
 		if (sessionId != null) {
-			Session session = sessionDao.getSessionById(sessionId);
-			session.setAuthor(cmd.getSpeaker());
-			session.setTitle(cmd.getTitle());
-			session.setDescription(cmd.getDescription());
-			session.setSlot(cmd.getStart());
-			sessionDao.saveSession(session);
-		} else {
-			// save the data
-			Session session = new Session(cmd.getDate(), cmd.getStart(), cmd.getLocation(), cmd.getTitle(), cmd.getSpeaker(), cmd.getDescription());
-			sessionDao.saveSession(session);
+			try {
+				Session session = sessionDao.getSessionById(sessionId);
+				session.setAuthor(cmd.getSpeaker());
+				session.setTitle(cmd.getTitle());
+				session.setDescription(cmd.getDescription());
+				session.setSlot(cmd.getStart());
+				sessionDao.saveSession(session);
+
+				return new ModelAndView("redirect:allSessions");
+			} catch (Exception e) {
+				// do nothing!
+			}
 		}
-		
-		// show the updated list
+
+		// save the data
+		Session session = new Session(cmd.getDate(), cmd.getStart(), cmd.getLocation(), cmd.getTitle(), cmd.getSpeaker(), cmd.getDescription());
+		sessionDao.saveSession(session);
+
 		return new ModelAndView("redirect:allSessions");
 	}
 
