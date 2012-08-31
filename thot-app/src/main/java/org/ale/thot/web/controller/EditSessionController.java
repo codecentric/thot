@@ -44,7 +44,7 @@ public class EditSessionController {
 	public void setupForm(ModelMap modelMap, HttpServletRequest request) {
 
 		modelMap.put("sessionDataFormData", new OpenSpaceFormData());
-		modelMap.put("timeslots", timeslotDao.GetTimeslots("Thu"));
+		modelMap.put("timeslots", timeslotDao.GetTimeslots("Fri"));
 
 		String sessionId = request.getParameter("sessionId");
 		if (sessionId != null) {
