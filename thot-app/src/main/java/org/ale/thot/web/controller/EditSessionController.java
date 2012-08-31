@@ -81,6 +81,7 @@ public class EditSessionController {
 				session.setTitle(cmd.getTitle());
 				session.setDescription(cmd.getDescription());
 				session.setSlot(cmd.getStart());
+				session.setLocation(cmd.getLocation());
 				sessionDao.saveSession(session);
 
 				return new ModelAndView("redirect:allSessions");
