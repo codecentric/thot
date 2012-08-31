@@ -47,7 +47,7 @@ public class AddSessionController {
 	@RequestMapping(method = RequestMethod.GET)
 	public void setupForm(ModelMap modelMap) {
 		modelMap.put("sessionDataFormData", new OpenSpaceFormData());
-		modelMap.put("timeslots", timeslotDao.GetTimeslots("Thu"));
+		modelMap.put("timeslots", timeslotDao.GetTimeslots("Fri"));
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
