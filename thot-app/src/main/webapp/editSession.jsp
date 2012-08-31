@@ -11,7 +11,7 @@
 
 	<!--/span-->
 	<div class="well well-small">
-	<h1>Add Session Data</h1>
+	<h1>Session Data</h1>
 	</div>
 	
 	<div class="row-fluid">
@@ -20,14 +20,16 @@
     <div>Topic:(*)</div>
         <form:input id="title" path="title" />
 		<form:errors class="form-error" path="title" />
-		
-	 	<div>Day</div>
+
+		<c:if test="${sessionId == null}">
+		<div>Day</div>
 	 	<form:radiobutton id="date" path="date" value="Wed"  />&nbsp;Wed&nbsp;&nbsp;
    		<form:radiobutton id="date" path="date" value="Thu" checked="checked"/>&nbsp;Thu&nbsp;&nbsp;
    		<form:radiobutton id="date" path="date" value="Fri" />&nbsp;Fri&nbsp;&nbsp;
 		<form:errors class="form-error" path="date" />
 		<br />
-		
+		</c:if>
+
 		<div>Slot:</div>
 		<form:select id="start" path="start" >
 		<c:forEach items="${timeslots}" var="timeslot">
@@ -35,7 +37,8 @@
 		</c:forEach>
 		</form:select>
 		<form:errors class="form-error" path="start" />
-		
+
+
 		<div>Location:</div>
 		<form:select id="location" path="location" >
 		<form:option value="Red" label="Red"/>
@@ -62,7 +65,7 @@
         
 		<br />
 		
-		<input type="submit" id="addSession" value="Add session" />
+		<input type="submit" id="saveSession" value="Save Session" />
 
 	</form:form>
 </div>

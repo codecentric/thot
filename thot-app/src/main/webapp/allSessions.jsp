@@ -17,7 +17,7 @@
 	</div>
 	
 	<div style="float: right;">
-			<a class="btn btn-primary" href="<%= request.getContextPath() %>/addSession">Add OpenSpace</a>
+			<a class="btn btn-primary" href="<%= request.getContextPath() %>/editSession">Add OpenSpace</a>
 	</div>
 
 	<br style="clear: both;"/>

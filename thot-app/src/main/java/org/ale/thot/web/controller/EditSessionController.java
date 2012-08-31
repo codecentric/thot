@@ -2,7 +2,6 @@ package org.ale.thot.web.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.ale.app.XlsSessionReader;
 import org.ale.thot.domain.Session;
 import org.ale.thot.domain.SessionDao;
 import org.ale.thot.domain.TimeslotDao;
@@ -20,19 +19,19 @@ import org.springframework.web.servlet.ModelAndView;
  * Handles requests for the application home page.
  */
 @Controller
-@RequestMapping("/addSession")
-public class AddSessionController {
+@RequestMapping("/editSession")
+public class EditSessionController {
 
 	@Autowired
 	private SessionDao sessionDao;
 	@Autowired
 	private TimeslotDao timeslotDao;
 	
-	public AddSessionController() {
+	public EditSessionController() {
 		super();
 	}
 	
-	public AddSessionController(SessionDao sessionDao) {
+	public EditSessionController(SessionDao sessionDao) {
 		this();
 		this.sessionDao = sessionDao;
 	}
@@ -48,6 +47,7 @@ public class AddSessionController {
 			Session session = sessionDao.getSessionById(sessionId);
 			modelMap.put("session", session);
 			modelMap.put("sessionDataFormData", new OpenSpaceFormData(session));
+			modelMap.put("sessionId", sessionId);
 		}
 
 	}
@@ -61,7 +61,7 @@ public class AddSessionController {
 		// do validation
 		OpenSpaceValidator.validate(cmd, result);
 		if ( result.hasErrors() ) {
-			return new ModelAndView("addSession");
+			return new ModelAndView("editSession");
 		}
 
 		String sessionId = request.getParameter("sessionId");

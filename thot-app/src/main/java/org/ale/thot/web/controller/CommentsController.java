@@ -42,7 +42,9 @@ public class CommentsController {
 		  session = XlsSessionReader.getInstance().getSession(lSessionId);	
 		} else {
 			session = sessionDao.getSessionById(sessionId);
+			modelMap.put("sessionId", sessionId);
 		}
+
 		modelMap.put("comments", commentDao.getCommentsBySessionId(lSessionId));
         modelMap.put("sessionTitle", utf8(session.getTitle()));
         modelMap.put("sessionDescription", utf8(session.getDescription()));
