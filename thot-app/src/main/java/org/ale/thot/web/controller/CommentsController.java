@@ -36,16 +36,22 @@ public class CommentsController {
 	@RequestMapping(method = RequestMethod.GET)
 	public void setupForm(ModelMap modelMap, HttpServletRequest request) {
 		String sessionId = request.getParameter("sessionId"); 
-		long lSessionId = Long.valueOf(sessionId);
-		Session session = null;
-		if(lSessionId >= XlsSessionReader.ID_OFFSET) {
-		  session = XlsSessionReader.getInstance().getSession(lSessionId);	
-		} else {
-			session = sessionDao.getSessionById(sessionId);
+		try {
+		  long lSessionId = Long.valueOf(sessionId);
+			Session session = null;
+			if(lSessionId >= XlsSessionReader.ID_OFFSET) {
+			  session = XlsSessionReader.getInstance().getSession(lSessionId);	
+			} else {
+				session = sessionDao.getSessionById(sessionId);
+			}
+			modelMap.put("comments", commentDao.getCommentsBySessionId(lSessionId));
+	        modelMap.put("sessionTitle", utf8(session.getTitle()));
+	        modelMap.put("sessionDescription", utf8(session.getDescription()));
+		} catch (Exception e) {
+			modelMap.put("comments", "");
+	        modelMap.put("sessionTitle", "Nice try :)");
+	        modelMap.put("sessionDescription", "Do you think this is something a normal user would do?");			
 		}
-		modelMap.put("comments", commentDao.getCommentsBySessionId(lSessionId));
-        modelMap.put("sessionTitle", utf8(session.getTitle()));
-        modelMap.put("sessionDescription", utf8(session.getDescription()));
 	}
 
 	private String utf8(String text) {
