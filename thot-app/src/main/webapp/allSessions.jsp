@@ -37,7 +37,7 @@
 							<tr>
 								<th>Location</th>
 								<c:forEach items="${wedTimeslots}" var="timeslot">
-									<th>${timeslot}</th>
+									<th>${timeslot.toString()}</th>
 								</c:forEach>
 							</tr>
 						</thead>
@@ -46,7 +46,7 @@
 							<tr>
 								<td>${entry.key}</td>
 								<c:forEach items="${wedTimeslots}" var="timeslot">
-								<c:set var="session" value="${entry.value.get(timeslot.substring(0,5))}"></c:set>
+								<c:set var="session" value="${entry.value.get(timeslot.getStart())}"></c:set>
 								<c:choose>
 								<c:when test="${session != null}">
 								<td><a href='comments?sessionId=${session.id}'>${session.title}</a></td>
@@ -81,7 +81,7 @@
 							<tr>
 								<td>${entry.key}</td>
 								<c:forEach items="${thuTimeslots}" var="timeslot">
-								<c:set var="session" value="${entry.value.get(timeslot.substring(0,5))}"></c:set>
+								<c:set var="session" value="${entry.value.get(timeslot.getStart())}"></c:set>
 								<c:choose>
 								<c:when test="${session != null}">
 								<td><a href='comments?sessionId=${session.id}'>${session.title}</a></td>
@@ -118,7 +118,7 @@
 							<tr>
 								<td>${entry.key}</td>
 								<c:forEach items="${friTimeslots}" var="timeslot">
-								<c:set var="session" value="${entry.value.get(timeslot.substring(0,5))}"></c:set>
+								<c:set var="session" value="${entry.value.get(timeslot.getStart())}"></c:set>
 								<c:choose>
 								<c:when test="${session != null}">
 								<td><a href='comments?sessionId=${session.id}'>${session.title}</a></td>

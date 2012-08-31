@@ -37,13 +37,14 @@ public class JpaCommentDao implements CommentDao {
 		List<TimelineEntry> result = new ArrayList<TimelineEntry>();
 		
 		List<Object[]> resultList = em.createNamedQuery("findRecentComments").getResultList();
+		
 		for ( Object[] entry : resultList ) {
 			result.add(new TimelineEntry(
-				entry[0].toString(), 
-				entry[1].toString(), 
-				entry[2].toString(), 
-				entry[3].toString(), 
-				entry[4].toString()));
+				entry[0] != null ? entry[0].toString() : "", 
+				entry[0] != null ? entry[0].toString() : "",
+				entry[0] != null ? entry[0].toString() : "",
+				entry[0] != null ? entry[0].toString() : "", 
+				entry[0] != null ? entry[0].toString() : ""));
 		}
 		
 		return result;

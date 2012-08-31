@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface TimeslotDao {
 
-	List<String> GetTimeslots(String day);
+	List<Timeslot> GetTimeslots(String day);
 }
