@@ -74,6 +74,7 @@ public class EditSessionController {
 			session.setAuthor(cmd.getSpeaker());
 			session.setTitle(cmd.getTitle());
 			session.setDescription(cmd.getDescription());
+			session.setSlot(cmd.getStart());
 			sessionDao.saveSession(session);
 		} else {
 			// save the data

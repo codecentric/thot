@@ -139,6 +139,10 @@ public class Session {
 		this.location = location;
 	}
 
+	public void setSlot(String start) {
+		this.start = start;
+	}
+
 	@Override
 	public String toString() {
 		return "Session [title=" + title + ", author=" + author
