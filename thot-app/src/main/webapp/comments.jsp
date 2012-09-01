@@ -21,6 +21,9 @@
 	<p>
     <h3>${sessionTitle}</h3> 
 	<p>${sessionDescription}</p>
+	<br/>
+	<h4>${sessionLocationAndTimeSlot}</h4>
+	<h4>${sessionSpeaker}</h4>
 	</div>
 	
 	<br style="clear: both;"/>
