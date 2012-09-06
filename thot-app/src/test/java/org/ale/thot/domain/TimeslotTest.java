@@ -23,5 +23,5 @@ public class TimeslotTest {
 		
 		assertEquals("15:30", formatedTimeslot);
 	}
-
+	
 }

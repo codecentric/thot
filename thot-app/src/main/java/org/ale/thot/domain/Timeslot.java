@@ -1,11 +1,16 @@
 package org.ale.thot.domain;
 
+import org.codehaus.jackson.annotate.JsonCreator;
+import org.codehaus.jackson.annotate.JsonProperty;
+
+
 public class Timeslot {
 	
 	private String start;
 	private String end;
 	
-	public Timeslot(String start, String end) {
+	@JsonCreator
+	public Timeslot(@JsonProperty("start") String start, @JsonProperty("end") String end) {
 		this(start);
 		this.end = end;
 	}

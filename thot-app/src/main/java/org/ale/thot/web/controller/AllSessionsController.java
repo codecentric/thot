@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.ale.thot.domain.CommentDao;
+import org.ale.thot.domain.Day;
 import org.ale.thot.domain.Session;
 import org.ale.thot.domain.SessionDao;
+import org.ale.thot.domain.Timeslot;
 import org.ale.thot.domain.TimeslotDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,6 +33,20 @@ public class AllSessionsController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public void setupForm(ModelMap modelMap) {
+		
+		List<Day> conferenceDays = timeslotDao.GetConferenceDays();
+		
+		Map<String, Map<String, Map<String, Session>>> allSessions = new HashMap<String, Map<String, Map<String, Session>>>();
+		Map<String, List<Timeslot>> allTimeslots = new HashMap<String, List<Timeslot>>();
+		for(Day day : conferenceDays) {
+			List<Session> daySessions = sessionDao.getSessionsByDate(day.getShortName());
+			allSessions.put(day.getShortName(), groupSessionsByLocationsSlots(daySessions));
+			allTimeslots.put(day.getShortName(), timeslotDao.GetTimeslots(day.getShortName()));
+		}
+		
+		modelMap.put("allSessions", allSessions);
+		modelMap.put("allTimeslots", allTimeslots);
+		
 		List<Session> wed = sessionDao.getSessionsByDate("Wed");
 		modelMap.put("sessionsDay1", groupSessionsByLocationsSlots(wed));
 		List<Session> thu = sessionDao.getSessionsByDate("Thu");
@@ -41,6 +57,8 @@ public class AllSessionsController {
 		modelMap.put("wedTimeslots", timeslotDao.GetTimeslots("Wed"));
 		modelMap.put("thuTimeslots", timeslotDao.GetTimeslots("Thu"));
 		modelMap.put("friTimeslots", timeslotDao.GetTimeslots("Fri"));
+		
+		modelMap.put("days", conferenceDays);
 		
 		// removing it for the moment
 		//modelMap.put("commentCount", commentDao.getCommentCountForSessions());
