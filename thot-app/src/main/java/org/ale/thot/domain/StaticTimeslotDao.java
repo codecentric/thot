@@ -45,12 +45,12 @@ public class StaticTimeslotDao implements TimeslotDao {
 		timeslotsPerDay.put("Fri", friTimeSlots);
 	}
 	
-	public List<Timeslot> GetTimeslots(String day) {
+	public List<Timeslot> getTimeslots(String day) {
 		
 		return timeslotsPerDay.get(day);
 	}
 
-	public List<Day> GetConferenceDays() {
+	public List<Day> getConferenceDays() {
 		
 		return days;
 	}

@@ -15,7 +15,7 @@ public class TimeSlotDaoTest {
 	public void wrongTimeslotNameShouldReturnEmptyList() {
 		final TimeslotDao dao = getDaoInstance();
 		
-		final List<Timeslot> timeslots = dao.GetTimeslots("Err");
+		final List<Timeslot> timeslots = dao.getTimeslots("Err");
 		
 		assertNotNull(timeslots);
 		assertEquals(0, timeslots.size());
@@ -26,7 +26,7 @@ public class TimeSlotDaoTest {
 	public void shouldReturnWednesdayTimeSlot() {
 		final TimeslotDao dao = getDaoInstance();
 		
-		final List<Timeslot> timeslots = dao.GetTimeslots("Wed");
+		final List<Timeslot> timeslots = dao.getTimeslots("Wed");
 		
 		assertEquals(3, timeslots.size());
 		assertEquals("16:15", timeslots.get(1).getStart());
@@ -41,7 +41,7 @@ public class TimeSlotDaoTest {
 	public void shouldGetDaysOfConference() {
 		TimeslotDao dao = getDaoInstance();
 		
-		List<Day> days = dao.GetConferenceDays();
+		List<Day> days = dao.getConferenceDays();
 		
 		assertNotNull(days);
 		assertEquals(3, days.size());

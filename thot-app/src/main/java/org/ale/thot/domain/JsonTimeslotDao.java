@@ -22,7 +22,7 @@ public class JsonTimeslotDao implements TimeslotDao {
 		this.jsonMapper = mapper;
 	}	
 	
-	public List<Timeslot> GetTimeslots(String dayName) {
+	public List<Timeslot> getTimeslots(String dayName) {
 		loadDaysSafely();
 		for(Day day : days) {
 			if (day.getShortName().equals(dayName))
@@ -31,7 +31,7 @@ public class JsonTimeslotDao implements TimeslotDao {
 		return new ArrayList<Timeslot>();
 	}
 
-	public List<Day> GetConferenceDays() {
+	public List<Day> getConferenceDays() {
 		loadDaysSafely();
 		return days;
 	}

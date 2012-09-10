@@ -44,8 +44,8 @@ public class EditSessionController {
 	public void setupForm(ModelMap modelMap, HttpServletRequest request) {
 
 		modelMap.put("sessionDataFormData", new OpenSpaceFormData());
-		modelMap.put("timeslots", timeslotDao.GetTimeslots("Fri"));
-		modelMap.put("days", timeslotDao.GetConferenceDays());
+		modelMap.put("timeslots", timeslotDao.getTimeslots("Fri"));
+		modelMap.put("days", timeslotDao.getConferenceDays());
 		
 		String sessionId = request.getParameter("sessionId");
 
@@ -101,7 +101,7 @@ public class EditSessionController {
 	@RequestMapping(value = "/timeslotsPerDay", method = RequestMethod.GET)
 	public @ResponseBody Map<String, String> GetTimeslotForDay(@RequestParam("day") String day) {
 
-		List<Timeslot> timeslots = timeslotDao.GetTimeslots(day);
+		List<Timeslot> timeslots = timeslotDao.getTimeslots(day);
 		Map<String, String> timeslotsProjected = new HashMap<String, String>();
 
 		for (Timeslot timeslot : timeslots) {

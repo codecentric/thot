@@ -34,14 +34,14 @@ public class AllSessionsController {
 	@RequestMapping(method = RequestMethod.GET)
 	public void setupForm(ModelMap modelMap) {
 		
-		List<Day> conferenceDays = timeslotDao.GetConferenceDays();
+		List<Day> conferenceDays = timeslotDao.getConferenceDays();
 		
 		Map<String, Map<String, Map<String, Session>>> allSessions = new HashMap<String, Map<String, Map<String, Session>>>();
 		Map<String, List<Timeslot>> allTimeslots = new HashMap<String, List<Timeslot>>();
 		for(Day day : conferenceDays) {
 			List<Session> daySessions = sessionDao.getSessionsByDate(day.getShortName());
 			allSessions.put(day.getShortName(), groupSessionsByLocationsSlots(daySessions));
-			allTimeslots.put(day.getShortName(), timeslotDao.GetTimeslots(day.getShortName()));
+			allTimeslots.put(day.getShortName(), timeslotDao.getTimeslots(day.getShortName()));
 		}
 		
 		modelMap.put("allSessions", allSessions);
@@ -54,9 +54,9 @@ public class AllSessionsController {
 		List<Session> fri = sessionDao.getSessionsByDate("Fri");
 		modelMap.put("sessionsDay3", groupSessionsByLocationsSlots(fri));
 		
-		modelMap.put("wedTimeslots", timeslotDao.GetTimeslots("Wed"));
-		modelMap.put("thuTimeslots", timeslotDao.GetTimeslots("Thu"));
-		modelMap.put("friTimeslots", timeslotDao.GetTimeslots("Fri"));
+		modelMap.put("wedTimeslots", timeslotDao.getTimeslots("Wed"));
+		modelMap.put("thuTimeslots", timeslotDao.getTimeslots("Thu"));
+		modelMap.put("friTimeslots", timeslotDao.getTimeslots("Fri"));
 		
 		modelMap.put("days", conferenceDays);
 		
