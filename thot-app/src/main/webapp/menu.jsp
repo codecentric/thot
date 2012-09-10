@@ -11,7 +11,9 @@
 						
 						<li><a href="<%= request.getContextPath() %>/allSessions">
 						<spring:message code="marketplace" text="marketplace"/></a></li>
+						<!-- 
 						<li><a href="schedule.jsp"><spring:message code="sessions" text="sessions"/></a></li>
+						 -->
 						<li><a href="map.jsp"><spring:message code="map" text="map"/></a>	
 					</ul>
 				</div>
@@ -25,7 +27,9 @@
 						<li><a href="<%= request.getContextPath() %>/timeline">
 						<spring:message code="timeline" text="timeline"/></a></li>
 						<li><a href="features.jsp"><spring:message code="versionhistory" text="versionhistory"/></a></li>
+					<!-- 
 						<li><a href="impressions.jsp"><spring:message code="impressions" text="Impressions"/></a></li>
+					 -->
 					</ul>
 				</div>
 			</div>
