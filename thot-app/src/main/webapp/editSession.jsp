@@ -23,17 +23,24 @@
 
 		<c:if test="${sessionId == null}">
 		<div>Day</div>
+		
+		<c:forEach items="${days}" var="day">
+	 		<form:radiobutton id="date" path="date" value="${day.getShortName()}" class="date" />&nbsp${day.getShortName()}&nbsp;&nbsp;		
+		</c:forEach>
+		
+<!-- 
 	 	<form:radiobutton id="date" path="date" value="Wed" class="date" />&nbsp;Wed&nbsp;&nbsp;
    		<form:radiobutton id="date" path="date" value="Thu" class="date" />&nbsp;Thu&nbsp;&nbsp;
    		<form:radiobutton id="date" path="date" value="Fri" class="date" checked="checked" />&nbsp;Fri&nbsp;&nbsp;
 		<form:errors class="form-error" path="date" />
+ -->
 		<br />
 		</c:if>
 
 		<div>Slot:</div>
 		<form:select id="start" path="start" >
 		<c:forEach items="${timeslots}" var="timeslot">
-		<form:option value="${timeslot.getStart()}" label="${timeslot.toString()}"/>
+		  <form:option value="${timeslot.getStart()}" label="${timeslot.toString()}"/>
 		</c:forEach>
 		</form:select>
 		<form:errors class="form-error" path="start" />

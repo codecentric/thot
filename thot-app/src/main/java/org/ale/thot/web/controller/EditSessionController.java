@@ -45,7 +45,8 @@ public class EditSessionController {
 
 		modelMap.put("sessionDataFormData", new OpenSpaceFormData());
 		modelMap.put("timeslots", timeslotDao.GetTimeslots("Fri"));
-
+		modelMap.put("days", timeslotDao.GetConferenceDays());
+		
 		String sessionId = request.getParameter("sessionId");
 
 		if (sessionId != null) {
