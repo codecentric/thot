@@ -15,11 +15,11 @@
 	<div class="well well-small">
 	<h1><spring:message code="marketplace" text="marketplace"/></h1>
 	</div>
-	
+<!-- 	
 	<div style="float: right;">
 			<a class="btn btn-primary" href="<%= request.getContextPath() %>/editSession">Add OpenSpace</a>
 	</div>
-
+-->
 	<br style="clear: both;"/>
 
 

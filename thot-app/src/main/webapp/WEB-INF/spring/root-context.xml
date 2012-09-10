@@ -41,6 +41,10 @@
 		<constructor-arg name="mapper" type="org.codehaus.jackson.map.ObjectMapper" ref="jsonMapper" />
 		<constructor-arg name="filePath" type="java.lang.String" value="json/daysAndTimeslots.json" />
 	</bean>
+	<bean id="locationDao" class="org.ale.thot.domain.JsonLocationDao">
+		<constructor-arg name="mapper" type="org.codehaus.jackson.map.ObjectMapper" ref="jsonMapper" />
+		<constructor-arg name="filePath" type="java.lang.String" value="json/locations.json" />
+	</bean>
 	
 	<!-- <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" /> -->
 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">

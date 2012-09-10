@@ -6,6 +6,8 @@ import java.util.Map;
 
 import org.ale.thot.domain.CommentDao;
 import org.ale.thot.domain.Day;
+import org.ale.thot.domain.Location;
+import org.ale.thot.domain.LocationDao;
 import org.ale.thot.domain.Session;
 import org.ale.thot.domain.SessionDao;
 import org.ale.thot.domain.Timeslot;
@@ -26,6 +28,8 @@ public class AllSessionsController {
 	private CommentDao commentDao;
 	@Autowired
 	private TimeslotDao timeslotDao;
+	@Autowired
+	private LocationDao locationDao;
 	
 	public AllSessionsController() {
 		super();
@@ -35,28 +39,36 @@ public class AllSessionsController {
 	public void setupForm(ModelMap modelMap) {
 		
 		List<Day> conferenceDays = timeslotDao.getConferenceDays();
+		List<Location> locations = locationDao.getLocations();
 		
 		Map<String, Map<String, Map<String, Session>>> allSessions = new HashMap<String, Map<String, Map<String, Session>>>();
 		Map<String, List<Timeslot>> allTimeslots = new HashMap<String, List<Timeslot>>();
+
 		for(Day day : conferenceDays) {
 			List<Session> daySessions = sessionDao.getSessionsByDate(day.getShortName());
+			// if there are no sessions for this day in the database let's create some empty session objects 
+			if(daySessions == null || daySessions.isEmpty()) {
+			  createDefaultSessionsForDay(day, locations);
+			  daySessions = sessionDao.getSessionsByDate(day.getShortName());
+			}
+			
 			allSessions.put(day.getShortName(), groupSessionsByLocationsSlots(daySessions));
 			allTimeslots.put(day.getShortName(), timeslotDao.getTimeslots(day.getShortName()));
 		}
 		
 		modelMap.put("allSessions", allSessions);
 		modelMap.put("allTimeslots", allTimeslots);
-		
-		List<Session> wed = sessionDao.getSessionsByDate("Wed");
-		modelMap.put("sessionsDay1", groupSessionsByLocationsSlots(wed));
-		List<Session> thu = sessionDao.getSessionsByDate("Thu");
-		modelMap.put("sessionsDay2", groupSessionsByLocationsSlots(thu));
-		List<Session> fri = sessionDao.getSessionsByDate("Fri");
-		modelMap.put("sessionsDay3", groupSessionsByLocationsSlots(fri));
-		
-		modelMap.put("wedTimeslots", timeslotDao.getTimeslots("Wed"));
-		modelMap.put("thuTimeslots", timeslotDao.getTimeslots("Thu"));
-		modelMap.put("friTimeslots", timeslotDao.getTimeslots("Fri"));
+//		
+//		List<Session> wed = sessionDao.getSessionsByDate("Wed");
+//		modelMap.put("sessionsDay1", groupSessionsByLocationsSlots(wed));
+//		List<Session> thu = sessionDao.getSessionsByDate("Thu");
+//		modelMap.put("sessionsDay2", groupSessionsByLocationsSlots(thu));
+//		List<Session> fri = sessionDao.getSessionsByDate("Fri");
+//		modelMap.put("sessionsDay3", groupSessionsByLocationsSlots(fri));
+//		
+//		modelMap.put("wedTimeslots", timeslotDao.getTimeslots("Wed"));
+//		modelMap.put("thuTimeslots", timeslotDao.getTimeslots("Thu"));
+//		modelMap.put("friTimeslots", timeslotDao.getTimeslots("Fri"));
 		
 		modelMap.put("days", conferenceDays);
 		
@@ -64,6 +76,16 @@ public class AllSessionsController {
 		//modelMap.put("commentCount", commentDao.getCommentCountForSessions());
 	}
 	
+	private void createDefaultSessionsForDay(Day day, List<Location> locations) {
+		for (Location location : locations) {
+			for (Timeslot timeslot : day.getTimeslots()) {
+				final Session session = new Session(day.getShortName(), timeslot.getStart(), location.getShortName(), Session.EMPTY_TITLE, null, Session.EMPTY_DESCRIPTION);
+				sessionDao.saveSession(session);
+			}
+		}
+		
+	}
+
 	public static Map<String, Map<String, Session>> groupSessionsByLocationsSlots(
 			List<Session> sessions) {
 		HashMap<String, Map<String, Session>> transformedSessions = new HashMap<String, Map<String, Session>>();

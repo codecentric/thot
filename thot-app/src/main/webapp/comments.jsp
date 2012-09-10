@@ -6,58 +6,69 @@
 
 <%@ include file="header.jsp"%>
 <body onload="JavaScript:timedRefresh(20000);">
-<%@ include file="menu.jsp"%>
+	<%@ include file="menu.jsp"%>
 
-<div class="container-fluid">
+	<div class="container-fluid">
 
-	<div style="float: right;">
-		<a class="btn btn-primary" href="<%= request.getContextPath() %>/editSession?sessionId=${sessionId}">Edit
-			session data</a>
-	</div>
+		<div style="float: right;">
+			<a class="btn btn-primary"
+				href="<%= request.getContextPath() %>/editSession?sessionId=${sessionId}">Edit
+				session data</a>
+		</div>
 
-	<!--/span-->
-	<div class="well well-small">
-	<h2>Comments for session:</h2>
-	<p>
-    <h3>${sessionTitle}</h3> 
-	<p>${sessionDescription}</p>
-	<br/>
-	<h4>${sessionLocationAndTimeSlot}</h4>
-	<h4>${sessionSpeaker}</h4>
-	</div>
-	
-	<br style="clear: both;"/>
+		<!--/span-->
+		<div class="well well-small">
 
-	<div class="row-fluid">
-	<div style="float: right;">
-			<a class="btn btn-primary" href="<%= request.getContextPath() %>/addComment?sessionId=<%= request.getParameter("sessionId")%>&title=${sessionTitle}">Add Comment</a>
-	</div>
-<table class="table table-striped">
-<thead>  
-	<tr>  
-		<th>Name</th>
-		<th>Comment</th>
-		 <th>Date</th>
-	</tr>
-</thead>
-<tbody>
-<c:forEach items="${comments}" var="comment">
-	<tr>
-		<td>${comment.author}</td>
-		<td>${comment.text}</td>
-		<td><fmt:formatDate value="${comment.date}" type="both"  dateStyle="short" timeStyle="short" /></td>
-	</tr>
-</c:forEach>
-</tbody>
-</table>
-</div></div>
+			<!-- 
+	<h4>For session at location: ${sessionLocationAndTimeSlot}</h4>
+-->
+			<h2>${sessionTitle}</h2>
+			<h4>Description</h4>
+			<p>${sessionDescription}</p>
+			<h4>Proposed by</h4>
+			<p>${sessionSpeaker}</p>
+			<h4>Location</h4>
+			<p>${location}</p>
+			<h4>Start time</h4>
+			<p>${timeslot }</p>
+		</div>
 
-<script type="text/JavaScript">
-<!--
-function timedRefresh(timeoutPeriod) {
-	setTimeout("location.reload(true);",timeoutPeriod);
-}
-//   -->
-</script>
+		<br style="clear: both;" />
 
-<%@ include file="footer.html"%>
+		<div class="row-fluid">
+			<div style="float: right;">
+				<a class="btn btn-primary"
+					href="<%= request.getContextPath() %>/addComment?sessionId=<%= request.getParameter("sessionId")%>&title=${sessionTitle}">Add
+					Comment</a>
+			</div>
+
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Comment</th>
+						<th>Date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${comments}" var="comment">
+						<tr>
+							<td>${comment.author}</td>
+							<td>${comment.text}</td>
+							<td><fmt:formatDate value="${comment.date}" type="both"
+									dateStyle="short" timeStyle="short" /></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+
+	<script type="text/JavaScript">
+	<!--
+		function timedRefresh(timeoutPeriod) {
+			setTimeout("location.reload(true);", timeoutPeriod);
+		}
+	//   -->
+	</script>
+
+	<%@ include file="footer.html"%>

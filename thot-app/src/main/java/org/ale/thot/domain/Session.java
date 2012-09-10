@@ -17,7 +17,9 @@ import javax.persistence.NamedQuery;
 	@NamedQuery(name = "findAllSessions", query = "from session order by date")
 })
 public class Session {
-
+	public static String EMPTY_TITLE = "Available Session";
+	public static String EMPTY_DESCRIPTION = "This session is still available.";
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;

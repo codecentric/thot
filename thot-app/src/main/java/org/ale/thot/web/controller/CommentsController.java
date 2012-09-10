@@ -33,24 +33,27 @@ public class CommentsController {
 		try {
 			long lSessionId = Long.valueOf(sessionId);
 			Session session = null;
-			if (lSessionId >= XlsSessionReader.ID_OFFSET) {
-				session = XlsSessionReader.getInstance().getSession(lSessionId);
-			} else {
-				session = sessionDao.getSessionById(sessionId);
-				modelMap.put("sessionId", sessionId);
-			}
+//			if (lSessionId >= XlsSessionReader.ID_OFFSET) {
+//				session = XlsSessionReader.getInstance().getSession(lSessionId);
+//			} else {
+			session = sessionDao.getSessionById(sessionId);
+			modelMap.put("sessionId", sessionId);
+//			}
+         
 			modelMap.put("comments", commentDao.getCommentsBySessionId(lSessionId));
 			modelMap.put("sessionTitle", utf8(session.getTitle()));
 			modelMap.put("sessionDescription", utf8(session.getDescription()));
 
 			String location = session.getLocation() != null ? session.getLocation() : "Unknown";
 
-			modelMap.put("sessionLocationAndTimeSlot", location + "&nbsp;&nbsp;&nbsp; at &nbsp;&nbsp;&nbsp;" +
-					session
-							.getStart());
-
+//			modelMap.put("sessionLocationAndTimeSlot", location + 
+//					"&nbsp;&nbsp;&nbsp; at &nbsp;&nbsp;&nbsp;" +
+//					session.getStart());
+			modelMap.put("location", location);
+			modelMap.put("timeslot", session.getStart());
+			
 			String author = session.getAuthor() != null ? session.getAuthor() : "Unknown";
-			modelMap.put("sessionSpeaker", "Speaker: " + author);
+			modelMap.put("sessionSpeaker", author);
 
 		} catch (Exception e) {
 			modelMap.put("comments", "");

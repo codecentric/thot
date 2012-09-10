@@ -1,9 +1,6 @@
 package org.ale.thot.domain;
 
-import java.util.Date;
 import java.util.List;
-
-import org.ale.thot.domain.Session;
 
 /**
  * DAO to handle {@link Session} related stuff.

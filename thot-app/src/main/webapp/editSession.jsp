@@ -20,7 +20,7 @@
     <div>Topic:(*)</div>
         <form:input maxlength="255" id="title" path="title" />
 		<form:errors class="form-error" path="title" />
-
+<!-- 
 		<c:if test="${sessionId == null}">
 		<div>Day</div>
 		
@@ -28,12 +28,12 @@
 	 		<form:radiobutton id="date" path="date" value="${day.getShortName()}" class="date" />&nbsp${day.getShortName()}&nbsp;&nbsp;		
 		</c:forEach>
 		
-<!-- 
+
 	 	<form:radiobutton id="date" path="date" value="Wed" class="date" />&nbsp;Wed&nbsp;&nbsp;
    		<form:radiobutton id="date" path="date" value="Thu" class="date" />&nbsp;Thu&nbsp;&nbsp;
    		<form:radiobutton id="date" path="date" value="Fri" class="date" checked="checked" />&nbsp;Fri&nbsp;&nbsp;
 		<form:errors class="form-error" path="date" />
- -->
+ 
 		<br />
 		</c:if>
 
@@ -59,7 +59,7 @@
 		<form:errors class="form-error" path="start" />
 
 		<br />
-        
+-->        
         <div>Proposed by:</div>
         <form:input maxlength="255" id="speaker" path="speaker" />
 		<form:errors class="form-error" path="speaker" />
