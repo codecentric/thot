@@ -1,7 +1,9 @@
 package org.ale.thot.domain;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
+import java.io.File;
 import java.util.List;
 
 import org.codehaus.jackson.map.ObjectMapper;
@@ -10,17 +12,29 @@ import org.junit.Test;
 public class TimeSlotDaoTest {
 
 	@Test
-	public void shouldReturnWednesdayTimeSlot() {
-		TimeslotDao dao = getDaoInstance();
+	public void wrongTimeslotNameShouldReturnEmptyList() {
+		final TimeslotDao dao = getDaoInstance();
 		
-		List<Timeslot> timeslots = dao.GetTimeslots("Wed");
+		final List<Timeslot> timeslots = dao.GetTimeslots("Err");
+		
+		assertNotNull(timeslots);
+		assertEquals(0, timeslots.size());
+		
+	}
+
+	@Test
+	public void shouldReturnWednesdayTimeSlot() {
+		final TimeslotDao dao = getDaoInstance();
+		
+		final List<Timeslot> timeslots = dao.GetTimeslots("Wed");
 		
 		assertEquals(3, timeslots.size());
 		assertEquals("16:15", timeslots.get(1).getStart());
 	}
+	
 
 	private JsonTimeslotDao getDaoInstance() {
-		return new JsonTimeslotDao(new ObjectMapper(), "org/ale/thot/domain/data/daysAndTimeslots.json");
+		return new JsonTimeslotDao(new ObjectMapper(), "daysAndTimeslots.json");
 	}
 	
 	@Test

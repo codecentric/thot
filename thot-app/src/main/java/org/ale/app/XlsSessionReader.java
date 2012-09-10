@@ -1,5 +1,8 @@
 package org.ale.app;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -75,10 +78,43 @@ public class XlsSessionReader {
 		} catch (Exception e) {
 			throw new RuntimeException("Error while reading sessions from file", e);
 		}
+		BufferedWriter out = null;
+/*		try {
+		  out = new BufferedWriter(new FileWriter("/tmp/sessions.sql"));
+		  for (Session session : result) {
+			out.write("insert into session (id,date,start,end,title,author,author2,description," +
+					"location,type,authorinfo,author2info,authorimgurl,author2imgurl) values (" +
+					session.getId()  + ", '" +
+					r(session.getDate()) + "', '" +
+					r(session.getStart()) + "', '" +
+					r(session.getEnd()) + "', '" +
+					r(session.getTitle()) + "', '" +
+					r(session.getAuthor()) + "', '" +
+					r(session.getAuthor2())  + "', '" +
+					r(session.getDescription()) + "', '" +
+					r(session.getLocation()) + "', '" +
+					r(session.getType()) + "', '" +
+					r(session.getAuthorInfo()) + "', '" +
+					r(session.getAuthor2Info()) + "', '" +
+					r(session.getAuthorImgUrl()) + "', '" +
+					r(session.getAuthor2ImgUrl()) + "');\n"
+				);
+
+		   }
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+		  try {
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		}*/
 		return result;
 	}
 
 	private Session getSessionFromRow(HSSFRow row, int id) {		
+		Session result = null;
 		final String date = getCellValue(row.getCell(COL_DATE, Row.RETURN_BLANK_AS_NULL));
 		final String start = getCellValue(row.getCell(COL_START, Row.RETURN_BLANK_AS_NULL));
 		final String end = getCellValue(row.getCell(COL_END, Row.RETURN_BLANK_AS_NULL));
@@ -94,12 +130,15 @@ public class XlsSessionReader {
 		final String author2ImgUrl = getCellValue(row.getCell(COL_AUHTOR2IMAGEURL, Row.RETURN_BLANK_AS_NULL));
 		
 		if(title != null || author != null || description != null) {
-			return new Session(date, start, end, title, author, author2, description, location, type, authorInfo, author2Info, authorImgUrl, author2ImgUrl, id+ID_OFFSET);	
+			result = new Session(date, start, end, title, author, author2, description, location, type, authorInfo, author2Info, authorImgUrl, author2ImgUrl, id+ID_OFFSET);	
 		}
-		
-		return null;
+		return result;
 	}
 
+	private String r(String s) {
+		return s == null ? "" : s.replaceAll("\n", "<br>");
+	}
+	
 	private String getCellValue(HSSFCell cell) {
 		String result = null;
 		if(cell != null) {

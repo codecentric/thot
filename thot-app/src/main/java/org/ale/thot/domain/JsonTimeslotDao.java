@@ -1,17 +1,14 @@
 package org.ale.thot.domain;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import org.codehaus.jackson.JsonParseException;
 
 public class JsonTimeslotDao implements TimeslotDao {
 	
@@ -31,7 +28,7 @@ public class JsonTimeslotDao implements TimeslotDao {
 			if (day.getShortName().equals(dayName))
 				return day.getTimeslots();
 		}
-		return null;
+		return new ArrayList<Timeslot>();
 	}
 
 	public List<Day> GetConferenceDays() {
@@ -50,12 +47,12 @@ public class JsonTimeslotDao implements TimeslotDao {
 				
 		try {			
 				InputStream jsonStream = this.getClass().getClassLoader().getResourceAsStream(filePath);
-				days = jsonMapper.readValue(jsonStream, new TypeReference<List<Day>>() {});
+				if(jsonStream != null) {
+					days = jsonMapper.readValue(jsonStream, new TypeReference<List<Day>>() {});
+				}
 		} catch (JsonParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
