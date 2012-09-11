@@ -101,14 +101,6 @@
        <li>Add additional Open Spaces</li>
        <li>List of additional Open Spaces</li>
       </ul>
-
-	
-
-	 <h3>Product Backlog</h3>
-      <ul>
-       <li>As a user I want to choose the day for a new OpenSpace so that I do not have to type in the date</li>
-       <li>As a user I want to add comments to sessions I have visited.</li>
-	  </ul>
 	  	 
     </div> <!-- /container -->
 
