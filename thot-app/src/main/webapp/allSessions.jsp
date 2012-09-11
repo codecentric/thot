@@ -4,7 +4,7 @@
 <%@ page session="false"%>
 
 <%@ include file="header.jsp"%>
-<body>
+<body onload="JavaScript:initTab();">
 <%@ include file="menu.jsp"%>
 
 
@@ -27,7 +27,7 @@
 		<div class="tabbable">
 			<ul class="nav nav-tabs" id="daysTab">
 				<c:forEach items="${days}" var="day">
-					<li id="${day.getShortName()}_1"><a href="#${day.getShortName()}" data-toggle="tab">${day.getShortName()}</a></li>
+					<li><a href="#${day.getShortName()}" data-toggle="tab">${day.getShortName()}</a></li>
 				</c:forEach>			
 				<!--  li class="active"></li -->
 			</ul>
@@ -71,10 +71,12 @@
 	</div>
 </div>
 
-	<script>
-		$(function() {
+    <script type="text/JavaScript">
+		<!--
+		function initTab() {
 			$('#daysTab a:first').tab('show');
-			$("Friday_1").addClass("active");
-		})
-	</script>
+		}
+		//   -->
+		</script>
+
 	<%@ include file="footer.html"%>
