@@ -8,6 +8,11 @@
 
 <div class="container">
 
+	<h3>Version 1.12 </h3>
+	<ul>
+		<li>Prepared version for Agile Coach Camp</li>
+	</ul>
+
 	<h3>Version 1.11-* at Day 3 since 10:00</h3>
 	<ul>
 		<li>Editing open space sessions</li>
