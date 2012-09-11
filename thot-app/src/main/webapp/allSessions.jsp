@@ -25,9 +25,9 @@
 
 	<div class="row-fluid">
 		<div class="tabbable">
-			<ul class="nav nav-tabs">
+			<ul class="nav nav-tabs" id="daysTab">
 				<c:forEach items="${days}" var="day">
-					<li><a href="#${day.getShortName()}" data-toggle="tab">${day.getShortName()}</a></li>
+					<li id="${day.getShortName()}_1"><a href="#${day.getShortName()}" data-toggle="tab">${day.getShortName()}</a></li>
 				</c:forEach>			
 				<!--  li class="active"></li -->
 			</ul>
@@ -70,4 +70,11 @@
 		</div>
 	</div>
 </div>
-<%@ include file="footer.html"%>
+
+	<script>
+		$(function() {
+			$('#daysTab a:first').tab('show');
+			$("Friday_1").addClass("active");
+		})
+	</script>
+	<%@ include file="footer.html"%>

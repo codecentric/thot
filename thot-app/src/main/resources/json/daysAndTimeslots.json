@@ -1,51 +1,48 @@
 [
     {
-        "shortName": "Wed",
+        "shortName": "Friday",
         "timeslots": [
             {
-                "start": "15:30",
-                "end": "16:15"
+                "start": "2:00 pm",
+                "end": "2:30 pm"
             },
             {
-                "start": "16:15",
-                "end": "17:00"
+                "start": "2:30 pm",
+                "end": "3:00 pm"
             },
             {
-                "start": "Evening"
+               "start": "4:30 pm",
+               "end": "5:00 pm"
+            }, 
+           {
+               "start": "5:00 pm",
+               "end": "5:30 pm"
             }
         ]
     },
     {
-        "shortName": "Thu",
+        "shortName": "Saturday",
         "timeslots": [
             {
-                "start": "15:30",
-                "end": "16:15"
+                "start": "9:30 am",
+                "end": "10:00 am"
             },
             {
-                "start": "16:15",
-                "end": "17:00"
+                "start": "10:00 am",
+                "end": "10:30 am"
             },
             {
-                "start": "17:00",
-                "end": "17:45"
+                "start": "1:00 pm",
+                "end": "1:30 pm"
             },
             {
-                "start": "Evening"
+                "start": "1:30 pm",
+                "end": "2:00 pm"
+            },
+            {
+                "start": "2:30 pm",
+                "end": "3:00 pm"
             }
-        ]
-    },
-    {
-        "shortName": "Fri",
-        "timeslots": [
-            {
-                "start": "11:30",
-                "end": "12:15"
-            },
-            {
-                "start": "12:15",
-                "end": "13:00"
-            }
-        ]
+         ]
     }
 ]

@@ -12,5 +12,17 @@
     {
         "shortName": "Room 3",
         "description": "Room one is located on the roof"
+    },
+    {
+        "shortName": "Room 4",
+        "description": "Location of room 4"
+    },
+    {
+        "shortName": "Room 5",
+        "description": "Location of room 5"
+    },
+    {
+        "shortName": "Room 6",
+        "description": "Location of room 6"
     }
 ]
