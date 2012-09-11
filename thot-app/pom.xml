@@ -195,7 +195,7 @@
     	<profile>
 			<id>test</id>
       		<properties>
-      			<cargo.host>50.16.218.76</cargo.host>
+      			<cargo.host>54.242.3.180</cargo.host>
       			<cargo.user>admin</cargo.user>
       			<cargo.pwd>admin</cargo.pwd>
       		</properties>
