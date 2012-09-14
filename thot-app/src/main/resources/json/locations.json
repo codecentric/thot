@@ -1,28 +1,28 @@
 [
     {
-        "shortName": "Room 1",
-        "description": "Room one is located in the basement"
+        "shortName": "201",
+        "description": "1"
     },
     
     {
-        "shortName": "Room 2",
-        "description": "Room one is located in the first floor"
+        "shortName": "202",
+        "description": "2"
     },
     
     {
-        "shortName": "Room 3",
-        "description": "Room one is located on the roof"
+        "shortName": "321",
+        "description": "3"
     },
     {
-        "shortName": "Room 4",
-        "description": "Location of room 4"
+        "shortName": "322",
+        "description": "4"
     },
     {
-        "shortName": "Room 5",
-        "description": "Location of room 5"
+        "shortName": "323",
+        "description": "5"
     },
     {
-        "shortName": "Room 6",
-        "description": "Location of room 6"
+        "shortName": "318#324",
+        "description": "6"
     }
 ]
