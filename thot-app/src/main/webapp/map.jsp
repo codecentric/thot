@@ -20,7 +20,11 @@
 
     <div class="span10">
       <div class="content-heading">
-      <img src="<%= request.getContextPath() %>/assets/img/scan.gif"/>
+      <img src="<%= request.getContextPath() %>/assets/img/floor2.gif"/>
+      </div>
+    <div class="span10">
+      <div class="content-heading">
+      <img src="<%= request.getContextPath() %>/assets/img/floor3.gif"/>
       </div>
 </div>
 
