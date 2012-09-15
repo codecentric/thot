@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class TwitterLinkCreator {
 
-	private static Pattern p = Pattern.compile("@[a-zA-Z0-9]+");
+	private static Pattern p = Pattern.compile("@[a-zA-Z0-9_]+");
 	
 	public static String process(String input) {
 		String result = input;
