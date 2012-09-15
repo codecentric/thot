@@ -8,6 +8,11 @@
 
 <div class="container">
 
+	<h3>Version 1.13 </h3>
+	<ul>
+		<li>Twitter handles are converted into links now</li>
+	</ul>
+	
 	<h3>Version 1.12 </h3>
 	<ul>
 		<li>Prepared version for Agile Coach Camp</li>
