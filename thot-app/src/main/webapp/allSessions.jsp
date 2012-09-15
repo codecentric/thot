@@ -74,7 +74,7 @@
     <script type="text/JavaScript">
 		<!--
 		function initTab() {
-			$('#daysTab a:first').tab('show');
+			$('#daysTab a:last').tab('show');
 		}
 		//   -->
 		</script>
