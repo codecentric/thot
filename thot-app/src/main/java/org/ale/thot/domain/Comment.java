@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
+import org.ale.app.TwitterLinkCreator;
+
 
 /**
  * Domain object to represent data for a comment.
@@ -59,6 +61,10 @@ public class Comment {
 		return author;
 	}
 
+	public String getProcessedAuthor() {
+		return TwitterLinkCreator.process(author);
+	}
+	
 	public void setAuthor(String author) {
 		this.author = author;
 	}

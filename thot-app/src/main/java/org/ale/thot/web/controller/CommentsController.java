@@ -1,5 +1,6 @@
 package org.ale.thot.web.controller;
 
+import org.ale.app.TwitterLinkCreator;
 import org.ale.app.XlsSessionReader;
 import org.ale.thot.domain.CommentDao;
 import org.ale.thot.domain.Session;
@@ -53,7 +54,7 @@ public class CommentsController {
 			modelMap.put("timeslot", session.getStart());
 			
 			String author = session.getAuthor() != null ? session.getAuthor() : "Unknown";
-			modelMap.put("sessionSpeaker", author);
+			modelMap.put("sessionSpeaker", TwitterLinkCreator.process(author));
 
 		} catch (Exception e) {
 			modelMap.put("comments", "");

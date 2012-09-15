@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ page import="org.ale.app.TwitterLinkCreator"%>
 <%@ page session="false"%>
 
 <%@ include file="header.jsp"%>
@@ -26,7 +27,7 @@
 					<span style="font-style: bold; font-size: 1.2em;"><a href='comments?sessionId=${entry.sessionId}'>${entry.sessionTitle}</a></span>, <small>${entry.date}</small>
 				    <blockquote>
 					    <p>${entry.comment}</p>
-					    <small>${entry.user}</small>
+					    <small>${entry.processedUser}</small>
 				    </blockquote>
 				</c:forEach>
 				</table>

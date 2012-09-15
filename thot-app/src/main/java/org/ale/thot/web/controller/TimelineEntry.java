@@ -1,5 +1,7 @@
 package org.ale.thot.web.controller;
 
+import org.ale.app.TwitterLinkCreator;
+
 public class TimelineEntry {
 
 	private String date;
@@ -26,6 +28,10 @@ public class TimelineEntry {
 		return user;
 	}
 
+	public String getProcessedUser() {
+		return TwitterLinkCreator.process(user);
+	}
+	
 	public String getComment() {
 		return comment;
 	}

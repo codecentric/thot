@@ -53,7 +53,7 @@
 				<tbody>
 					<c:forEach items="${comments}" var="comment">
 						<tr>
-							<td>${comment.author}</td>
+							<td>${comment.processedAuthor}</td>
 							<td>${comment.text}</td>
 							<td><fmt:formatDate value="${comment.date}" type="both"
 									dateStyle="short" timeStyle="short" /></td>
