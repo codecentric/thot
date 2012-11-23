@@ -1,4 +1,4 @@
-<h1>Welcome to the Open Space Software Development at ALE2012</h1>
+<h1>Welcome to the Open Space Software Development at XP Days Germany 2012</h1>
 
 <h2>Setting up the development environment</h2>
 
