@@ -8,6 +8,12 @@
 
 <div class="container">
 
+	<h3>Version 2.0 </h3>
+	<ul>
+		<li>Prepared almost empty version for XPdays</li>
+		<li>Removed AgileCoachCamp specific stuff</li>
+	</ul>
+	<hr>
 	<h3>Version 1.13 </h3>
 	<ul>
 		<li>Twitter handles are converted into links now</li>

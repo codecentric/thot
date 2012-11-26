@@ -34,12 +34,12 @@ public class CommentsController {
 		try {
 			long lSessionId = Long.valueOf(sessionId);
 			Session session = null;
-//			if (lSessionId >= XlsSessionReader.ID_OFFSET) {
-//				session = XlsSessionReader.getInstance().getSession(lSessionId);
-//			} else {
+			if (lSessionId >= XlsSessionReader.ID_OFFSET) {
+				session = XlsSessionReader.getInstance().getSession(lSessionId);
+			} else {
 			session = sessionDao.getSessionById(sessionId);
 			modelMap.put("sessionId", sessionId);
-//			}
+			}
          
 			modelMap.put("comments", commentDao.getCommentsBySessionId(lSessionId));
 			modelMap.put("sessionTitle", utf8(session.getTitle()));
