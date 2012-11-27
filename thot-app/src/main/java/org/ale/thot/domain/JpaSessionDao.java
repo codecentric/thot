@@ -42,5 +42,16 @@ public class JpaSessionDao implements SessionDao {
 	public Session getSessionById(String id) {
 		return em.find(Session.class, Long.parseLong(id));
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<Session> getAllStaticSessions() {
+		return em.createNamedQuery("findAllStaticSessions").getResultList();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Session> getStaticSessionsByDate(String date) {
+		Query query = em.createNamedQuery("findStaticSessionsForDate");
+		return query.setParameter("date", date).getResultList();
+	}
 	
 }

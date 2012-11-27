@@ -1,8 +1,7 @@
 package org.ale.app;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +15,6 @@ import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.ss.usermodel.Row;
 
 public class XlsSessionReader {
-
-	private static XlsSessionReader instance;
-	private List<Session>sessions; 
 	
 	public static int ID_OFFSET = 1000000;
 	private static final short COL_DATE = 0;
@@ -34,19 +30,8 @@ public class XlsSessionReader {
 	private static final short COL_AUTHOR2INFO = 10;
 	private static final short COL_AUTHORIMAGEURL = 11; 
 	private static final short COL_AUHTOR2IMAGEURL = 12;
-	
-	private XlsSessionReader() {
-		this.sessions=readAllSessions();
-	}
-	
-	public synchronized static XlsSessionReader getInstance() {
-		if(instance == null) {
-			instance = new XlsSessionReader();
-		}
-		return instance;
-	}
-	
-	private List<Session> readAllSessions() {
+		
+	public List<Session> readAllSessions() {
 		try {
 			final InputStream is = this.getClass().getClassLoader().getResourceAsStream("program.xls");
 			return readAllSessions(is);
@@ -55,6 +40,15 @@ public class XlsSessionReader {
 		}
 	}
 	
+	public List<Session> readAllSessions(String filename) {
+		try {
+			final InputStream is = new BufferedInputStream(new FileInputStream(filename));
+			return readAllSessions(is);
+		} catch (Exception e) {
+			throw new RuntimeException("Error while reading sessions from file " + filename, e);
+		}
+	}
+
 	private List<Session> readAllSessions(InputStream is) {
 		final List<Session> result = new ArrayList<Session>();
 	
@@ -78,38 +72,6 @@ public class XlsSessionReader {
 		} catch (Exception e) {
 			throw new RuntimeException("Error while reading sessions from file", e);
 		}
-		BufferedWriter out = null;
-/*		try {
-		  out = new BufferedWriter(new FileWriter("/tmp/sessions.sql"));
-		  for (Session session : result) {
-			out.write("insert into session (id,date,start,end,title,author,author2,description," +
-					"location,type,authorinfo,author2info,authorimgurl,author2imgurl) values (" +
-					session.getId()  + ", '" +
-					r(session.getDate()) + "', '" +
-					r(session.getStart()) + "', '" +
-					r(session.getEnd()) + "', '" +
-					r(session.getTitle()) + "', '" +
-					r(session.getAuthor()) + "', '" +
-					r(session.getAuthor2())  + "', '" +
-					r(session.getDescription()) + "', '" +
-					r(session.getLocation()) + "', '" +
-					r(session.getType()) + "', '" +
-					r(session.getAuthorInfo()) + "', '" +
-					r(session.getAuthor2Info()) + "', '" +
-					r(session.getAuthorImgUrl()) + "', '" +
-					r(session.getAuthor2ImgUrl()) + "');\n"
-				);
-
-		   }
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-		  try {
-			out.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		}*/
 		return result;
 	}
 
@@ -133,10 +95,6 @@ public class XlsSessionReader {
 			result = new Session(date, start, end, title, author, author2, description, location, type, authorInfo, author2Info, authorImgUrl, author2ImgUrl, id+ID_OFFSET);	
 		}
 		return result;
-	}
-
-	private String r(String s) {
-		return s == null ? "" : s.replaceAll("\n", "<br>");
 	}
 	
 	private String getCellValue(HSSFCell cell) {
@@ -162,20 +120,4 @@ public class XlsSessionReader {
 		return result;
 	}
 
-	public List<Session>getAllSessions() {
-		return this.sessions;
-	}
-	
-	public Session getSession(long sessionId) {
-		for (Session session : this.sessions) {
-			if(session.getId() == sessionId) {
-				return session;
-			}
-		} 
-		return null;
-	}
-
-	public Session getSession(String sessionId) {
-		return getSession(Long.valueOf(sessionId));
-	}
 }

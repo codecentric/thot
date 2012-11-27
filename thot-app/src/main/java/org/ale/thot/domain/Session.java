@@ -13,8 +13,10 @@ import javax.persistence.NamedQuery;
  */
 @Entity(name="session")
 @NamedQueries({
-	@NamedQuery(name = "findSessionsForDate", query = "from session where date=:date"),
-	@NamedQuery(name = "findAllSessions", query = "from session order by date")
+	@NamedQuery(name = "findSessionsForDate", query = "from session where type is null and date=:date"),
+	@NamedQuery(name = "findAllSessions", query = "from session where type is null order by date"),
+	@NamedQuery(name = "findAllStaticSessions", query = "from session where type ='session' order by date"),
+	@NamedQuery(name = "findStaticSessionsForDate", query = "from session where type is null and date=:date")
 })
 public class Session {
 	public static String EMPTY_TITLE = "Available Session";

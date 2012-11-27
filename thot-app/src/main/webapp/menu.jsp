@@ -8,7 +8,7 @@
 				<%-- <a class="brand" href="<%= request.getContextPath() %>">ALE 2012</a> --%>
 				<div class="nav">
 					<ul class="nav">
-						<li><a href="schedule.jsp"><spring:message code="sessions" text="sessions"/></a></li>
+						<li><a href="staticSessions"><spring:message code="sessions" text="sessions"/></a></li>
 						<li><a href="map.jsp"><spring:message code="map" text="map"/></a>	
 						<!-- 
 						<li><a href="<%= request.getContextPath() %>/allSessions">
@@ -21,7 +21,7 @@
 						
 					<%-- 	<li><a href="<%= request.getContextPath() %>/allSessions">
 						<spring:message code="marketplace" text="marketplace"/></a></li>
-						<li><a href="schedule.jsp"><spring:message code="sessions" text="sessions"/></a></li>
+						<li><a href="staticSessions"><spring:message code="sessions" text="sessions"/></a></li>
 						<li><a href="map.jsp"><spring:message code="map" text="map"/></a> --%>
 						<li><a href="<%= request.getContextPath() %>/timeline">
 						<spring:message code="timeline" text="timeline"/></a></li>
