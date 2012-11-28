@@ -1,9 +1,11 @@
 package org.ale.thot.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
@@ -33,6 +35,7 @@ public class Session {
 	private String title;
 	private String author;
 	private String author2;
+	@Lob
 	private String description;
 	private String location;
 	private String type;
@@ -82,6 +85,7 @@ public class Session {
 	public String getAuthor() {
 		return author;
 	}
+	
 	public String getDescription() {
 		return description;
 	}
