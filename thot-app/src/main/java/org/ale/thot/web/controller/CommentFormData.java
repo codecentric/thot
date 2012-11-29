@@ -6,6 +6,7 @@ public class CommentFormData {
 	private String text;
 	private Long sessionId;
 	private String title;
+	private Integer rating;
 	
 	public String getTitle() {
 		return title;
@@ -30,6 +31,12 @@ public class CommentFormData {
 	}
 	public void setSessionId(Long sessionId) {
 		this.sessionId = sessionId;
+	}
+	public Integer getRating() {
+		return rating;
+	}
+	public void setRating(Integer rating) {
+		this.rating = rating;
 	}
 	
 	

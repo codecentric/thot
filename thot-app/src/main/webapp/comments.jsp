@@ -42,12 +42,13 @@
 					Comment</a>
 			</div>
 
-			<table class="table table-striped">
+			<table id="comments" class="table table-striped">
 				<thead>
 					<tr>
 						<th>Name</th>
 						<th>Comment</th>
 						<th>Date</th>
+						<th>Rating</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -57,6 +58,10 @@
 							<td>${comment.text}</td>
 							<td><fmt:formatDate value="${comment.date}" type="both"
 									dateStyle="short" timeStyle="short" /></td>
+									
+									<td class="rating" data-rating="${comment.rating}">
+										<img src='assets/img/thumb${comment.rating}.png' title='Rating: ${comment.rating}' alt='${comment.rating}'>
+									</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -68,6 +73,9 @@
 		function timedRefresh(timeoutPeriod) {
 			setTimeout("location.reload(true);", timeoutPeriod);
 		}
+	
+
+		
 	//   -->
 	</script>
 

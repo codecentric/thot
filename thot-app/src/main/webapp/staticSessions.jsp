@@ -7,7 +7,6 @@
 <body onload="JavaScript:initTab();">
 	<%@ include file="menu.jsp"%>
 
-
 	<div class="container-fluid">
 		<!--/span-->
 		<div class="well well-small">
@@ -36,17 +35,17 @@
 							<tbody>
 								<c:forEach items="${entry.value}" var="session">
 			                        <c:url value="comments" var="url" scope="page">
-			                            <c:param name="sessionId" value="${session.getId()}" />
+			                            <c:param name="sessionId" value="${session.id}" />
 			                        </c:url>
 									<tr class="sessions" data-link="${url}">
-										<td>${session.getDate()}</td>
-										<td>${session.getStart()}</td>
-										<td>${session.getEnd()}</td>
+										<td>${session.date}</td>
+										<td>${session.start}</td>
+										<td>${session.end}</td>
 										<td>
-			                                ${session.getTitle()}<a href='${url}'>  </a>
+			                                ${session.title}<a href='${url}'>  </a>
 										</td>
-										<td>${session.getAuthor()}</td>
-										<td>${session.getLocation()}</td>
+										<td>${session.author}</td>
+										<td>${session.location}</td>
 										<td></td>
 									</tr>
 								</c:forEach>

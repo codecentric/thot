@@ -1,13 +1,16 @@
 package org.ale.thot.web.controller;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.ale.thot.domain.Comment;
 import org.ale.thot.domain.CommentDao;
+import org.ale.thot.domain.Session;
+import org.ale.thot.domain.SessionDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -25,41 +28,45 @@ public class AddCommentsController {
 	private static final String THOT_USERNAME = "THOT_username";
 	
 	@Autowired
-	private CommentDao commentDao; 
+	private CommentDao commentDao;
+	
+	@Autowired
+	private SessionDao sessionDao;
+	
 	public AddCommentsController() {
 		super();
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public void setupForm(ModelMap modelMap, HttpServletRequest request) {
-		HttpSession session = request.getSession();
+		HttpSession httpSession = request.getSession();
 		
-		//String sessionId = request.getParameter("sessionId"); 
-		String sessionTitle = request.getParameter("title"); 
-		try {
-			sessionTitle = URLDecoder.decode(sessionTitle, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		String sessionId = request.getParameter("sessionId");
+		Session session = null;
+		session = sessionDao.getSessionById(sessionId);
+
 		CommentFormData commentFormData = new CommentFormData();
-		if ( session.getAttribute(THOT_USERNAME) != null ) {
-			commentFormData.setAuthor((String) session.getAttribute(THOT_USERNAME));
+		if ( httpSession.getAttribute(THOT_USERNAME) != null ) {
+			commentFormData.setAuthor((String) httpSession.getAttribute(THOT_USERNAME));
 		}
 
+		List<Integer> ratingList = Arrays.asList(0,1,2,3,4,5);
+        modelMap.put("ratingList", ratingList);
         modelMap.put("commentFormData", commentFormData);
-        modelMap.put("sessionTitle", sessionTitle);
+        modelMap.put("sessionTitle", session.getTitle());
 	}
    
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView processSubmit(final HttpServletRequest request, ModelMap modelMap,final
-			@ModelAttribute("commentFormData") CommentFormData cmd, BindingResult result) {
+	public ModelAndView processSubmit(
+			final HttpServletRequest request, 
+			ModelMap modelMap,
+			final @ModelAttribute("commentFormData") CommentFormData cmd, 
+			BindingResult result) {
 		
 		request.getSession().setAttribute(THOT_USERNAME, cmd.getAuthor());
 		
-		Comment comment = new Comment(new Date(), cmd.getAuthor(), cmd.getText(),  Long.valueOf(cmd.getSessionId()) );
+		Comment comment = new Comment(new Date(), cmd.getAuthor(), cmd.getText(),  Long.valueOf(cmd.getSessionId()), cmd.getRating() );
 		commentDao.saveComment(comment);
 		return new ModelAndView(new RedirectView("comments"){{
 			this.getAttributesMap().put("sessionId", cmd.getSessionId());

@@ -11,7 +11,6 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-
 public class JpaCommentDaoTest {
 
 	@Mock
@@ -26,7 +25,7 @@ public class JpaCommentDaoTest {
 	
 	@Test
 	public void shouldSaveComment() {
-		Comment comment = new Comment(new Date(), "me", "comment", 1L);
+		Comment comment = new Comment(new Date(), "me", "comment", 1L, 1);
 		dao.saveComment(comment);
 		verify(emMock).merge(comment);
 	}
