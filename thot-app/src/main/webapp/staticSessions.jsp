@@ -27,16 +27,15 @@
 				<%@ include file="schedule_tableheader.html"%>
 				<tbody>
 					<c:forEach items="${allStaticSessions}" var="session">
-
-						<tr>
+                        <c:url value="comments" var="url" scope="page">
+                            <c:param name="sessionId" value="${session.getId()}" />
+                        </c:url>
+						<tr class="sessions" data-link="${url}">
 							<td>${session.getDate()}</td>
 							<td>${session.getStart()}</td>
 							<td>${session.getEnd()}</td>
 							<td>
-								<c:url value="comments" var="url" scope="page">
-									<c:param name="sessionId" value="${session.getId()}" />
-								</c:url> 
-								<a href='${url}'> ${session.getTitle()} </a> 
+                                ${session.getTitle()}<a href='${url}'>  </a>
 							</td>
 							<td>${session.getAuthor()}</td>
 							<td>${session.getLocation()}</td>
@@ -48,12 +47,11 @@
 		</div>
 	</div>
 
-					<script type="text/JavaScript">
-					<!--
-						function initTab() {
-							$('#daysTab a:last').tab('show');
-						}
-					//   -->
-					</script>
-
-					<%@ include file="footer.html"%>
+    <script type="text/JavaScript">
+    <!--
+        function initTab() {
+            $('#daysTab a:last').tab('show');
+        }
+    //   -->
+    </script>
+    <%@ include file="footer.html"%>
