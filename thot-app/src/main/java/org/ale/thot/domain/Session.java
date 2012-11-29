@@ -198,6 +198,10 @@ public class Session {
 	}
 
 	public boolean isInProgress(Calendar now) {
+		if(end == null){
+			return false;
+		}
+	
 		int minute = now.get(Calendar.MINUTE);
 		int hour = now.get(Calendar.HOUR_OF_DAY);
 		int timeIdent = Integer.valueOf(String.format("%s%s", hour, minute));

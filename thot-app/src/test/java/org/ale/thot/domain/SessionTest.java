@@ -24,7 +24,7 @@ public class SessionTest {
 	}
 	
 	@Test
-	public void isInProgressRetrunsTrueIfNowIsBetweenStartAndEnd() {
+	public void isInProgressReturnsTrueIfNowIsBetweenStartAndEnd() {
 		session.setStart("10:00");
 		session.setEnd("11:00");
 		setNow(10,23);
@@ -32,9 +32,33 @@ public class SessionTest {
 	}
 	
 	@Test
-	public void isInProgressRetrunsFalseIfNowIsNotBetweenStartAndEnd() {
+	public void isInProgressReturnsTrueIfNowIsStart() {
+		session.setStart("10:00");
+		session.setEnd("11:00");
+		setNow(10,00);
+		assertTrue(session.isInProgress(now));
+	}
+	
+	@Test
+	public void isInProgressReturnsTrueIfNowIsEnd() {
+		session.setStart("10:00");
+		session.setEnd("11:00");
+		setNow(11,00);
+		assertTrue(session.isInProgress(now));
+	}
+	
+	@Test
+	public void isInProgressReturnsFalseIfNowIsNotBetweenStartAndEnd() {
 		session.setStart("09:00");
 		session.setEnd("10:00");
+		setNow(10,23);
+		assertFalse(session.isInProgress(now));
+	}
+	
+	@Test
+	public void isInProgressWithNoEndDateReturnFalse() {
+		session.setStart("09:00");
+		session.setEnd(null);
 		setNow(10,23);
 		assertFalse(session.isInProgress(now));
 	}

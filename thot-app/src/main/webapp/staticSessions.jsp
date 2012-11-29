@@ -21,19 +21,19 @@
 		<br style="clear: both;" />
 
 		<ul class="nav nav-tabs">
-			<li><a href="#current" data-toggle="tab"> current </a></li>
+			<li class="active"><a href="#current_sessions" data-toggle="tab"><spring:message code="current_session" text="current sessions" /></a></li>
 			<c:forEach items="${sessionDays}" var="day" varStatus="status">
 				<li><a href="#date${status.index}" data-toggle="tab"> ${day} </a></li>
 			</c:forEach>
 		</ul>
 		
 		<div class="tab-content">
-		 	<div class="tab-pane" id="current">
+		 	<div class="tab-pane active" id="current_sessions">
 		 		<div class="row-fluid">
 						<table class="table table-striped">
 							<%@ include file="schedule_tableheader.html"%>
 							<tbody>
-								<c:forEach items="${current}" var="session">
+								<c:forEach items="${currentSessions}" var="session">
 			                        <c:url value="comments" var="url" scope="page">
 			                            <c:param name="sessionId" value="${session.getId()}" />
 			                        </c:url>

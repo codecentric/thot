@@ -1,5 +1,6 @@
 package org.ale.thot.domain;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -71,8 +72,8 @@ public class JpaSessionDao implements SessionDao {
 	}
 
 	private String getNowAsString() {
-		Calendar now = Calendar.getInstance();
-		return String.format("%s.%s.", now.get(Calendar.DAY_OF_MONTH), now.get(Calendar.MONTH)+1);
+		SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+		return format.format(new Date());
 	}
 	
 }

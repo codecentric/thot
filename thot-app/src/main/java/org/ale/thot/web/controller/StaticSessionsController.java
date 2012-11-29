@@ -58,7 +58,7 @@ public class StaticSessionsController {
 		modelMap.put("sessionMap", sessionsByDateMap );
 		modelMap.put("allStaticSessions", staticSessions);
 		modelMap.put("days", conferenceDays);
-		modelMap.put("current", sessionDao.getCurrentSessions());
+		modelMap.put("currentSessions", sessionDao.getCurrentSessions());
 	}
 
 	public static Map<String, Map<String, Session>> groupSessionsByLocationsSlots(
