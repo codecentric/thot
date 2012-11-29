@@ -18,7 +18,7 @@
 <br style="clear: both;"/>
 <div class="row-fluid">
 
-<!-- 
+
     <div class="span10">
       <div class="content-heading">
       <img src="<%= request.getContextPath() %>/assets/img/floor2.png"/>
@@ -27,7 +27,6 @@
       <div class="content-heading">
       <img src="<%= request.getContextPath() %>/assets/img/floor3.png"/>
       </div>
- -->
 </div>
 
 </div></div>
