@@ -50,7 +50,7 @@ public class AddCommentsController {
 			commentFormData.setAuthor((String) httpSession.getAttribute(THOT_USERNAME));
 		}
 
-		List<Integer> ratingList = Arrays.asList(0,1,2,3,4,5);
+		List<Integer> ratingList = Arrays.asList(1,2,3,4,5);
         modelMap.put("ratingList", ratingList);
         modelMap.put("commentFormData", commentFormData);
         modelMap.put("sessionTitle", session.getTitle());

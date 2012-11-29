@@ -30,7 +30,7 @@
         <form:textarea maxlength="255" id="text" path="text" />
 		<form:errors class="form-error" path="text" />
 
-        <div>Rating: (0: schlecht ... 5: alles super)</div>
+        <div>Rating: (1: schlecht ... 5: alles super)</div>
 		<form:select path="rating">
 		   <form:option value="null" label="--- Select ---"/>
 		   <form:options items="${ratingList}" />
