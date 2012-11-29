@@ -8,6 +8,12 @@
 
 <div class="container">
 
+	<h3>Version 2.1</h3>
+	<ul>
+		<li>Added all session to the session overview</li>
+		<li>Created a link on the session title to open a session detail page</li>
+	</ul>
+
 	<h3>Version 2.0 </h3>
 	<ul>
 		<li>Prepared almost empty version for XPdays</li>
