@@ -1,4 +1,4 @@
 <%@ include file="header.jsp"  %>
 <body >
-<jsp:forward page="/allSessions" />
+<jsp:forward page="/staticSessions" />
 <%@ include file="footer.html"  %>
