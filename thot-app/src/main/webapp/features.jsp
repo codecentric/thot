@@ -8,6 +8,10 @@
 
 <div class="container">
 
+	<h3>Version 2.4</h3>
+	<ul>
+		<li>Added venue map</li>
+	</ul>
 	<h3>Version 2.3</h3>
 	<ul>
 		<li>Removed edit link for sessions</li>
