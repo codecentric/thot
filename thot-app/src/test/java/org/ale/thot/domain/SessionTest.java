@@ -35,7 +35,7 @@ public class SessionTest {
 	public void isInProgressReturnsTrueIfNowIsStart() {
 		session.setStart("10:00");
 		session.setEnd("11:00");
-		setNow(10,00);
+		setNow(10,0);
 		assertTrue(session.isInProgress(now));
 	}
 	
@@ -43,7 +43,7 @@ public class SessionTest {
 	public void isInProgressReturnsTrueIfNowIsEnd() {
 		session.setStart("10:00");
 		session.setEnd("11:00");
-		setNow(11,00);
+		setNow(11,0);
 		assertTrue(session.isInProgress(now));
 	}
 	

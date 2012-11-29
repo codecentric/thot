@@ -204,12 +204,12 @@ public class Session {
 	
 		int minute = now.get(Calendar.MINUTE);
 		int hour = now.get(Calendar.HOUR_OF_DAY);
-		int timeIdent = Integer.valueOf(String.format("%s%s", hour, minute));
+		int timeIdent = hour * 100 + minute;
 		
 		int startAsInt = Integer.valueOf(start.replaceAll(":", ""));
 		int endAsInt = Integer.valueOf(end.replaceAll(":", ""));
 		
-		return timeIdent > startAsInt && timeIdent < endAsInt;
+		return timeIdent >= startAsInt && timeIdent <= endAsInt;
 	}
 
 	public void setStart(String start) {
