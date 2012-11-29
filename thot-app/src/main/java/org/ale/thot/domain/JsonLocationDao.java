@@ -21,7 +21,6 @@ public class JsonLocationDao implements LocationDao {
 		this.jsonMapper = mapper;
 	}	
 	
-	@Override
 	public List<Location> getLocations() {
 		if(locations == null) {
 			try {			
@@ -38,7 +37,6 @@ public class JsonLocationDao implements LocationDao {
 		return locations;
 	}
 	
-	@Override
 	public Location getLocation(String shortName) {
 		for (Location location : getLocations()) {
 			if(shortName.endsWith(location.getShortName())) {

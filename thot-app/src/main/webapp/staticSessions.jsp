@@ -29,18 +29,19 @@
 					<c:forEach items="${allStaticSessions}" var="session">
 
 						<tr>
-							<td><c:url value="comments" var="url" scope="page">
-									<c:param name="sessionId" value="${session.getId()}" />
-								</c:url> <a href='${url}' role="button" class="btn">Comments</a></td>
+							<td>${session.getDate()}</td>
 							<td>${session.getStart()}</td>
 							<td>${session.getEnd()}</td>
-							<td>${session.getTitle()}</td>
+							<td>
+								<c:url value="comments" var="url" scope="page">
+									<c:param name="sessionId" value="${session.getId()}" />
+								</c:url> 
+								<a href='${url}'> ${session.getTitle()} </a> 
+							</td>
 							<td>${session.getAuthor()}</td>
 							<td>${session.getLocation()}</td>
 							<td></td>
 						</tr>
-
-
 					</c:forEach>
 				</tbody>
 			</table>
