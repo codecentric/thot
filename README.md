@@ -10,6 +10,19 @@ Eclipse is preferred and we also added a setup task for Eclipse (see below).
 If you want to run the app on your local machine, you need a MySQL installation 
 at hand (checkout http://dev.mysql.com/downloads/).
 </p>
+<h3>Environments</h3>
+<p>
+Continuous Delivery Server (Jenkins)
+http://54.234.25.225/jenkins
+</p>
+<p>
+Test instance
+http://107.20.22.51/thot
+</p>
+<p>
+Prod instance:
+http://54.242.239.6/thot
+</p>
 
 <h3>Setting things up</h3>
 
