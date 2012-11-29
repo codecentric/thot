@@ -9,10 +9,8 @@ import java.util.Set;
 
 import org.ale.app.XlsSessionReader;
 import org.ale.thot.domain.Day;
-import org.ale.thot.domain.Location;
 import org.ale.thot.domain.Session;
 import org.ale.thot.domain.SessionDao;
-import org.ale.thot.domain.Timeslot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -28,7 +26,6 @@ public class StaticSessionsController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public void setupForm(ModelMap modelMap) {
-		
 		Set<Day> conferenceDays = new HashSet<Day>();
 		List<Session>staticSessions = sessionDao.getAllStaticSessions();
 		if(staticSessions.isEmpty()) {
@@ -56,21 +53,12 @@ public class StaticSessionsController {
 			}
 			sessionsByDateMap.put(key, list);
 		}
-
+		
 		modelMap.put("sessionDays", days);
 		modelMap.put("sessionMap", sessionsByDateMap );
 		modelMap.put("allStaticSessions", staticSessions);
 		modelMap.put("days", conferenceDays);
-	}
-
-	private void createDefaultSessionsForDay(Day day, List<Location> locations) {
-		for (Location location : locations) {
-			for (Timeslot timeslot : day.getTimeslots()) {
-				final Session session = new Session(day.getShortName(), timeslot.getStart(), location.getShortName(), Session.EMPTY_TITLE, null, Session.EMPTY_DESCRIPTION);
-				sessionDao.saveSession(session);
-			}
-		}
-
+		modelMap.put("currentSessions", sessionDao.getCurrentSessions());
 	}
 
 	public static Map<String, Map<String, Session>> groupSessionsByLocationsSlots(

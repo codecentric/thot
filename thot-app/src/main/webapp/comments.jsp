@@ -11,9 +11,11 @@
 	<div class="container-fluid">
 
 		<div style="float: right;">
-			<a class="btn btn-primary"
-				href="<%= request.getContextPath() %>/editSession?sessionId=${sessionId}">Edit
-				session data</a>
+			<c:if test="${sessionEditable}">
+				<a class="btn btn-primary"
+					href="<%= request.getContextPath() %>/editSession?sessionId=${sessionId}">Edit
+					session data</a>
+			</c:if>
 		</div>
 
 		<!--/span-->

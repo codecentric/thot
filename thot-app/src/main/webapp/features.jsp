@@ -8,6 +8,20 @@
 
 <div class="container">
 
+	<h3>Version 2.5</h3>
+	<ul>
+		<li>Added list of currently ongoing sessions</li>
+	</ul>
+	<h3>Version 2.4</h3>
+	<ul>
+		<li>Added venue map</li>
+	</ul>
+	<h3>Version 2.3</h3>
+	<ul>
+		<li>Removed edit link for sessions</li>
+		<li>Link the whole row to open the session details</li>
+	</ul>
+
 	<h3>Version 2.2</h3>
 	<ul>
 		<li>Added tabs for each day of the conference. Each tab only contains the sessions on that day.</li>

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/comments")
 public class CommentsController {
 
+	private static final String SESSION_TYPE_SESSION = "session";
 	@Autowired
 	private CommentDao commentDao;
 
@@ -41,6 +42,7 @@ public class CommentsController {
 			modelMap.put("comments", commentDao.getCommentsBySessionId(lSessionId));
 			modelMap.put("sessionTitle", utf8(session.getTitle()));
 			modelMap.put("sessionDescription", utf8(session.getDescription()));
+			modelMap.put("sessionEditable", getSessionIsEditable(session.getType()));
 
 			String location = session.getLocation() != null ? session.getLocation() : "Unknown";
 
@@ -55,6 +57,13 @@ public class CommentsController {
 			modelMap.put("sessionTitle", "Nice try :)");
 			modelMap.put("sessionDescription", "Do you think this is something a normal user would do?");
 		}
+	}
+
+	private Boolean getSessionIsEditable(String type) {
+		if(type.equalsIgnoreCase(SESSION_TYPE_SESSION)){
+			return Boolean.FALSE;
+		}
+		return Boolean.TRUE;
 	}
 
 	private String utf8(String text) {
