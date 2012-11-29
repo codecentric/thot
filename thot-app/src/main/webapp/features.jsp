@@ -8,6 +8,11 @@
 
 <div class="container">
 
+	<h3>Version 2.2</h3>
+	<ul>
+		<li>Added tabs for each day of the conference. Each tab only contains the sessions on that day.</li>
+	</ul>
+
 	<h3>Version 2.1</h3>
 	<ul>
 		<li>Added all session to the session overview</li>
