@@ -55,7 +55,7 @@ public class XlsSessionReader {
 		try {
 			final POIFSFileSystem fileSystem = new POIFSFileSystem(is);
 			final HSSFWorkbook workBook = new HSSFWorkbook(fileSystem);
-			final HSSFSheet sheet = workBook.getSheetAt(0);
+			final HSSFSheet sheet = workBook.getSheet("Alle Tage");
 
 			int rows = sheet.getPhysicalNumberOfRows();
 			// as the row is a header we start with the second one
