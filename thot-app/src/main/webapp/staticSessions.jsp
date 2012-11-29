@@ -21,31 +21,44 @@
 
 		<br style="clear: both;" />
 
+		<ul class="nav nav-tabs">
+			<c:forEach items="${sessionDays}" var="day" varStatus="status">
+				<li><a href="#date${status.index}" data-toggle="tab"> ${day} </a></li>
+			</c:forEach>
+		</ul>
+		
+		<div class="tab-content">
+			 <c:forEach items="${sessionMap}" var="entry" varStatus="status">
+			 	<div class="tab-pane" id="date${status.index}">
 
-		<div class="row-fluid">
-			<table class="table table-striped">
-				<%@ include file="schedule_tableheader.html"%>
-				<tbody>
-					<c:forEach items="${allStaticSessions}" var="session">
-                        <c:url value="comments" var="url" scope="page">
-                            <c:param name="sessionId" value="${session.getId()}" />
-                        </c:url>
-						<tr class="sessions" data-link="${url}">
-							<td>${session.getDate()}</td>
-							<td>${session.getStart()}</td>
-							<td>${session.getEnd()}</td>
-							<td>
-                                ${session.getTitle()}<a href='${url}'>  </a>
-							</td>
-							<td>${session.getAuthor()}</td>
-							<td>${session.getLocation()}</td>
-							<td></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+					<div class="row-fluid">
+						<table class="table table-striped">
+							<%@ include file="schedule_tableheader.html"%>
+							<tbody>
+								<c:forEach items="${entry.value}" var="session">
+			                        <c:url value="comments" var="url" scope="page">
+			                            <c:param name="sessionId" value="${session.getId()}" />
+			                        </c:url>
+									<tr class="sessions" data-link="${url}">
+										<td>${session.getDate()}</td>
+										<td>${session.getStart()}</td>
+										<td>${session.getEnd()}</td>
+										<td>
+			                                ${session.getTitle()}<a href='${url}'>  </a>
+										</td>
+										<td>${session.getAuthor()}</td>
+										<td>${session.getLocation()}</td>
+										<td></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
+
+			 	</div>
+			</c:forEach>
 		</div>
-	</div>
+
 
     <script type="text/JavaScript">
     <!--

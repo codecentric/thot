@@ -1,5 +1,6 @@
 package org.ale.thot.web.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -7,14 +8,11 @@ import java.util.Map;
 import java.util.Set;
 
 import org.ale.app.XlsSessionReader;
-import org.ale.thot.domain.CommentDao;
 import org.ale.thot.domain.Day;
 import org.ale.thot.domain.Location;
-import org.ale.thot.domain.LocationDao;
 import org.ale.thot.domain.Session;
 import org.ale.thot.domain.SessionDao;
 import org.ale.thot.domain.Timeslot;
-import org.ale.thot.domain.TimeslotDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -43,6 +41,24 @@ public class StaticSessionsController {
 			staticSessions = sessionDao.getAllStaticSessions();
 		}
 
+		List<String> days = new ArrayList<String>();
+		Map<String, List<Session>> sessionsByDateMap = new HashMap<String, List<Session>>();
+		for (Session session : staticSessions) {
+			String key = session.getDate();
+			List<Session> list;
+			if( sessionsByDateMap.containsKey( key ) ) {
+				list = sessionsByDateMap.get( key );
+				list.add( session );
+			} else {
+				days.add( key );
+				list = new ArrayList<Session>();
+				list.add( session );
+			}
+			sessionsByDateMap.put(key, list);
+		}
+
+		modelMap.put("sessionDays", days);
+		modelMap.put("sessionMap", sessionsByDateMap );
 		modelMap.put("allStaticSessions", staticSessions);
 		modelMap.put("days", conferenceDays);
 	}
