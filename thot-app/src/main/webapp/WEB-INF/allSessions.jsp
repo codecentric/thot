@@ -3,9 +3,9 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ page session="false"%>
 
-<%@ include file="header.jsp"%>
+<%@ include file="../header.jsp"%>
 <body>
-<%@ include file="menu.jsp"%>
+<%@ include file="../menu.jsp"%>
 
 
 <div class="container-fluid">
@@ -139,4 +139,4 @@
 		</div>
 	</div>
 </div>
-<%@ include file="footer.html"%>
+<%@ include file="../footer.html"%>
