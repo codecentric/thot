@@ -15,8 +15,7 @@
 				<spring:message code="sessions" text="sessions" />
 			</h1>
 			<br />
-			<p>For more details on content, please click the description
-				inside the cells</p>
+			<p>Select the day of the conference that you are interested in.</p>
 		</div>
 
 		<br style="clear: both;" />
