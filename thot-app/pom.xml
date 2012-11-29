@@ -203,7 +203,7 @@
     	<profile>
 			<id>test</id>
       		<properties>
-      			<cargo.host>54.242.3.180</cargo.host>
+      			<cargo.host>107.20.22.51</cargo.host>
       			<cargo.user>admin</cargo.user>
       			<cargo.pwd>admin</cargo.pwd>
       		</properties>
@@ -211,7 +211,7 @@
     	<profile>
 			<id>prod</id>
       		<properties>
-      			<cargo.host>50.19.217.158</cargo.host>
+      			<cargo.host>54.242.239.6</cargo.host>
       			<cargo.user>admin</cargo.user>
       			<cargo.pwd>admin</cargo.pwd>
       		</properties>
