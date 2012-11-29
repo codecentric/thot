@@ -8,6 +8,10 @@
 
 <div class="container">
 
+	<h3>Version 2.5</h3>
+	<ul>
+		<li>Added list of currently ongoing sessions</li>
+	</ul>
 	<h3>Version 2.4</h3>
 	<ul>
 		<li>Added venue map</li>
