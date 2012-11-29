@@ -27,14 +27,7 @@ public class StaticSessionsController {
 
 	@Autowired
 	private SessionDao sessionDao;
-	@Autowired
-	private CommentDao commentDao;
 
-	
-	public StaticSessionsController() {
-		super();
-	}
-	
 	@RequestMapping(method = RequestMethod.GET)
 	public void setupForm(ModelMap modelMap) {
 		
@@ -49,25 +42,11 @@ public class StaticSessionsController {
 			}
 			staticSessions = sessionDao.getAllStaticSessions();
 		}
-		//List<Location> locations = sessionDao.getStaticSessionLocations();
-		
-		Map<String, Map<String, Map<String, Session>>> allStaticSessions = new HashMap<String, Map<String, Map<String, Session>>>();
-		Map<String, List<Timeslot>> allTimeslots = new HashMap<String, List<Timeslot>>();
-		
-		
-//		List<Session> daySessions = sessionDao.getStaticSessionsByDate(day.getShortName());
-//		allStaticSessions.put(day.getShortName(), groupSessionsByLocationsSlots(daySessions));
-//		allTimeslots.put(day.getShortName(), timeslotDao.getTimeslots(day.getShortName()));
-		
+
 		modelMap.put("allStaticSessions", staticSessions);
-//		modelMap.put("allTimeslots", allTimeslots);
-		
 		modelMap.put("days", conferenceDays);
-		
-		// removing it for the moment
-		//modelMap.put("commentCount", commentDao.getCommentCountForSessions());
 	}
-	
+
 	private void createDefaultSessionsForDay(Day day, List<Location> locations) {
 		for (Location location : locations) {
 			for (Timeslot timeslot : day.getTimeslots()) {
@@ -75,7 +54,7 @@ public class StaticSessionsController {
 				sessionDao.saveSession(session);
 			}
 		}
-		
+
 	}
 
 	public static Map<String, Map<String, Session>> groupSessionsByLocationsSlots(
