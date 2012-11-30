@@ -71,6 +71,34 @@
 			</table>
 		</div>
 
+		<div class="row-fluid">
+			<div style="float: right;">
+				<a class="btn btn-primary"
+					href="<%= request.getContextPath() %>/addLink?sessionId=<%= request.getParameter("sessionId")%>&title=${sessionTitle}">Add
+					Link</a>
+			</div>
+
+			<table id="link" class="table table-striped">
+				<thead>
+					<tr>
+						<th>Link</th>
+						<th>Comment</th>
+						<th>Date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${links}" var="link">
+						<tr>
+							<td><a href="${link.link}">${link.link}</a></td>
+							<td>${link.comment}</td>
+							<td><fmt:formatDate value="${link.date}" type="both"
+									dateStyle="short" timeStyle="short" /></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+
 	<script type="text/JavaScript">
 	<!--
 		function timedRefresh(timeoutPeriod) {

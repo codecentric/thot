@@ -31,6 +31,8 @@ public class Link {
 	private String comment;
 	private Long sessionId;
 
+	public Link(){}
+	
 	public Link(Date date, String comment, String link, Long sessionId) {
 		super();
 		this.date = date;

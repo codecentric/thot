@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.ale.app.TwitterLinkCreator;
 import org.ale.thot.domain.CommentDao;
+import org.ale.thot.domain.LinkDao;
 import org.ale.thot.domain.Session;
 import org.ale.thot.domain.SessionDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class CommentsController {
 
 	private static final String SESSION_TYPE_SESSION = "session";
+	
+	@Autowired
+	private LinkDao linkDao; 
+
 	@Autowired
 	private CommentDao commentDao;
 
@@ -39,7 +44,9 @@ public class CommentsController {
 			session = sessionDao.getSessionById(sessionId);
 			modelMap.put("sessionId", sessionId);
 
+			modelMap.put("forms", commentDao.getCommentsBySessionId(lSessionId));
 			modelMap.put("comments", commentDao.getCommentsBySessionId(lSessionId));
+			modelMap.put("links", linkDao.getLinksBySessionId(lSessionId));
 			modelMap.put("sessionTitle", utf8(session.getTitle()));
 			modelMap.put("sessionDescription", utf8(session.getDescription()));
 			modelMap.put("sessionEditable", getSessionIsEditable(session.getType()));
