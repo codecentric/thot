@@ -38,11 +38,6 @@
 		<br style="clear: both;" />
 
 		<div class="row-fluid">
-			<a href="https://twitter.com/share" class="twitter-share-button" data-text="Ich habe eine @xp_de Session kommentiert" data-via="OSSWDEV" data-lang="de" data-hashtags="xdde12">Twittern</a>
-			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</div>
-		
-		<div class="row-fluid">
 			<div style="float: right;">
 				<a class="btn btn-primary"
 					href="<%= request.getContextPath() %>/addComment?sessionId=<%= request.getParameter("sessionId")%>&title=${sessionTitle}">Add
@@ -55,7 +50,7 @@
 						<th>Name</th>
 						<th>Comment</th>
 						<th>Date</th>
-						<th>Rating</th>
+						<th colspan="2">Rating</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -69,6 +64,7 @@
 									<td class="rating" data-rating="${comment.rating}">
 										<img src='assets/img/thumb${comment.rating}.png' title='Rating: ${comment.rating}' alt='${comment.rating}'>
 									</td>
+							<td><a href="http://twitter.com/?status=Neuer Kommentar zur @xp_de: ${comment.text } /via @OSSWDEV #osswdev #xdde12">Kommentar twittern</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
