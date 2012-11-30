@@ -170,11 +170,23 @@
     </dependency>
 
     <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-java</artifactId>
+        <version>${selenium.version}</version>
+        <exclusions>
+            <exclusion>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest-core</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+
+    <dependency>
         <groupId>org.jbehave</groupId>
         <artifactId>jbehave-spring</artifactId>
         <version>${jbehave.core.version}</version>
     </dependency>
-	
+
   </dependencies>
   
   <build>
