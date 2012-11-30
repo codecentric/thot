@@ -10,25 +10,21 @@
 
 <div class="container-fluid">
 
-	<!--/span-->
 	<div class="well well-small">
-	<h2><spring:message code="map" text="map"/></h2> 
-	<p>
+		<h2><spring:message code="map" text="map"/></h2> 
 	</div>
+
 <br style="clear: both;"/>
-<div class="row-fluid">
 
-
-    <div class="span10">
-      <div class="content-heading">
-      <img src="<%= request.getContextPath() %>/assets/img/floor2.jpg"/>
-      </div>
-    <div class="span10">
-      <div class="content-heading">
-      <img src="<%= request.getContextPath() %>/assets/img/floor3.jpg"/>
-      </div>
-</div>
-
-</div></div>
+	<div class="row-fluid">
+		<div class="span10">
+	    	<div class="content-heading">
+	      		<img src="<%= request.getContextPath() %>/assets/img/floor2.jpg"/>
+	      	</div>
+	      	<div class="content-heading">
+		    	<img src="<%= request.getContextPath() %>/assets/img/floor3.jpg"/>
+	      	</div>
+		</div>
+	</div>
 
 <%@ include file="footer.html"%>
