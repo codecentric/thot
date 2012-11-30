@@ -19,7 +19,7 @@ import javax.persistence.NamedQuery;
 		@NamedQuery(name = "findAllSessions", query = "from session where type is null order by date"),
 		@NamedQuery(name = "findAllStaticSessions", query = "from session where type ='session' order by date"),
 		@NamedQuery(name = "findStaticSessionsForDate", query = "from session where type ='session' and date=:date") })
-public class Session {
+public class Session implements Comparable<Session> {
 	public static String EMPTY_TITLE = "Available Session";
 	public static String EMPTY_DESCRIPTION = "This session is still available.";
 
@@ -219,4 +219,12 @@ public class Session {
 	public void setEnd(String end) {
 		this.end = end;
 	}
+
+    @Override
+    public int compareTo(Session session) {
+        if(this.location == null) {
+           return session.location == null ? 0 : -1; 
+        }
+        return this.location.compareTo(session.location);
+    }
 }
