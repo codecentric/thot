@@ -19,9 +19,9 @@ public class OpenSpaceFormData {
 	public OpenSpaceFormData(Session session) {
 		this.sessionId = session.getId();
 		this.date = session.getDate();
-		this.title = session.getTitle();
-		this.speaker = session.getAuthor();
-		this.description = session.getDescription();
+		this.title = Html.unEscapeHtml(session.getTitle());
+		this.speaker = Html.unEscapeHtml(session.getAuthor());
+		this.description = Html.unEscapeHtml(session.getDescription());
 		this.start = session.getStart();
 		this.location = session.getLocation();
 	}

@@ -50,7 +50,7 @@
 						<th>Name</th>
 						<th>Comment</th>
 						<th>Date</th>
-						<th>Rating</th>
+						<th colspan="2">Rating</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -64,6 +64,7 @@
 									<td class="rating" data-rating="${comment.rating}">
 										<img src='assets/img/thumb${comment.rating}.png' title='Rating: ${comment.rating}' alt='${comment.rating}'>
 									</td>
+							<td><a href="http://twitter.com/?status=Neuer Kommentar: ${comment.text} - <%= request.getRequestURL() %>?sessionId=${sessionId} %23osswdev %23xdde12 via @OSSWDEV">Kommentar twittern</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

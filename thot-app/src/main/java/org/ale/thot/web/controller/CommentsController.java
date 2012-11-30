@@ -42,7 +42,7 @@ public class CommentsController {
 			modelMap.put("comments", commentDao.getCommentsBySessionId(lSessionId));
 			modelMap.put("sessionTitle", utf8(session.getTitle()));
 			modelMap.put("sessionDescription", utf8(session.getDescription()));
-			modelMap.put("sessionEditable", Boolean.TRUE/*getSessionIsEditable(session.getType())*/ );
+			modelMap.put("sessionEditable", getSessionIsEditable(session.getType()));
 
 			String location = session.getLocation() != null ? session.getLocation() : "Unknown";
 
@@ -60,7 +60,7 @@ public class CommentsController {
 	}
 
 	private Boolean getSessionIsEditable(String type) {
-		if(type.equalsIgnoreCase(SESSION_TYPE_SESSION)){
+		if(type != null && type.equalsIgnoreCase(SESSION_TYPE_SESSION)){
 			return Boolean.FALSE;
 		}
 		return Boolean.TRUE;

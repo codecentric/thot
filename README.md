@@ -1,3 +1,5 @@
+[![Build Status](https://buildhive.cloudbees.com/job/codecentric/job/thot/badge/icon)](https://buildhive.cloudbees.com/job/codecentric/job/thot/)
+
 <h1>Welcome to the Open Space Software Development at XP Days Germany 2012</h1>
 
 <h2>Setting up the development environment</h2>
@@ -17,11 +19,11 @@ http://54.234.25.225/jenkins
 </p>
 <p>
 Test instance
-http://107.20.22.51/thot
+http://bit.ly/xdde-12-test
 </p>
 <p>
 Prod instance:
-http://54.242.239.6/thot
+http://bit.ly/xdde-12-prod
 </p>
 
 <h3>Setting things up</h3>

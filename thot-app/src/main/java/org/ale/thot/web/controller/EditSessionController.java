@@ -29,11 +29,11 @@ public class EditSessionController {
 	private SessionDao sessionDao;
 	@Autowired
 	private TimeslotDao timeslotDao;
-	
+
 	public EditSessionController() {
 		super();
 	}
-	
+
 	public EditSessionController(SessionDao sessionDao, TimeslotDao timeslotDao) {
 		this();
 		this.sessionDao = sessionDao;
@@ -52,6 +52,9 @@ public class EditSessionController {
 		if (sessionId != null) {
 			try {
 				Session session = sessionDao.getSessionById(sessionId);
+				String descriptionWithoutBrTags = Html.brTagsToLineBreaks(session
+						.getDescription());
+				session.setDescription(descriptionWithoutBrTags);
 				modelMap.put("session", session);
 				modelMap.put("sessionDataFormData", new OpenSpaceFormData(session));
 				modelMap.put("sessionId", sessionId);
@@ -63,14 +66,16 @@ public class EditSessionController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView processSubmit(HttpServletRequest request, ModelMap modelMap,
-			@ModelAttribute("sessionDataFormData") OpenSpaceFormData cmd, BindingResult result) {
-		
+	public ModelAndView processSubmit(HttpServletRequest request,
+			ModelMap modelMap,
+			@ModelAttribute("sessionDataFormData") OpenSpaceFormData cmd,
+			BindingResult result) {
+
 		modelMap.put("sessionDataFormData", cmd);
-		
+
 		// do validation
 		OpenSpaceValidator.validate(cmd, result);
-		if ( result.hasErrors() ) {
+		if (result.hasErrors()) {
 			return new ModelAndView("editSession");
 		}
 
@@ -80,9 +85,10 @@ public class EditSessionController {
 				Session session = sessionDao.getSessionById(sessionId);
 				session.setAuthor(Html.escapeHtml(cmd.getSpeaker()));
 				session.setTitle(Html.escapeHtml(cmd.getTitle()));
-				session.setDescription(Html.escapeHtml(cmd.getDescription()));
-//				session.setSlot(cmd.getStart());
-//				session.setLocation(cmd.getLocation());
+				session.setDescription(Html.lineBreaksToBrTags(Html
+						.escapeHtml(cmd.getDescription())));
+				// session.setSlot(cmd.getStart());
+				// session.setLocation(cmd.getLocation());
 				sessionDao.saveSession(session);
 
 				return new ModelAndView("redirect:allSessions");
@@ -92,14 +98,17 @@ public class EditSessionController {
 		}
 
 		// save the data
-		Session session = new Session(cmd.getDate(), cmd.getStart(), cmd.getLocation(), cmd.getTitle(), cmd.getSpeaker(), cmd.getDescription());
+		Session session = new Session(cmd.getDate(), cmd.getStart(),
+				cmd.getLocation(), cmd.getTitle(), cmd.getSpeaker(),
+				cmd.getDescription());
 		sessionDao.saveSession(session);
 
 		return new ModelAndView("redirect:allSessions");
 	}
 
 	@RequestMapping(value = "/timeslotsPerDay", method = RequestMethod.GET)
-	public @ResponseBody Map<String, String> GetTimeslotForDay(@RequestParam("day") String day) {
+	public @ResponseBody
+	Map<String, String> GetTimeslotForDay(@RequestParam("day") String day) {
 
 		List<Timeslot> timeslots = timeslotDao.getTimeslots(day);
 		Map<String, String> timeslotsProjected = new HashMap<String, String>();
