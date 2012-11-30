@@ -1,6 +1,7 @@
 package org.ale.thot.domain;
 
 import java.util.List;
+
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonProperty;
 

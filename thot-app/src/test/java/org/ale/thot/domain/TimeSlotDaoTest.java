@@ -3,7 +3,6 @@ package org.ale.thot.domain;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import java.io.File;
 import java.util.List;
 
 import org.codehaus.jackson.map.ObjectMapper;

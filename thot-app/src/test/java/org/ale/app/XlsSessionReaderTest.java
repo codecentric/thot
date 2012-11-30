@@ -1,11 +1,5 @@
 package org.ale.app;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
-import java.util.List;
-
-import org.ale.thot.domain.Session;
 import org.junit.Test;
 
 public class XlsSessionReaderTest {

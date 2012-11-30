@@ -1,14 +1,9 @@
 package org.ale.thot.web.controller;
 
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-import org.ale.thot.domain.Comment;
-import org.ale.thot.domain.CommentDao;
 import org.ale.thot.domain.Link;
 import org.ale.thot.domain.LinkDao;
 import org.ale.thot.domain.Session;
