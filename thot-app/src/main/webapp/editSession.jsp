@@ -20,51 +20,10 @@
     <div>Topic:(*)</div>
         <form:input maxlength="255" id="title" path="title" />
 		<form:errors class="form-error" path="title" />
-<!-- 
-		<c:if test="${sessionId == null}">
-		<div>Day</div>
-		
-		<c:forEach items="${days}" var="day">
-	 		<form:radiobutton id="date" path="date" value="${day.getShortName()}" class="date" />&nbsp${day.getShortName()}&nbsp;&nbsp;		
-		</c:forEach>
-		
-
-	 	<form:radiobutton id="date" path="date" value="Wed" class="date" />&nbsp;Wed&nbsp;&nbsp;
-   		<form:radiobutton id="date" path="date" value="Thu" class="date" />&nbsp;Thu&nbsp;&nbsp;
-   		<form:radiobutton id="date" path="date" value="Fri" class="date" checked="checked" />&nbsp;Fri&nbsp;&nbsp;
-		<form:errors class="form-error" path="date" />
- 
-		<br />
-		</c:if>
-
-		<div>Slot:</div>
-		<form:select id="start" path="start" >
-		<c:forEach items="${timeslots}" var="timeslot">
-		  <form:option value="${timeslot.getStart()}" label="${timeslot.toString()}"/>
-		</c:forEach>
-		</form:select>
-		<form:errors class="form-error" path="start" />
-
-
-		<div>Location:</div>
-		<form:select id="location" path="location" >
-		<form:option value="Red" label="Red"/>
-		<form:option value="Orange" label="Orange"/>
-		<form:option value="Brown" label="Brown"/>
-		<form:option value="Green" label="Green"/>
-		<form:option value="Blue" label="Blue"/>
-		<form:option value="Purple" label="Purple"/>
-		<form:option value="Grey" label="Grey"/>
-		</form:select>
-		<form:errors class="form-error" path="start" />
-
-		<br />
--->        
         <div>Proposed by:</div>
         <form:input maxlength="255" id="speaker" path="speaker" />
 		<form:errors class="form-error" path="speaker" />
 		<br />
-        
         <div>Description:</div>
         <form:textarea  maxlength="4096" cols="30" rows="4" id="description" path="description" />
 		<form:errors class="form-error" path="description" />

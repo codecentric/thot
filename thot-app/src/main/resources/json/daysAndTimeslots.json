@@ -1,26 +1,5 @@
 [
     {
-        "shortName": "Friday",
-        "timeslots": [
-            {
-                "start": "2:00 pm",
-                "end": "2:30 pm"
-            },
-            {
-                "start": "2:30 pm",
-                "end": "3:00 pm"
-            },
-            {
-               "start": "4:30 pm",
-               "end": "5:00 pm"
-            }, 
-           {
-               "start": "5:00 pm",
-               "end": "5:30 pm"
-            }
-        ]
-    },
-    {
         "shortName": "Saturday",
         "timeslots": [
             {
@@ -30,6 +9,18 @@
             {
                 "start": "10:00 am",
                 "end": "10:30 am"
+            },
+            {
+                "start": "10:30 am",
+                "end": "11:00 am"
+            },
+            {
+                "start": "11:00 am",
+                "end": "11:30 am"
+            },
+            {
+                "start": "11:30 am",
+                "end": "12:00 am"
             },
             {
                 "start": "1:00 pm",

@@ -69,14 +69,42 @@ public class SessionTest {
     public void compareToReturnsZeroIfStartTimeIsBothNull() throws Exception {
         session.setStart(null);
         session2.setStart(null);
+        session.setLocation(null);
+        session2.setLocation(null);
         assertEquals(0, session.compareTo(session2));
     }
 
     @Test
-    public void returnsZeroIfStartTimeIsBothNull() throws Exception {
+    public void compareToReturnsMinusOneIfStartTimeOfOnlyOneSessionNull() throws Exception {
+        session.setStart(null);
+        session2.setStart("09:30");
+        assertEquals(-1, session.compareTo(session2));
+    }
+
+    @Test
+    public void compareToReturnsOneIfStartTimeOfSessionIsGreaterThanStartTimeOfCompared() throws Exception {
+        session.setStart("10:30");
+        session2.setStart("09:30");
+        assertEquals(1, session.compareTo(session2));
+    }
+    
+    @Test
+    public void compareToReturnsNegativeIfStartIsEqualAndLocationIsDifferent() throws Exception {
         session.setStart(null);
         session2.setStart(null);
-        assertEquals(0, session.compareTo(session2));
+        session.setLocation("a");
+        session2.setLocation("b");
+        assertTrue(session.compareTo(session2) < 0);
     }
+    
+    @Test
+    public void compareToReturnsPositiveIfStartIsEqualAndLocationIsDifferent() throws Exception {
+        session.setStart(null);
+        session2.setStart(null);
+        session.setLocation("b");
+        session2.setLocation("a");
+        assertTrue(session.compareTo(session2) > 0);
+    }
+    
 
 }

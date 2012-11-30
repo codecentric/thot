@@ -60,7 +60,7 @@ public class CommentsController {
 	}
 
 	private Boolean getSessionIsEditable(String type) {
-		if(type.equalsIgnoreCase(SESSION_TYPE_SESSION)){
+		if(type != null && type.equalsIgnoreCase(SESSION_TYPE_SESSION)){
 			return Boolean.FALSE;
 		}
 		return Boolean.TRUE;
