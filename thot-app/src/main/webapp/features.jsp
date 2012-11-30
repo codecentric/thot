@@ -11,6 +11,7 @@
 	<h3>Version 2.8</h3>
 	<ul>
 		<li>added marketplace for user defined open space sessions</li>
+		<li>added twitter integration on the session detail page</li>
 		<li>added automatic reload for twitter wall</li>
 	</ul>
 	<h3>Version 2.7</h3>
