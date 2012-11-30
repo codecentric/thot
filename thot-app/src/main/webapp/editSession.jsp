@@ -66,7 +66,7 @@
 		<br />
         
         <div>Description:</div>
-        <form:textarea  maxlength="255" cols="30" rows="4" id="description" path="description" />
+        <form:textarea  maxlength="4096" cols="30" rows="4" id="description" path="description" />
 		<form:errors class="form-error" path="description" />
 		<br />
         
