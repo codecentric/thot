@@ -12,14 +12,9 @@
 
 	<!--/span-->
 	<div class="well well-small">
-	<h2>Comments for session:</h2>
-	<p>
-    <h3>${sessionTitle}</h3> 
-	<p>
+		<h2>Comments for session:</h2>
+	    <h3>${sessionTitle}</h3> 
 	</div>
-
-	
-	
 
 	<br style="clear: both;"/>
 
@@ -34,6 +29,13 @@
         <div>Comment:</div>
         <form:textarea maxlength="255" id="text" path="text" />
 		<form:errors class="form-error" path="text" />
+
+        <div>Rating: (1: schlecht ... 5: alles super)</div>
+		<form:select path="rating">
+		   <form:option value="null" label="--- Select ---"/>
+		   <form:options items="${ratingList}" />
+		</form:select>
+		<form:errors class="form-error" path="rating" />
         
 		<br />
 		

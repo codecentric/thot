@@ -1,11 +1,17 @@
 package org.ale.thot.domain;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.apache.poi.ss.usermodel.DateUtil;
+import org.hibernate.mapping.Array;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -51,6 +57,23 @@ public class JpaSessionDao implements SessionDao {
 	public List<Session> getStaticSessionsByDate(String date) {
 		Query query = em.createNamedQuery("findStaticSessionsForDate");
 		return query.setParameter("date", date).getResultList();
+	}
+
+	public List<Session> getCurrentSessions() {
+		List<Session> todaySessions = getStaticSessionsByDate(getNowAsString());
+		List<Session> currentSessions = new ArrayList<Session>();
+		for (Session session : todaySessions) {
+			if(session.isInProgress(Calendar.getInstance())){
+				currentSessions.add(session);
+			}
+		}
+		
+		return currentSessions;
+	}
+
+	private String getNowAsString() {
+		SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+		return format.format(new Date());
 	}
 	
 }

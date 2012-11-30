@@ -1,5 +1,7 @@
 package org.ale.thot.domain;
 
+import java.util.Calendar;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,29 +10,27 @@ import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
-
 /**
  * Domain object to represent data for a session.
  */
-@Entity(name="session")
+@Entity(name = "session")
 @NamedQueries({
-	@NamedQuery(name = "findSessionsForDate", query = "from session where type is null and date=:date"),
-	@NamedQuery(name = "findAllSessions", query = "from session where type is null order by date"),
-	@NamedQuery(name = "findAllStaticSessions", query = "from session where type ='session' order by date"),
-	@NamedQuery(name = "findStaticSessionsForDate", query = "from session where type is null and date=:date")
-})
+		@NamedQuery(name = "findSessionsForDate", query = "from session where type is null and date=:date"),
+		@NamedQuery(name = "findAllSessions", query = "from session where type is null order by date"),
+		@NamedQuery(name = "findAllStaticSessions", query = "from session where type ='session' order by date"),
+		@NamedQuery(name = "findStaticSessionsForDate", query = "from session where type ='session' and date=:date") })
 public class Session {
 	public static String EMPTY_TITLE = "Available Session";
 	public static String EMPTY_DESCRIPTION = "This session is still available.";
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	private String date;
 	private String start;
 	private String end;
-	
+
 	private String title;
 	private String author;
 	private String author2;
@@ -42,10 +42,12 @@ public class Session {
 	private String author2Info;
 	private String authorImgUrl;
 	private String author2ImgUrl;
-	
-	public Session() { }
-	
-	public Session(String date, String startTime, String location, String title, String author, String description) {
+
+	public Session() {
+	}
+
+	public Session(String date, String startTime, String location,
+			String title, String author, String description) {
 		super();
 		this.date = date;
 		this.start = startTime;
@@ -54,7 +56,7 @@ public class Session {
 		this.author = author;
 		this.description = description;
 	}
-	
+
 	public Session(String date, String start, String end, String title,
 			String author, String author2, String description, String location,
 			String type, String authorInfo, String author2Info,
@@ -74,21 +76,23 @@ public class Session {
 		this.author2ImgUrl = author2ImgUrl;
 		this.id = id;
 	}
-	
+
 	public long getId() {
 		return id;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public String getAuthor() {
 		return author;
 	}
-	
+
 	public String getDescription() {
 		return description;
 	}
-	
+
 	public String getDate() {
 		return date;
 	}
@@ -129,7 +133,6 @@ public class Session {
 		return author2ImgUrl;
 	}
 
-
 	public void setTitle(String title) {
 		this.title = title;
 	}
@@ -166,7 +169,7 @@ public class Session {
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -192,5 +195,28 @@ public class Session {
 		} else if (!title.equals(other.title))
 			return false;
 		return true;
+	}
+
+	public boolean isInProgress(Calendar now) {
+		if(end == null){
+			return false;
+		}
+	
+		int minute = now.get(Calendar.MINUTE);
+		int hour = now.get(Calendar.HOUR_OF_DAY);
+		int timeIdent = hour * 100 + minute;
+		
+		int startAsInt = Integer.valueOf(start.replaceAll(":", ""));
+		int endAsInt = Integer.valueOf(end.replaceAll(":", ""));
+		
+		return timeIdent >= startAsInt && timeIdent <= endAsInt;
+	}
+
+	public void setStart(String start) {
+		this.start = start;
+	}
+
+	public void setEnd(String end) {
+		this.end = end;
 	}
 }

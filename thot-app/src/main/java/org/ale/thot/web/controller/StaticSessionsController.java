@@ -26,7 +26,6 @@ public class StaticSessionsController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public void setupForm(ModelMap modelMap) {
-		
 		Set<Day> conferenceDays = new HashSet<Day>();
 		List<Session>staticSessions = sessionDao.getAllStaticSessions();
 		if(staticSessions.isEmpty()) {
@@ -54,11 +53,12 @@ public class StaticSessionsController {
 			}
 			sessionsByDateMap.put(key, list);
 		}
-
+		
 		modelMap.put("sessionDays", days);
 		modelMap.put("sessionMap", sessionsByDateMap );
 		modelMap.put("allStaticSessions", staticSessions);
 		modelMap.put("days", conferenceDays);
+		modelMap.put("currentSessions", sessionDao.getCurrentSessions());
 	}
 
 	public static Map<String, Map<String, Session>> groupSessionsByLocationsSlots(
