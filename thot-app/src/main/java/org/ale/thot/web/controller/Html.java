@@ -7,5 +7,10 @@ public class Html {
 	public static String escapeHtml(String html) {
 		return HtmlUtils.htmlEscape(html);
 	}
+	
+	public static String unEscapeHtml(String html) {
+		return HtmlUtils.htmlUnescape(html);
+	}
+	
 
 }
