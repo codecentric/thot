@@ -1,5 +1,3 @@
-[![Build Status](https://buildhive.cloudbees.com/job/codecentric/job/thot/badge/icon)](https://buildhive.cloudbees.com/job/codecentric/job/thot/)
-
 <h1>Welcome to the Open Space Software Development at XP Days Germany 2012</h1>
 
 <h2>Setting up the development environment</h2>
