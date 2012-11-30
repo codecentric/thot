@@ -10,11 +10,13 @@ import org.junit.Test;
 public class SessionTest {
 
 	private Session session;
+	private Session session2;
 	private Calendar now;
 
 	@Before
 	public void setup(){
 		session = new Session();
+		session2 = new Session();
 	}
 
 	private void setNow(int hour, int minute) {
@@ -62,4 +64,19 @@ public class SessionTest {
 		setNow(10,23);
 		assertFalse(session.isInProgress(now));
 	}
+	
+    @Test
+    public void compareToReturnsZeroIfStartTimeIsBothNull() throws Exception {
+        session.setStart(null);
+        session2.setStart(null);
+        assertEquals(0, session.compareTo(session2));
+    }
+
+    @Test
+    public void returnsZeroIfStartTimeIsBothNull() throws Exception {
+        session.setStart(null);
+        session2.setStart(null);
+        assertEquals(0, session.compareTo(session2));
+    }
+
 }

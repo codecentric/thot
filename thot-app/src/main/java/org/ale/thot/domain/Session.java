@@ -222,9 +222,22 @@ public class Session implements Comparable<Session> {
 
     @Override
     public int compareTo(Session session) {
-        if(this.location == null) {
-           return session.location == null ? 0 : -1; 
+        int compareByStart = compareByStart(session);
+        return compareByStart == 0 ? compareByLocation(session) : compareByStart;
+    }
+
+    private int compareByLocation(Session session) {
+        return compare(this.location, session.location);
+    }
+
+    private int compareByStart(Session session) {
+        return compare(this.start, session.start);
+    }
+
+    private int compare(String string1, String otherString) {
+        if(string1 == null) {
+           return otherString == null ? 0 : -1; 
         }
-        return this.location.compareTo(session.location);
+        return string1.compareTo(otherString);
     }
 }
