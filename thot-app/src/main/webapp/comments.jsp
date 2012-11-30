@@ -64,7 +64,7 @@
 									<td class="rating" data-rating="${comment.rating}">
 										<img src='assets/img/thumb${comment.rating}.png' title='Rating: ${comment.rating}' alt='${comment.rating}'>
 									</td>
-							<td><a href="http://twitter.com/?status=Neuer Kommentar: ${comment.text} - <%= request.getRequestURL() %>?sessionId=${sessionId} %23osswdev %23xdde12 via @OSSWDEV">Kommentar twittern</a></td>
+							<td><a href="http://twitter.com/?status=Neuer Kommentar: ${comment.text} - http://bit.ly/xdde-12-prod - %23osswdev %23xdde12 via @OSSWDEV">Kommentar twittern</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
