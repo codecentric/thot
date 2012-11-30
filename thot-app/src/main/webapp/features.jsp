@@ -8,7 +8,11 @@
 
 <div class="container">
 
-	<h3>Version 2.6</h3>
+	<h3>Version 2.8</h3>
+	<ul>
+		<li>added automatic reload for twitter wall</li>
+	</ul>
+	<h3>Version 2.7</h3>
 	<ul>
 		<li>added a new venue map</li>
 		<li>Changed order of sessions in session overview</li>
