@@ -1,6 +1,7 @@
 package org.ale.thot.web.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -54,6 +55,8 @@ public class StaticSessionsController {
 			sessionsByDateMap.put(key, list);
 		}
 		
+		sortSessionsByDateAndLocation(sessionsByDateMap);
+		
 		modelMap.put("sessionDays", days);
 		modelMap.put("sessionMap", sessionsByDateMap );
 		modelMap.put("allStaticSessions", staticSessions);
@@ -61,7 +64,17 @@ public class StaticSessionsController {
 		modelMap.put("currentSessions", sessionDao.getCurrentSessions());
 	}
 
-	public static Map<String, Map<String, Session>> groupSessionsByLocationsSlots(
+	private void sortSessionsByDateAndLocation(Map<String, List<Session>> sessionsByDateMap) {
+	    Set<String> keySet = sessionsByDateMap.keySet();
+        for (String date : keySet) {
+            List<Session> sessions = sessionsByDateMap.get(date);
+            Collections.sort(sessions);
+            sessionsByDateMap.put(date, sessions);
+            
+        }
+    }
+
+    public static Map<String, Map<String, Session>> groupSessionsByLocationsSlots(
 			List<Session> sessions) {
 		HashMap<String, Map<String, Session>> transformedSessions = new HashMap<String, Map<String, Session>>();
 		for(Session session : sessions) {
