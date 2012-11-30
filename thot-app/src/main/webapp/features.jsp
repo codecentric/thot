@@ -10,7 +10,13 @@
 
 	<h3>Version 2.6</h3>
 	<ul>
-		<li>Added a twitter wall to the app showing conference related tweets</li>
+		<li>added a new venue map</li>
+		<li>Changed order of sessions in session overview</li>
+	</ul>
+
+	<h3>Version 2.6</h3>
+	<ul>
+		<li>Added a twitter wall to the app showing conference related tweets. Please use http://ec2-54-242-239-6.compute-1.amazonaws.com/thot </li>
 	</ul>
 	<h3>Version 2.5</h3>
 	<ul>
