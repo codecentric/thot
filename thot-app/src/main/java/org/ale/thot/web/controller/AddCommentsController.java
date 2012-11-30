@@ -57,9 +57,12 @@ public class AddCommentsController {
 	public ModelAndView processSubmit(final HttpServletRequest request, ModelMap modelMap,final
 			@ModelAttribute("commentFormData") CommentFormData cmd, BindingResult result) {
 		
-		request.getSession().setAttribute(THOT_USERNAME, cmd.getAuthor());
 		
-		Comment comment = new Comment(new Date(), cmd.getAuthor(), cmd.getText(),  Long.valueOf(cmd.getSessionId()) );
+		
+		String author = cmd.getAuthor();
+		request.getSession().setAttribute(THOT_USERNAME, author);
+		
+		Comment comment = new Comment(new Date(), Html.escapeHtml(author), Html.escapeHtml(cmd.getText()),  Long.valueOf(cmd.getSessionId()) );
 		commentDao.saveComment(comment);
 		return new ModelAndView(new RedirectView("comments"){{
 			this.getAttributesMap().put("sessionId", cmd.getSessionId());
