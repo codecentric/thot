@@ -78,9 +78,9 @@ public class EditSessionController {
 		if (sessionId != null) {
 			try {
 				Session session = sessionDao.getSessionById(sessionId);
-				session.setAuthor(cmd.getSpeaker());
-				session.setTitle(cmd.getTitle());
-				session.setDescription(cmd.getDescription());
+				session.setAuthor(Html.escapeHtml(cmd.getSpeaker()));
+				session.setTitle(Html.escapeHtml(cmd.getTitle()));
+				session.setDescription(Html.escapeHtml(cmd.getDescription()));
 //				session.setSlot(cmd.getStart());
 //				session.setLocation(cmd.getLocation());
 				sessionDao.saveSession(session);
