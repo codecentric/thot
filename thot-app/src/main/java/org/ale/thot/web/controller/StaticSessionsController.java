@@ -68,7 +68,7 @@ public class StaticSessionsController {
 	    Set<String> keySet = sessionsByDateMap.keySet();
         for (String date : keySet) {
             List<Session> sessions = sessionsByDateMap.get(date);
-            Collections.sort(sessions);
+            //Collections.sort(sessions);
             sessionsByDateMap.put(date, sessions);
             
         }
