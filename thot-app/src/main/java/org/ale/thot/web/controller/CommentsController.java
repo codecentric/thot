@@ -1,7 +1,11 @@
 package org.ale.thot.web.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.ale.app.TwitterLinkCreator;
-import org.ale.app.XlsSessionReader;
 import org.ale.thot.domain.CommentDao;
 import org.ale.thot.domain.Session;
 import org.ale.thot.domain.SessionDao;
@@ -11,10 +15,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-
 @Controller
 @RequestMapping("/comments")
 public class CommentsController {
@@ -22,6 +22,7 @@ public class CommentsController {
 	private static final String SESSION_TYPE_SESSION = "session";
 	@Autowired
 	private CommentDao commentDao;
+
 	@Autowired
 	private SessionDao sessionDao;
 
@@ -35,13 +36,9 @@ public class CommentsController {
 		try {
 			long lSessionId = Long.valueOf(sessionId);
 			Session session = null;
-//			if (lSessionId >= XlsSessionReader.ID_OFFSET) {
-//				session = XlsSessionReader.getInstance().getSession(lSessionId);
-//			} else {
-			  session = sessionDao.getSessionById(sessionId);
-			  modelMap.put("sessionId", sessionId);
-//			}
-         
+			session = sessionDao.getSessionById(sessionId);
+			modelMap.put("sessionId", sessionId);
+
 			modelMap.put("comments", commentDao.getCommentsBySessionId(lSessionId));
 			modelMap.put("sessionTitle", utf8(session.getTitle()));
 			modelMap.put("sessionDescription", utf8(session.getDescription()));
@@ -49,12 +46,9 @@ public class CommentsController {
 
 			String location = session.getLocation() != null ? session.getLocation() : "Unknown";
 
-//			modelMap.put("sessionLocationAndTimeSlot", location + 
-//					"&nbsp;&nbsp;&nbsp; at &nbsp;&nbsp;&nbsp;" +
-//					session.getStart());
 			modelMap.put("location", location);
 			modelMap.put("timeslot", session.getStart());
-			
+
 			String author = session.getAuthor() != null ? session.getAuthor() : "Unknown";
 			modelMap.put("sessionSpeaker", TwitterLinkCreator.process(author));
 
@@ -81,5 +75,4 @@ public class CommentsController {
 		}
 		return out;
 	}
-
 }

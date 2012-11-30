@@ -1,9 +1,7 @@
 package org.ale.thot.domain;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -49,30 +47,6 @@ public class JpaCommentDao implements CommentDao {
 		
 		return result;
 	}
-	
-	/*
-	public Map<String, Integer> getCommentCountForSessions() {
-		Query query = em.createNamedQuery("findAllComments");
-		
-		@SuppressWarnings("unchecked")
-		List<Comment> allComments = query.getResultList();
-		
-		Map<String, Integer> result = new HashMap<String, Integer>();
-		for ( Comment c : allComments ) {
-			final String sessionId = c.getSessionId().toString();
-			if ( result.containsKey(sessionId) ) {
-				int cout = result.get(sessionId);
-				result.put(sessionId, cout++);
-			} else {
-				result.put(sessionId, 1);
-			}
-		}
-		
-		System.out.println(result);
-		
-		return result;
-	}
-	*/
 	
 	public void saveComment(Comment comment) {
 		em.merge(comment);
