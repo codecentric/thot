@@ -8,6 +8,10 @@
 
 <div class="container">
 
+	<h3>Version 2.6</h3>
+	<ul>
+		<li>Added a twitter wall to the app showing conference related tweets</li>
+	</ul>
 	<h3>Version 2.5</h3>
 	<ul>
 		<li>Added voting for sessions on comment level</li>
