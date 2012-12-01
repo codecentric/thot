@@ -55,3 +55,9 @@ There's a USB with the git repo. Ask for it ;) !
 For further information on setting up your local development environment please see: https://sites.google.com/site/openspacesoftwaredevelopment/
 </p>
 
+<h2>Screencast</h2>
+
+<object data="screencast/jbehave-tests.ogv" type="video/ogg">
+ If the video does not start, download the video from the screencast folder.
+</object>
+
