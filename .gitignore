@@ -4,3 +4,7 @@ thot-env/download
 Servers
 .metadata
 thot-app/bin
+.classpath
+.project
+.settings/
+target/
