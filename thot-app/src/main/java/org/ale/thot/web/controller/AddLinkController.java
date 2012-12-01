@@ -8,6 +8,8 @@ import org.ale.thot.domain.Link;
 import org.ale.thot.domain.LinkDao;
 import org.ale.thot.domain.Session;
 import org.ale.thot.domain.SessionDao;
+import org.ale.thot.model.Html;
+import org.ale.thot.model.LinkFormData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

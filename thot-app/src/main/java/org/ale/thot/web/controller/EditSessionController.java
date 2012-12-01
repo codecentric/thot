@@ -10,6 +10,8 @@ import org.ale.thot.domain.Session;
 import org.ale.thot.domain.SessionDao;
 import org.ale.thot.domain.Timeslot;
 import org.ale.thot.domain.TimeslotDao;
+import org.ale.thot.model.Html;
+import org.ale.thot.model.OpenSpaceFormData;
 import org.ale.thot.web.validate.OpenSpaceValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,6 +33,7 @@ public class EditSessionController {
 
 	@Autowired
 	private SessionDao sessionDao;
+	
 	@Autowired
 	private TimeslotDao timeslotDao;
 

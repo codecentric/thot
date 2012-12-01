@@ -1,4 +1,4 @@
-package org.ale.thot.web.controller;
+package org.ale.thot.model;
 
 import org.ale.app.TwitterLinkCreator;
 

@@ -1,10 +1,12 @@
-package org.ale.thot.web.controller;
+package org.ale.thot.web.model;
 
 import static org.junit.Assert.assertEquals;
 
+import org.ale.thot.model.Html;
 import org.junit.Test;
 
 public class HtmlTest {
+	
 	@Test
 	public void escapeHtmlLt() throws Exception {
 		assertEquals("&lt;", Html.escapeHtml("<"));

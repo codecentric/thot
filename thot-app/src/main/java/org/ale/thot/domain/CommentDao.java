@@ -2,7 +2,7 @@ package org.ale.thot.domain;
 
 import java.util.List;
 
-import org.ale.thot.web.controller.TimelineEntry;
+import org.ale.thot.model.TimelineEntry;
 
 public interface CommentDao {
 

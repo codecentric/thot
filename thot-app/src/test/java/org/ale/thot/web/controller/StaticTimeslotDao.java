@@ -1,9 +1,13 @@
-package org.ale.thot.domain;
+package org.ale.thot.web.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.ale.thot.domain.Day;
+import org.ale.thot.domain.Timeslot;
+import org.ale.thot.domain.TimeslotDao;
 
 public class StaticTimeslotDao implements TimeslotDao {
 	
@@ -36,8 +40,6 @@ public class StaticTimeslotDao implements TimeslotDao {
 		List<Timeslot> friTimeSlots = new ArrayList<Timeslot>();
 		friTimeSlots.add(new Timeslot("11:30 - 12:10"));
 		friTimeSlots.add(new Timeslot("12:15 - 13:00"));
-		
-		
 		
 		timeslotsPerDay.put("Wed", wedTimeSlots);
 		timeslotsPerDay.put("Thu", thuTimeSlots);

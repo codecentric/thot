@@ -11,6 +11,8 @@ import org.ale.thot.domain.Comment;
 import org.ale.thot.domain.CommentDao;
 import org.ale.thot.domain.Session;
 import org.ale.thot.domain.SessionDao;
+import org.ale.thot.model.CommentFormData;
+import org.ale.thot.model.Html;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

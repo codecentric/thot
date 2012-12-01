@@ -1,6 +1,6 @@
 package org.ale.thot.web.validate;
 
-import org.ale.thot.web.controller.OpenSpaceFormData;
+import org.ale.thot.model.OpenSpaceFormData;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 

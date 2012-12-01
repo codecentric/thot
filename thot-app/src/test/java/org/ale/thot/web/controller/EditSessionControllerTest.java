@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.util.Map;
 
 import org.ale.thot.domain.SessionDao;
-import org.ale.thot.domain.StaticTimeslotDao;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -25,9 +24,7 @@ public class EditSessionControllerTest {
 	
 	@Test
 	public void shouldGetTimeslotListFromDay() {
-		
 		Map<String, String> timeslots = controller.GetTimeslotForDay("Wed");
-		
 		assertEquals(3, timeslots.size());		
 	}
 
