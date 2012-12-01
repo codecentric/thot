@@ -17,7 +17,7 @@ public class OpenSpaceFormData {
 	}
 
 	public OpenSpaceFormData(Session session) {
-		this.sessionId = session.getId();
+		this.setSessionId(session.getId());
 		this.date = session.getDate();
 		this.title = Html.unEscapeHtml(session.getTitle());
 		this.speaker = Html.unEscapeHtml(session.getAuthor());
@@ -62,5 +62,10 @@ public class OpenSpaceFormData {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	
+	public Long getSessionId() {
+		return sessionId;
+	}
+	public void setSessionId(Long sessionId) {
+		this.sessionId = sessionId;
+	}
 }

@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.ale.thot.domain.SessionDao;
 import org.ale.thot.domain.StaticTimeslotDao;
-import org.ale.thot.domain.TimeslotDao;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -16,7 +15,6 @@ public class EditSessionControllerTest {
 
 	@Mock
 	private SessionDao sessionDao;
-	private TimeslotDao timeslotDao;
 	private EditSessionController controller;
 	
 	@Before
