@@ -22,13 +22,13 @@
 	<!-- commit form -->
 	<form:form commandName="linkFormData" method="POST">
         <div>URL:(*)</div>
-        <form:input maxlength="255" id="author" path="author"/>
-		<form:errors class="form-error" path="author" />
+        <form:input maxlength="255" id="url" path="url"/>
+		<form:errors class="form-error" path="url" />
 		<br />
         
         <div>Comment:</div>
-        <form:textarea maxlength="255" id="text" path="text" />
-		<form:errors class="form-error" path="text" />
+        <form:textarea maxlength="255" id="comment" path="comment" />
+		<form:errors class="form-error" path="comment" />
 
 		<br />
 		
