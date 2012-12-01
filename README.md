@@ -58,6 +58,7 @@ For further information on setting up your local development environment please 
 <h2>Screencast</h2>
 
 <ul>
-  <li>https://github.com/codecentric/thot/blob/master/screencasts/jbehave-tests.ogv</li>
+  <li>jBehave Tests: https://github.com/codecentric/thot/blob/master/screencasts/jbehave-tests.ogv</li>
+  <li>WebApp Video: https://github.com/codecentric/thot/blob/master/screencasts/thot-web-application.ogv</li>
 </ul>
 
