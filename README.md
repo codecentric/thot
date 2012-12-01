@@ -57,7 +57,7 @@ For further information on setting up your local development environment please 
 
 <h2>Screencast</h2>
 
-<object data="https://github.com/codecentric/thot/blob/master/screencasts/jbehave-tests.ogv" type="video/ogg">
- If the video does not start, download the video from the screencast folder.
-</object>
+<ul>
+  <li>https://github.com/codecentric/thot/blob/master/screencasts/jbehave-tests.ogv</li>
+</ul>
 
