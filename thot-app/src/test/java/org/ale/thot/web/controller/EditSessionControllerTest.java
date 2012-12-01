@@ -1,14 +1,11 @@
 package org.ale.thot.web.controller;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import java.util.List;
 import java.util.Map;
 
-import org.ale.thot.domain.JpaCommentDao;
 import org.ale.thot.domain.SessionDao;
 import org.ale.thot.domain.StaticTimeslotDao;
-import org.ale.thot.domain.Timeslot;
 import org.ale.thot.domain.TimeslotDao;
 import org.junit.Before;
 import org.junit.Test;

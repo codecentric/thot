@@ -64,7 +64,35 @@
 									<td class="rating" data-rating="${comment.rating}">
 										<img src='assets/img/thumb${comment.rating}.png' title='Rating: ${comment.rating}' alt='${comment.rating}'>
 									</td>
-							<td><a href="http://twitter.com/?status=Neuer Kommentar: ${comment.text} - <%= request.getRequestURL() %>?sessionId=${sessionId} %23osswdev %23xdde12 via @OSSWDEV">Kommentar twittern</a></td>
+							<td><a href="http://twitter.com/?status=Neuer Kommentar: ${comment.text} - http://bit.ly/xdde-12-prod - %23osswdev %23xdde12 via @OSSWDEV">Kommentar twittern</a></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="row-fluid">
+			<div style="float: right;">
+				<a class="btn btn-primary"
+					href="<%= request.getContextPath() %>/addLink?sessionId=<%= request.getParameter("sessionId")%>&title=${sessionTitle}">Add
+					Link</a>
+			</div>
+
+			<table id="link" class="table table-striped">
+				<thead>
+					<tr>
+						<th>Link</th>
+						<th>Comment</th>
+						<th>Date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${links}" var="link">
+						<tr>
+							<td><a href="${link.link}">${link.link}</a></td>
+							<td>${link.comment}</td>
+							<td><fmt:formatDate value="${link.date}" type="both"
+									dateStyle="short" timeStyle="short" /></td>
 						</tr>
 					</c:forEach>
 				</tbody>
