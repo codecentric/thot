@@ -73,5 +73,12 @@ public class JpaSessionDao implements SessionDao {
 		SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
 		return format.format(new Date());
 	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<String> getListOfConferenceDays() {
+		Query query = em.createNamedQuery("findListOfConferenceDays");
+		return query.getResultList();
+	}
 	
 }

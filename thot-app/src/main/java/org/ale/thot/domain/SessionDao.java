@@ -8,10 +8,12 @@ import java.util.List;
 public interface SessionDao {
 
 	List<Session> getAllSessions();
+
+	List<String> getListOfConferenceDays();
 	
 	List<Session> getAllStaticSessions();
 	
-	/** returns all sessions for a specific date */
+	/* returns all sessions for a specific date */
 	List<Session> getSessionsByDate(String date);
 	
 	void saveSession(Session session);

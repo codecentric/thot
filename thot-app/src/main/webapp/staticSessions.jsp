@@ -39,14 +39,12 @@
 				                            <c:param name="sessionId" value="${session.getId()}" />
 				                        </c:url>
 										<tr class="sessions" data-link="${url}">
-											<td>${session.getDate()}</td>
-											<td>${session.getStart()}</td>
-											<td>${session.getEnd()}</td>
-											<td>
-				                                ${session.getTitle()}<a href='${url}'>  </a>
-											</td>
-											<td>${session.getAuthor()}</td>
-											<td>${session.getLocation()}</td>
+											<td>${session.date}</td>
+											<td>${session.start}</td>
+											<td>${session.end}</td>
+											<td>${session.title}</td>
+											<td>${session.author}</td>
+											<td>${session.location}</td>
 											<td></td>
 										</tr>
 									</c:forEach>
@@ -75,9 +73,7 @@
 										<td>${session.date}</td>
 										<td>${session.start}</td>
 										<td>${session.end}</td>
-										<td>
-			                                ${session.title}<a href='${url}'>  </a>
-										</td>
+										<td>${session.title}</td>
 										<td>${session.author}</td>
 										<td>${session.location}</td>
 										<td></td>

@@ -1,6 +1,7 @@
 package org.ale.thot.domain;
 
 import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +17,7 @@ import javax.persistence.NamedQuery;
 @Entity(name = "session")
 @NamedQueries({
 		@NamedQuery(name = "findSessionsForDate", query = "from session where type is null and date=:date"),
+		@NamedQuery(name = "findListOfConferenceDays", query = "select distinct s.date from session s"),
 		@NamedQuery(name = "findAllSessions", query = "from session where type is null order by date"),
 		@NamedQuery(name = "findAllStaticSessions", query = "from session where type ='session' order by date"),
 		@NamedQuery(name = "findStaticSessionsForDate", query = "from session where type ='session' and date=:date") })
@@ -27,6 +29,7 @@ public class Session implements Comparable<Session> {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
+	private Date startDate;
 	private String date;
 	private String start;
 	private String end;
@@ -240,4 +243,12 @@ public class Session implements Comparable<Session> {
         }
         return string1.compareTo(otherString);
     }
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
 }

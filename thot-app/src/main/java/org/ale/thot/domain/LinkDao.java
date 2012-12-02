@@ -8,4 +8,4 @@ public interface LinkDao {
 
 	public void saveLink(Link link);
 
-} // test -Dwebdriver.firefox.bin=/usr/bin/firefox
+}
