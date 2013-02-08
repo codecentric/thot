@@ -33,7 +33,7 @@ import com.thoughtworks.selenium.condition.DefaultConditionRunner;
 public class WebApplicationTest extends JUnitStories {
 
 	// default 
-	private static String serverUrl = "http://107.20.22.51/thot";
+	private static String serverUrl = "http://localhost:8080/thot-app";
 	private static final String SYSTEM_PROPERTY = "server.url";
 	
 	private static WebDriverBackedSelenium selenium;
