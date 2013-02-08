@@ -6,8 +6,10 @@ class thot {
   $user_home = "/home/${user_name}"
   $download_dir = "/vagrant"
   $checkout_dir = "${user_home}/thot"
+  $project_dir = "${checkout_dir}/thot-app"
+  $workspace_dir = "${user_home}/Documents/workspace-sts-3.1.0.RELEASE"
   
-  user { "user ${user_name}":
+  user { $user_name:
 	ensure     => present,
 	gid        => $user_name,
 	shell      => '/bin/sh',
@@ -106,18 +108,16 @@ class thot {
   }
   
   exec { "chowner to vagrant user": 
-	command => "/bin/chown -R vagrant:vagrant ${catalina_home} ${sts_home}",
-	require => [Exec["install STS"], Exec["install tomcat"]],
+	command => "/bin/chown -R vagrant:vagrant ${catalina_home} ${sts_home} ${project_dir}",
+	require => [Exec["install STS"], Exec["install tomcat"], Exec["checkout"]],
   }
   
-  $project_dir = "${checkout_dir}/thot-app"
-  $workspace_dir = "/home/vagrant/Documents/workspace-sts-3.1.0.RELEASE"
   exec { "mvn eclipse:eclipse thot-app": 
     cwd => $project_dir,
 	creates => "${project_dir}/.project",
 	command => "sudo -u vagrant mvn eclipse:clean eclipse:eclipse eclipse:add-maven-repo -Declipse.workspace=${workspace_dir}",
 	path => "/usr/bin",
-	require => Exec["checkout"],
+	require => Exec["chowner to vagrant user"],
 	timeout => 0,
   }
   
@@ -139,10 +139,10 @@ class thot {
 
   $acceptance_test_project_dir = "${checkout_dir}/thot-acceptanceTests"
   exec { "mvn eclipse:eclipse thot-acceptanceTests": 
-    cwd => $acceptance_test,
-	creates => "${acceptance_test}/.project",
+    cwd => $acceptance_test_project_dir,
+	creates => "${acceptance_test_project_dir}/.project",
 	command => "/usr/bin/sudo -u vagrant mvn eclipse:clean eclipse:eclipse",
-	require => [Exec["checkout"], Package["firefox"]],
+	require => [Exec["chowner to vagrant user"], Package["firefox"]],
 	timeout => 0,
   }
 
