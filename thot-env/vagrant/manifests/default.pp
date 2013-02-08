@@ -1,0 +1,151 @@
+# Basic Puppet Apache manifest
+
+class thot {
+
+  $user_name = "vagrant"
+  $user_home = "/home/${user_name}"
+  $download_dir = "/vagrant"
+  $checkout_dir = "${user_home}/thot"
+  
+  user { "user ${user_name}":
+	ensure     => present,
+	gid        => $user_name,
+	shell      => '/bin/sh',
+	home       => $user_home,
+	managehome => true,
+  }
+  
+  exec { "apt-get update":
+    command => "/usr/bin/apt-get update"
+  }
+
+  package { "mysql-server":
+    ensure => present, 
+  }
+  
+  service { "mysql":
+    ensure => running,
+    require => Package["mysql-server"],
+  }
+
+  package { "rpm":
+    ensure => present,
+  }
+
+  package { "git-core":
+    ensure => present,
+  }
+  
+  package { "maven2":
+    ensure => present,
+  }
+  
+  package { "openjdk-7-jdk":
+    ensure => present,
+  }
+  
+  #$jdk_file = "jdk-6-linux-i586-rpm.bin"
+  #$download_url = "http://download.oracle.com/otn-pub/java/jdk/6/${jdk_file}"
+  #$jdk_file = "jdk-6u38-linux-i586-rpm.bin"
+  #$download_url = "http://download.oracle.com/otn-pub/java/jdk/6u38-b05/${jdk_file}"
+  $jdk_file = "jdk-7u9-linux-i586.tar.gz"
+  $download_url = "http://download.oracle.com/otn-pub/java/jdk/7u9-b05/${jdk_file}"
+  $jdk_file_absolute = "${download_dir}/${jdk_file}"
+  #exec { "download oracle jdk": 
+  #	command => "/usr/bin/wget -O ${jdk_file_absolute} --no-cookies --header \"Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com\" \"${download_url}\"",
+  #  creates => $jdk_file_absolute,
+  #	timeout => 0,
+  #}
+  
+  $sts_file = "spring-tool-suite-3.1.0.RELEASE-e3.8-linux-gtk.tar.gz"
+  $sts_file_absolute = "${download_dir}/${sts_file}"
+  $sts_download_url = "http://download.springsource.com/release/STS/3.1.0/dist/e3.8/${sts_file}"
+  exec { "download STS": 
+	command => "/usr/bin/wget -O ${sts_file_absolute} \"${sts_download_url}\"",
+    creates => $sts_file_absolute,
+	timeout => 0,
+  }
+  
+  $tomcat_version = "7.0.35"
+  $tomcat_name_with_version = "apache-tomcat-${tomcat_version}"
+  $tomcat_file = "${tomcat_name_with_version}.tar.gz"
+  $tomcat_absolute_file = "${download_dir}/${tomcat_file}"
+  $tomcat_download_url = "http://apache.lauf-forum.at/tomcat/tomcat-7/v${tomcat_version}/bin/${tomcat_file}"
+  exec { "download tomcat": 
+	command => "/usr/bin/wget -O ${tomcat_absolute_file} \"${tomcat_download_url}\"",
+    creates => $tomcat_absolute_file,
+	timeout => 0,
+  }
+
+  $software_base_dir = "/usr/local"  
+  
+  $catalina_home = "${software_base_dir}/${tomcat_name_with_version}"
+  exec { "install tomcat": 
+	command => "/bin/tar xzf ${tomcat_absolute_file} -C ${software_base_dir}",
+	creates => $catalina_home,
+	require => Exec["download tomcat"],
+  }
+
+  $sts_home = "${software_base_dir}/springsource"
+  exec { "install STS": 
+	command => "/bin/tar xzf ${sts_file_absolute} -C ${software_base_dir}",
+	creates => $sts_home,
+	require => Exec["download STS"],
+  }
+  
+  #exec { "install jdk": 
+#	command => "/usr/bin/rpm -i ${jdk_file_absolute}",
+	#require => [Package["rpm"], Exec["download oracle jdk"]],
+  #}
+  
+  $repo = "https://github.com/codecentric/thot.git"
+  exec { "checkout": 
+	command => "/usr/bin/git clone ${repo} ${checkout_dir}",
+	creates => $checkout_dir,
+	timeout => 0,
+  }
+  
+  exec { "chowner to vagrant user": 
+	command => "/bin/chown -R vagrant:vagrant ${catalina_home} ${sts_home}",
+	require => [Exec["install STS"], Exec["install tomcat"]],
+  }
+  
+  $project_dir = "${checkout_dir}/thot-app"
+  $workspace_dir = "/home/vagrant/Documents/workspace-sts-3.1.0.RELEASE"
+  exec { "mvn eclipse:eclipse thot-app": 
+    cwd => $project_dir,
+	creates => "${project_dir}/.project",
+	command => "sudo -u vagrant mvn eclipse:clean eclipse:eclipse eclipse:add-maven-repo -Declipse.workspace=${workspace_dir}",
+	path => "/usr/bin",
+	require => Exec["checkout"],
+	timeout => 0,
+  }
+  
+  exec { "create db":
+    command => "/usr/bin/mysql -u root < ${project_dir}/src/main/resources/sql/init-db.sql",
+    unless => "/usr/bin/mysql -u root -e 'use thot'",
+	require => [Package["mysql-server"], Exec["checkout"]],
+  }
+
+  exec { "import test data into db":
+    command => "/usr/bin/mysql -u thot < ${project_dir}/src/main/resources/sessions.sql",
+    unless => "/usr/bin/mysql -u root -e 'use thot'",
+    require => Exec["create db"],
+  }
+    
+  package { "firefox":
+    ensure => present,
+  }
+
+  $acceptance_test_project_dir = "${checkout_dir}/thot-acceptanceTests"
+  exec { "mvn eclipse:eclipse thot-acceptanceTests": 
+    cwd => $acceptance_test,
+	creates => "${acceptance_test}/.project",
+	command => "/usr/bin/sudo -u vagrant mvn eclipse:clean eclipse:eclipse",
+	require => [Exec["checkout"], Package["firefox"]],
+	timeout => 0,
+  }
+
+}
+
+include thot
