@@ -12,70 +12,83 @@ import java.util.List;
 import org.ale.thot.selenium.pages.Pages;
 import org.ale.thot.selenium.steps.WebApplicationSteps;
 import org.jbehave.core.Embeddable;
+import org.jbehave.core.annotations.AfterStories;
 import org.jbehave.core.configuration.Configuration;
-import org.jbehave.core.configuration.MostUsefulConfiguration;
 import org.jbehave.core.io.LoadFromClasspath;
 import org.jbehave.core.io.StoryFinder;
 import org.jbehave.core.junit.JUnitStories;
 import org.jbehave.core.reporters.StoryReporterBuilder;
 import org.jbehave.core.steps.InjectableStepsFactory;
 import org.jbehave.core.steps.InstanceStepsFactory;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+import org.jbehave.core.steps.SilentStepMonitor;
+import org.jbehave.web.selenium.SeleniumConfiguration;
+import org.jbehave.web.selenium.SeleniumContext;
+import org.jbehave.web.selenium.SeleniumStepMonitor;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverBackedSelenium;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.springframework.util.StringUtils;
 
-import com.thoughtworks.selenium.condition.ConditionRunner;
-import com.thoughtworks.selenium.condition.DefaultConditionRunner;
+import de.codecentric.jbehave.junit.monitoring.JUnitReportingRunner;
 
+@RunWith(JUnitReportingRunner.class)
 public class WebApplicationTest extends JUnitStories {
 
-	// default 
+	// default
 	private static String serverUrl = "http://localhost:8080/thot-app";
 	private static final String SYSTEM_PROPERTY = "server.url";
-	
-	private static WebDriverBackedSelenium selenium;
-	private ConditionRunner conditionRunner = new DefaultConditionRunner(selenium);
-    private Pages pages = new Pages(selenium,conditionRunner);
 
-	@BeforeClass
-	public static void init(){
+	private WebDriverBackedSelenium selenium = createSelenium();
+
+	private WebDriverBackedSelenium createSelenium() {
 		WebDriver webDriver = new FirefoxDriver();
-		if( StringUtils.hasText( System.getProperty( SYSTEM_PROPERTY) ) ) {
-			serverUrl = System.getProperty( SYSTEM_PROPERTY); 
+		if (StringUtils.hasText(System.getProperty(SYSTEM_PROPERTY))) {
+			serverUrl = System.getProperty(SYSTEM_PROPERTY);
 		}
-		selenium = new WebDriverBackedSelenium(webDriver, serverUrl);
-		System.out.println(webDriver.getTitle());
+		return new WebDriverBackedSelenium(webDriver, serverUrl);
 	}
 
-	@AfterClass
-	public static void destroy(){
-		selenium.getWrappedDriver().quit();
+
+	@Override
+	public Configuration configuration() {
+		SeleniumContext seleniumContext = new SeleniumContext();
+		Class<? extends Embeddable> embeddableClass = this.getClass();
+		return new SeleniumConfiguration()
+				.useSelenium(selenium)
+				.useSeleniumContext(seleniumContext)
+				.useStepMonitor(
+						new SeleniumStepMonitor(selenium, seleniumContext,
+								new SilentStepMonitor()))
+				.useStoryLoader(new LoadFromClasspath(embeddableClass))
+				.useStoryReporterBuilder(
+						new StoryReporterBuilder()
+								.withCodeLocation(
+										codeLocationFromClass(embeddableClass))
+								.withDefaultFormats()
+								.withFormats(CONSOLE, TXT, HTML, XML));
 	}
 
 	@Override
-    public Configuration configuration() {
-        Class<? extends Embeddable> embeddableClass = this.getClass();
-        return new MostUsefulConfiguration()
-            .useStoryLoader(new LoadFromClasspath(embeddableClass))
-            .useStoryReporterBuilder(new StoryReporterBuilder()
-                .withCodeLocation(codeLocationFromClass(embeddableClass))
-                .withDefaultFormats()
-                .withFormats(CONSOLE, TXT, HTML, XML));
-    }
+	public InjectableStepsFactory stepsFactory() {
+		Pages pages = new Pages(selenium,
+				SeleniumConfiguration.defaultConditionRunner(selenium));
+		return new InstanceStepsFactory(configuration(), TEAR_DOWN_WEB_DRIVER,
+				new WebApplicationSteps(pages));
+	}
+	
+	public Object TEAR_DOWN_WEB_DRIVER = this;
+	
+	@AfterStories
+	public void tearWebDriverDown() {
+		selenium.getWrappedDriver().close();
+	}
 
-    @Override
-    public InjectableStepsFactory stepsFactory() {
-        return new InstanceStepsFactory(configuration(),
-                new WebApplicationSteps(pages));
-    }
-    
-    @Override
-    protected List<String> storyPaths() {
-        return new StoryFinder()
-                .findPaths(codeLocationFromClass(this.getClass()).getFile(), asList("**/*.story"), null);
-    }
+	@Override
+	protected List<String> storyPaths() {
+		return new StoryFinder().findPaths(
+				codeLocationFromClass(this.getClass()).getFile(),
+				asList("**/*.story"), null);
+	}
 
 }
