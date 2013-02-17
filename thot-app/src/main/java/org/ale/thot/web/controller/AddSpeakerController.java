@@ -31,6 +31,7 @@ public class AddSpeakerController {
 			Speaker speaker = speakerDao.findById(new Long(id));
 			speakerFormData = new SpeakerFormData(speaker);
 		}
+//		modelMap.put("useMail", new Boolean(true));
 		modelMap.put("speakerFormData", speakerFormData);
 	}
 
