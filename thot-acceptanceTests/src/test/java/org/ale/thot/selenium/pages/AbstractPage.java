@@ -27,4 +27,8 @@ public abstract class AbstractPage extends SeleniumPage {
         textIsNotVisible(text);
     }
 
+	public String getHeadline() {
+		return getText("xpath=//h1");
+	}
+
 }

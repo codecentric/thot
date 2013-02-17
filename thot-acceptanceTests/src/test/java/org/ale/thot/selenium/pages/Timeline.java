@@ -10,7 +10,7 @@ public class Timeline extends AbstractPage {
     }
 
 	public void open() {
-        open("/timeline/");
+        open("/timeline");
     }
 
 }

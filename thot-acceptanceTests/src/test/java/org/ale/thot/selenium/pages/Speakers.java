@@ -10,6 +10,11 @@ public class Speakers extends AbstractPage {
 	}
 
 	public void open() {
-		open("/timeline/");
+		open("/speakers");
+	}
+
+	public Speaker clickAddSpeakerButton() {
+		click("id=addSpeaker");
+		return new Speaker(selenium, conditionRunner);
 	}
 }

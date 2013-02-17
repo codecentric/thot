@@ -10,6 +10,7 @@ import static org.jbehave.core.reporters.Format.XML;
 import java.util.List;
 
 import org.ale.thot.selenium.pages.Pages;
+import org.ale.thot.selenium.steps.SpeakerSteps;
 import org.ale.thot.selenium.steps.WebApplicationSteps;
 import org.jbehave.core.Embeddable;
 import org.jbehave.core.annotations.AfterStories;
@@ -37,6 +38,7 @@ public class WebApplicationTest extends JUnitStories {
 
 	// default
 	private static String serverUrl = "http://localhost:8080/thot-app";
+	private static int SPEED = 500;
 	private static final String SYSTEM_PROPERTY = "server.url";
 
 	private WebDriverBackedSelenium selenium = createSelenium();
@@ -46,7 +48,9 @@ public class WebApplicationTest extends JUnitStories {
 		if (StringUtils.hasText(System.getProperty(SYSTEM_PROPERTY))) {
 			serverUrl = System.getProperty(SYSTEM_PROPERTY);
 		}
-		return new WebDriverBackedSelenium(webDriver, serverUrl);
+		WebDriverBackedSelenium selenium = new WebDriverBackedSelenium(webDriver, serverUrl);
+//		selenium.setSpeed(String.valueOf(SPEED));
+		return selenium;
 	}
 
 
@@ -66,7 +70,8 @@ public class WebApplicationTest extends JUnitStories {
 								.withCodeLocation(
 										codeLocationFromClass(embeddableClass))
 								.withDefaultFormats()
-								.withFormats(CONSOLE, TXT, HTML, XML));
+								.withFormats(CONSOLE//, TXT, HTML, XML
+										));
 	}
 
 	@Override
@@ -74,7 +79,7 @@ public class WebApplicationTest extends JUnitStories {
 		Pages pages = new Pages(selenium,
 				SeleniumConfiguration.defaultConditionRunner(selenium));
 		return new InstanceStepsFactory(configuration(), TEAR_DOWN_WEB_DRIVER,
-				new WebApplicationSteps(pages));
+				new WebApplicationSteps(pages), new SpeakerSteps(pages));
 	}
 	
 	public Object TEAR_DOWN_WEB_DRIVER = this;
@@ -88,7 +93,7 @@ public class WebApplicationTest extends JUnitStories {
 	protected List<String> storyPaths() {
 		return new StoryFinder().findPaths(
 				codeLocationFromClass(this.getClass()).getFile(),
-				asList("**/*.story"), null);
+				asList("**/speaker/addSpeakerInfo.story"), null);
 	}
 
 }

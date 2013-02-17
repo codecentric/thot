@@ -10,7 +10,7 @@ public class StaticSessions extends AbstractPage {
     }
 
 	public void open() {
-        open("/staticSessions/");
+        open("/staticSessions");
     }
 
 }
