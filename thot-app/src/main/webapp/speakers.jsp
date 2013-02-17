@@ -25,7 +25,9 @@
 
 	<div class="row-fluid">
 		<div >
-			<input type="button" id="addSpeaker" value="Add speaker" class="btn btn-primary" onclick="javascript:location.href='speaker'" />
+			<a href="speaker">
+				<input type="button" id="addSpeaker" value="Add speaker" class="btn btn-primary" />
+			</a>
 		</div>
 		<table class="table table-striped" style="width:auto">
 			<thead>
