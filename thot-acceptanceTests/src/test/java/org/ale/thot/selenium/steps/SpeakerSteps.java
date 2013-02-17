@@ -4,8 +4,8 @@ import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.fail;
 
 import org.ale.thot.selenium.pages.Pages;
-import org.ale.thot.selenium.pages.Speaker;
-import org.ale.thot.selenium.pages.Speakers;
+import org.ale.thot.selenium.pages.SpeakerPage;
+import org.ale.thot.selenium.pages.SpeakersPage;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Pending;
 import org.jbehave.core.annotations.Then;
@@ -21,12 +21,18 @@ public class SpeakerSteps {
 
 	@Given("user is on the speaker creation page")
 	public void givenAUserIsOnTheSpeakersPage() {
-		Speakers speakersPage = pages.speakers();
+		SpeakersPage speakersPage = pages.speakers();
 		speakersPage.open();
 		assertEquals("Speakers", speakersPage.getHeadline());
 
-		Speaker speakerPage = speakersPage.clickAddSpeakerButton();
+		SpeakerPage speakerPage = speakersPage.clickAddSpeakerButton();
 		assertEquals("Speaker", speakerPage.getHeadline());
 	}
+	
+	@Given("user adds forename '$foreName'")
+	public void givenUserAddsForenameDavid(String foreName) {
+	  fail();
+	}
+
 
 }

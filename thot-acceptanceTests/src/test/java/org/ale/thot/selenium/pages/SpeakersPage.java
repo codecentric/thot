@@ -3,9 +3,9 @@ package org.ale.thot.selenium.pages;
 import com.thoughtworks.selenium.Selenium;
 import com.thoughtworks.selenium.condition.ConditionRunner;
 
-public class Speakers extends AbstractPage {
+public class SpeakersPage extends AbstractPage {
 
-	public Speakers(Selenium selenium, ConditionRunner conditionRunner) {
+	public SpeakersPage(Selenium selenium, ConditionRunner conditionRunner) {
 		super(selenium, conditionRunner);
 	}
 
@@ -13,8 +13,8 @@ public class Speakers extends AbstractPage {
 		open("/speakers");
 	}
 
-	public Speaker clickAddSpeakerButton() {
+	public SpeakerPage clickAddSpeakerButton() {
 		click("id=addSpeaker");
-		return new Speaker(selenium, conditionRunner);
+		return new SpeakerPage(selenium, conditionRunner);
 	}
 }
