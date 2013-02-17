@@ -35,7 +35,7 @@
 		<c:if test="${useMail}">
 	        <div>E-Mail:</div>
 	        <form:input maxlength="255" id="mail" path="mail" />
-			<form:errors class="form-error" path="mail" />
+			<form:errors class="form-error" cssStyle="color:red" path="mail" />
 		</c:if>
 
 		<br />
