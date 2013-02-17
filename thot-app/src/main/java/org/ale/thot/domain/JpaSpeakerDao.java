@@ -11,18 +11,39 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class JpaSpeakerDao implements SpeakerDao {
 
-	/* (non-Javadoc)
+	private long currentId = 0;
+	private List<Speaker> speakers = new ArrayList<Speaker>();
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.ale.thot.domain.SpeakerDao#getAllSpeakers()
 	 */
 	@Override
 	public List<Speaker> getAllSpeakers() {
-		List<Speaker> speakers = new ArrayList<Speaker>();
-		Speaker speaker = new Speaker();
-		speaker.setBio("testbio");
-		speaker.setForeName("testForeName");
-		speaker.setLastName("lastNametest");
-		speakers.add(speaker );
-		return speakers ;
+		return speakers;
+	}
+
+	@Override
+	public void createOrUpdate(Speaker speaker) {
+		if (speaker.getId() == null) {
+			speaker.setId(currentId);
+			currentId++;
+		} else {
+			Speaker existingSpeaker = findById(speaker.getId());
+			speakers.remove(existingSpeaker);
+		}
+		speakers.add(speaker);
+	}
+
+	@Override
+	public Speaker findById(Long id) {
+		for (Speaker speaker : speakers) {
+			if (speaker.getId().equals(id)) {
+				return speaker;
+			}
+		}
+		return null;
 	}
 
 }

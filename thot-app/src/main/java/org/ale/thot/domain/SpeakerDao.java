@@ -8,4 +8,8 @@ public interface SpeakerDao {
 
 	public abstract List<Speaker> getAllSpeakers();
 
+	public abstract void createOrUpdate(Speaker speaker);
+
+	public abstract Speaker findById(Long long1);
+
 }

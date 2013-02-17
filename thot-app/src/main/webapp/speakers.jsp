@@ -24,6 +24,9 @@
 
 
 	<div class="row-fluid">
+		<div >
+			<input type="button" id="addSpeaker" value="Add speaker" class="btn btn-primary" onclick="javascript:location.href='speaker'" />
+		</div>
 		<table class="table table-striped" style="width:auto">
 			<thead>
 				<tr>
@@ -33,7 +36,10 @@
 			</thead>
 			<tbody>
 			<c:forEach items="${speakers}" var="speaker">
-				<tr>
+				<c:url value="speaker" var="url" scope="page">
+                    <c:param name="id" value="${speaker.id}" />
+                </c:url>
+				<tr class="sessions" data-link="${url}">
 					<td>${speaker.foreName}</td>
 					<td>${speaker.lastName}</td>
 				</tr>
@@ -41,7 +47,7 @@
 			</tbody>
 		</table>
 	</div>
+	<%@ include file="footer.html"%>
 </div>
 
 
-	<%@ include file="footer.html"%>
