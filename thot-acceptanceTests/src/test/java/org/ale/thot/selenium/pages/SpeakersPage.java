@@ -28,8 +28,16 @@ public class SpeakersPage extends AbstractPage {
 	}
 
 	public SpeakerPage clickSpeaker(String foreName, String lastName) {
-		click("id=speaker" + foreName + lastName);
+		click(speakerLocator(foreName, lastName));
 		return speakerPage();
+	}
+
+	public boolean speakerExists(String foreName, String lastName) {
+		return isElementPresent(speakerLocator(foreName, lastName));
+	}
+	
+	private String speakerLocator(String foreName, String lastName) {
+		return "id=speaker" + foreName + lastName;
 	}
 
 }

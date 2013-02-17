@@ -1,12 +1,15 @@
 package org.ale.thot.selenium.steps;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertFalse;
+import static junit.framework.Assert.assertTrue;
 import static junit.framework.Assert.fail;
 
 import org.ale.thot.selenium.pages.AbstractPage;
 import org.ale.thot.selenium.pages.Pages;
 import org.ale.thot.selenium.pages.SpeakerPage;
 import org.ale.thot.selenium.pages.SpeakersPage;
+import org.jbehave.core.annotations.BeforeScenario;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Pending;
 import org.jbehave.core.annotations.Then;
@@ -23,26 +26,24 @@ public class SpeakerSteps {
 	}
 
 	@Given("user is on the speaker creation page")
-	public void userIsOnTheSpeakersPage() {
-		SpeakersPage speakersPage = pages.speakers();
-		speakersPage.open();
-		speakersPage.assertExpectedTitle();
+	public void userIsOnTheSpeakerPage() {
+		userIsOnSpeakersSite();
 
 		speakerPage = speakersPage.clickAddSpeakerButton();
 		speakerPage.assertExpectedTitle();
 	}
 
-	@Given("user adds forename '$foreName'")
+	@When("user sets forename '$foreName'")
 	public void userAddsForename(String foreName) {
 		speakerPage.fillField("foreName", foreName);
 	}
 
-	@Given("user adds last name '$lastName'")
+	@When("user sets last name '$lastName'")
 	public void userAddsLastName(String lastName) {
 		speakerPage.fillField("lastName", lastName);
 	}
 
-	@Given("user adds the bio '$bio'")
+	@When("user sets the bio '$bio'")
 	public void userAddsTheBio(String bio) {
 		speakerPage.fillField("bio", bio);
 	}
@@ -55,20 +56,35 @@ public class SpeakerSteps {
 
 	@Then("a speaker exists with forename '$foreName', last name '$lastName' and bio '$bio'")
 	public void aSpeakerExistsWith(String foreName, String lastName, String bio) {
-		speakersPage.open();
-		speakersPage.assertExpectedTitle();
-
-		speakerPage = speakersPage.clickSpeaker(foreName, lastName);
+		aSpeakerExistsOnSpeakersPage(foreName, lastName);
 		speakerPage.assertExpectedTitle();
 		speakerPage.assertFieldValue("foreName", foreName);
 		speakerPage.assertFieldValue("lastName", lastName);
 		speakerPage.assertFieldValue("bio", bio);
 	}
 
-	@Given("a user is on speakers site")
-	@Pending
-	public void givenAUserIsOnSpeakersSite() {
-		// PENDING
+	private void aSpeakerExistsOnSpeakersPage(String foreName, String lastName) {
+		speakersPage.open();
+		speakersPage.assertExpectedTitle();
+
+		userSelectsSpeakerWith(foreName, lastName);
 	}
 
+	@Given("user is on speakers site")
+	public void userIsOnSpeakersSite() {
+		speakersPage = pages.speakers();
+		speakersPage.open();
+		speakersPage.assertExpectedTitle();
+	}
+
+	@Given("user selects speaker with forename '$foreName' and with last name '$lastName'")
+	public void userSelectsSpeakerWith(String foreName, String lastName) {
+		assertTrue(speakersPage.speakerExists(foreName, lastName));
+		speakerPage = speakersPage.clickSpeaker(foreName, lastName);
+	}
+
+	@Then("a speaker with forename '$foreName' and with last name '$lastName' does not exist")
+	public void aSpeakerDoesNotExistsWith(String foreName, String lastName) {
+		assertFalse("speaker should not exist", speakersPage.speakerExists(foreName, lastName));
+	}
 }

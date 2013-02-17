@@ -5,7 +5,7 @@ I want to add my e-mail-adress to my biography
 
 Scenario: Add correct e-mail-adress
 
-Given a user is on the speaker site
+Given user is on the speaker creation page
 And user adds e-mail-adress 'max.mustermann@web.de'
 When user saves data
 Then e-mail-adress is valid
@@ -13,7 +13,7 @@ And e-mail-adress is saved
 
 Scenario: Add incorrect e-mail-adress
 
-Given a user is on the speaker site
+Given user is on the speaker creation page
 And user adds e-mail-adress 'max.mustermann@web'
 When user saves data
 Then e-mail-adress is not valid

@@ -3,18 +3,24 @@ In order to publish the speaker profile for the conference atendees
 As a speaker 
 I want to add my speaker profile
 
+
 Scenario: Create speaker
 
 Given user is on the speaker creation page
-And user adds forename 'David'
-And user adds last name 'Völkel'
-And user adds the bio 'David's bio'
-When user saves the speaker
+When user sets forename 'David'
+And user sets last name 'Völkel'
+And user sets the bio 'David's bio'
+And user saves the speaker
 Then a speaker exists with forename 'David', last name 'Völkel' and bio 'David's bio'
 
 
-Scenario: Look at the biography of a speaker
+Scenario: Update speaker
 
-Given a user is on speakers site
-When he selects the speaker 'David' 'Völkel'
-Then the speaker data is shown
+Given user is on speakers site
+And user selects speaker with forename 'David' and with last name 'Völkel'
+When user sets forename 'David korrigiert'
+And user sets last name 'Völkel korrigiert'
+And user sets the bio 'David's bio korrigiert'
+And user saves the speaker
+Then a speaker with forename 'David' and with last name 'Völkel' does not exist
+And a speaker exists with forename 'David korrigiert', last name 'Völkel korrigiert' and bio 'David's bio korrigiert'
