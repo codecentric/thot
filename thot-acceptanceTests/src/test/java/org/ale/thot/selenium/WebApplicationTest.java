@@ -8,6 +8,7 @@ import static org.jbehave.core.reporters.Format.TXT;
 import static org.jbehave.core.reporters.Format.XML;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.ale.thot.selenium.pages.Pages;
 import org.ale.thot.selenium.steps.SpeakerSteps;
@@ -38,7 +39,6 @@ public class WebApplicationTest extends JUnitStories {
 
 	// default
 	private static String serverUrl = "http://localhost:8080/thot-app";
-	private static int SPEED = 500;
 	private static final String SYSTEM_PROPERTY = "server.url";
 
 	private WebDriverBackedSelenium selenium = createSelenium();
@@ -49,7 +49,6 @@ public class WebApplicationTest extends JUnitStories {
 			serverUrl = System.getProperty(SYSTEM_PROPERTY);
 		}
 		WebDriverBackedSelenium selenium = new WebDriverBackedSelenium(webDriver, serverUrl);
-//		selenium.setSpeed(String.valueOf(SPEED));
 		return selenium;
 	}
 

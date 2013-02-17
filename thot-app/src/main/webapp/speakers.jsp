@@ -41,7 +41,7 @@
 				<c:url value="speaker" var="url" scope="page">
                     <c:param name="id" value="${speaker.id}" />
                 </c:url>
-				<tr class="sessions" data-link="${url}">
+				<tr class="sessions" id="speaker${speaker.foreName}${speaker.lastName}" data-link="${url}">
 					<td>${speaker.foreName}</td>
 					<td>${speaker.lastName}</td>
 				</tr>

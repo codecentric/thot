@@ -1,5 +1,7 @@
 package org.ale.thot.selenium.pages;
 
+import static junit.framework.Assert.assertEquals;
+
 import java.util.List;
 
 import org.jbehave.web.selenium.SeleniumPage;
@@ -29,6 +31,14 @@ public abstract class AbstractPage extends SeleniumPage {
 
 	public String getHeadline() {
 		return getText("xpath=//h1");
+	}
+
+	public void assertExpectedTitle() {
+		assertEquals(getExpectedHeadline(), getHeadline());
+	}
+
+	protected String getExpectedHeadline() {
+		return "no expected headline given for this page class";
 	}
 
 }
