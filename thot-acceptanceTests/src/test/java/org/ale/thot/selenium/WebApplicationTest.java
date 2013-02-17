@@ -93,7 +93,7 @@ public class WebApplicationTest extends JUnitStories {
 	protected List<String> storyPaths() {
 		return new StoryFinder().findPaths(
 				codeLocationFromClass(this.getClass()).getFile(),
-				asList("**/speaker/addSpeakerInfo.story"), null);
+				asList("**/speaker/addSpeaker.story"), null);
 	}
 
 }
