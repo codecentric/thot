@@ -35,6 +35,7 @@
 		p:entityManagerFactory-ref="entityManagerFactory" />
 
 	<bean id="sessionDao" class="org.ale.thot.domain.JpaSessionDao" />
+	<bean id="speakerDao" class="org.ale.thot.domain.JpaSpeakerDao" />
 	<bean id="commentDao" class="org.ale.thot.domain.JpaCommentDao" />
 	<bean id="linkDao" class="org.ale.thot.domain.JpaLinkDao" />
 	<bean id="jsonMapper" class="org.codehaus.jackson.map.ObjectMapper" />
