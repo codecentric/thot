@@ -11,6 +11,7 @@ public class Pages {
     
 	private Selenium selenium;
 	private ConditionRunner conditionRunner;
+	private Speakers speakers;
 
 	public Pages(Selenium selenium,ConditionRunner conditionRunner) {
 		this.selenium = selenium;
@@ -31,5 +32,12 @@ public class Pages {
         }
         return staticSessions;
     }
+	
+	public Speakers speakers() {
+		if (speakers == null) {
+			speakers = new Speakers(selenium, conditionRunner);
+		}
+		return speakers;
+	}
 
 }
