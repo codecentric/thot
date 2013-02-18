@@ -23,6 +23,7 @@ import org.springframework.web.servlet.view.RedirectView;
 @RequestMapping("/speaker")
 public class SpeakerController {
 
+	private static final Boolean USE_MAIL = new Boolean(true);
 	private static final String MAIL_PATTERN = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
 	@Autowired
 	private SpeakerDao speakerDao;
@@ -40,8 +41,8 @@ public class SpeakerController {
 		modelMap.put("speakerFormData", speakerFormData);
 	}
 
-	private void setUseMailToggle(ModelMap modelMap) {
-		modelMap.put("useMail", new Boolean(true));
+	static void setUseMailToggle(ModelMap modelMap) {
+		modelMap.put("useMail", USE_MAIL);
 	}
 
 	@RequestMapping(method = RequestMethod.POST)

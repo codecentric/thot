@@ -21,6 +21,7 @@ public class SpeakersController {
 	public void setupForm(ModelMap modelMap) {
 		
 		List<Speaker>speakers = sessionDao.getAllSpeakers();
+		SpeakerController.setUseMailToggle(modelMap);
 		modelMap.put("speakers", speakers);
 	}
 	

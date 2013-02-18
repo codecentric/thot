@@ -34,6 +34,9 @@
 				<tr>
 					<th>Firstname</th>
 					<th>Lastname</th>
+					<c:if test="${useMail}">
+						<th>E-Mail</th>
+					</c:if>
 				</tr>
 			</thead>
 			<tbody>
@@ -44,6 +47,9 @@
 				<tr class="sessions" id="speaker${speaker.foreName}${speaker.lastName}" data-link="${url}">
 					<td>${speaker.foreName}</td>
 					<td>${speaker.lastName}</td>
+					<c:if test="${useMail}">
+						<td><a href="mailto:${speaker.mail}">${speaker.mail}</a></td>
+					</c:if>
 				</tr>
 			</c:forEach>
 			</tbody>
