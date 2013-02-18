@@ -3,15 +3,11 @@ package org.ale.thot.selenium.steps;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
-import static junit.framework.Assert.fail;
 
-import org.ale.thot.selenium.pages.AbstractPage;
 import org.ale.thot.selenium.pages.Pages;
 import org.ale.thot.selenium.pages.SpeakerPage;
 import org.ale.thot.selenium.pages.SpeakersPage;
-import org.jbehave.core.annotations.BeforeScenario;
 import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Pending;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
@@ -29,7 +25,7 @@ public class SpeakerSteps {
 	public void userIsOnTheSpeakerPage() {
 		userIsOnSpeakersSite();
 
-		speakerPage = speakersPage.clickAddSpeakerButton();
+		speakerPage = speakersPage.clickSaveSpeakerButton();
 		speakerPage.assertExpectedTitle();
 	}
 
@@ -50,8 +46,29 @@ public class SpeakerSteps {
 
 	@When("user saves the speaker")
 	public void userSavesTheSpeaker() {
-		this.speakersPage = speakerPage.clickSaveButtonExpectingSuccess();
+		speakerPage.clickSaveButton();
+	}
+
+	@Then("e-mail is valid")
+	public void emailIsValid() {
+		speakersPage = speakerPage.toSpeakersPage();
 		speakersPage.assertExpectedTitle();
+	}
+
+	@Then("user is on the speaker creation page")
+	public void userIsOnTheSpeakerCreationPage() {
+		speakerPage.assertExpectedTitle();
+	}
+
+	@Then("e-mail validation error is '$message'")
+	public void emailValidationError(String message) {
+		assertEquals("expected validation error message", message,
+				speakerPage.getEmailValidationError());
+	}
+
+	@When("user sets the e-mail-address '$mail'")
+	public void userSetsTheEmailAddressTo(String mail) {
+		speakerPage.fillField("mail", mail);
 	}
 
 	@Then("a speaker exists with forename '$foreName', last name '$lastName' and bio '$bio'")
@@ -85,6 +102,11 @@ public class SpeakerSteps {
 
 	@Then("a speaker with forename '$foreName' and with last name '$lastName' does not exist")
 	public void aSpeakerDoesNotExistsWith(String foreName, String lastName) {
-		assertFalse("speaker should not exist", speakersPage.speakerExists(foreName, lastName));
+		assertFalse("speaker should not exist",
+				speakersPage.speakerExists(foreName, lastName));
 	}
+	// prepared steps:
+	// And user sets the e-mail-address 'david@voelkel.de'
+	// And user sets the e-mail-address 'david.korrigiert@voelkel.de'
+
 }

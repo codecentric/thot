@@ -48,10 +48,10 @@ public class WebApplicationTest extends JUnitStories {
 		if (StringUtils.hasText(System.getProperty(SYSTEM_PROPERTY))) {
 			serverUrl = System.getProperty(SYSTEM_PROPERTY);
 		}
-		WebDriverBackedSelenium selenium = new WebDriverBackedSelenium(webDriver, serverUrl);
+		WebDriverBackedSelenium selenium = new WebDriverBackedSelenium(
+				webDriver, serverUrl);
 		return selenium;
 	}
-
 
 	@Override
 	public Configuration configuration() {
@@ -69,8 +69,7 @@ public class WebApplicationTest extends JUnitStories {
 								.withCodeLocation(
 										codeLocationFromClass(embeddableClass))
 								.withDefaultFormats()
-								.withFormats(CONSOLE//, TXT, HTML, XML
-										));
+								.withFormats(CONSOLE, TXT, HTML, XML));
 	}
 
 	@Override
@@ -80,9 +79,9 @@ public class WebApplicationTest extends JUnitStories {
 		return new InstanceStepsFactory(configuration(), TEAR_DOWN_WEB_DRIVER,
 				new WebApplicationSteps(pages), new SpeakerSteps(pages));
 	}
-	
+
 	public Object TEAR_DOWN_WEB_DRIVER = this;
-	
+
 	@AfterStories
 	public void tearWebDriverDown() {
 		selenium.getWrappedDriver().close();
@@ -92,7 +91,7 @@ public class WebApplicationTest extends JUnitStories {
 	protected List<String> storyPaths() {
 		return new StoryFinder().findPaths(
 				codeLocationFromClass(this.getClass()).getFile(),
-				asList("**/speaker/addSpeaker.story"), null);
+				asList("**/speaker/*.story"), null);
 	}
 
 }

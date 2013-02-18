@@ -14,7 +14,7 @@ public class SpeakersPage extends AbstractPage {
 		open("/speakers");
 	}
 
-	public SpeakerPage clickAddSpeakerButton() {
+	public SpeakerPage clickSaveSpeakerButton() {
 		click("id=addSpeaker");
 		return speakerPage();
 	}

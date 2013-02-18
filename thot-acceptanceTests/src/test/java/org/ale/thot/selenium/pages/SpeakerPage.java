@@ -15,9 +15,8 @@ public class SpeakerPage extends AbstractPage {
 		type("id=" + field, value);
 	}
 
-	public SpeakersPage clickSaveButtonExpectingSuccess() {
+	public void clickSaveButton() {
 		click("id=saveSpeaker");
-		return new SpeakersPage(selenium, conditionRunner);
 	}
 	
 	protected String getExpectedHeadline() {
@@ -26,6 +25,14 @@ public class SpeakerPage extends AbstractPage {
 
 	public void assertFieldValue(String field, String expectedValue) {
 		assertEquals("value of field " + field, expectedValue, value("id=" + field));
+	}
+
+	public SpeakersPage toSpeakersPage() {
+		return new SpeakersPage(selenium, conditionRunner);
+	}
+
+	public String getEmailValidationError() {
+		return getText("id=mail.errors");
 	}
 
 }
