@@ -59,9 +59,12 @@ class thot {
   #	timeout => 0,
   #}
   
-  $sts_file = "spring-tool-suite-3.1.0.RELEASE-e3.8-linux-gtk.tar.gz"
+  $sts_version = "3.4.0"
+  $eclipse_version = "3.8.2"
+  $platform_suffix = "-x86_64"
+  $sts_file = "spring-tool-suite-${sts_version}.RELEASE-e${eclipse_version}-linux-gtk${platform_suffix}.tar.gz"
   $sts_file_absolute = "${download_dir}/${sts_file}"
-  $sts_download_url = "http://download.springsource.com/release/STS/3.1.0/dist/e3.8/${sts_file}"
+  $sts_download_url = "http://download.springsource.com/release/STS/${sts_version}/dist/e${eclipse_version}/${sts_file}"
   exec { "download STS": 
 	command => "/usr/bin/wget -O ${sts_file_absolute} \"${sts_download_url}\"",
     creates => $sts_file_absolute,
