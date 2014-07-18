@@ -4,6 +4,7 @@ import static org.mockito.Mockito.verify;
 
 import javax.persistence.EntityManager;
 
+import org.ale.thot.dao.impl.JpaSessionDao;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

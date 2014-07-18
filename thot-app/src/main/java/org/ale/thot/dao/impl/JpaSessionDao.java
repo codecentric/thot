@@ -1,4 +1,4 @@
-package org.ale.thot.domain;
+package org.ale.thot.dao.impl;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -10,6 +10,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.ale.thot.dao.SessionDao;
+import org.ale.thot.domain.Session;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

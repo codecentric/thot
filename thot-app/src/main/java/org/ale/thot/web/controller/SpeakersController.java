@@ -2,8 +2,8 @@ package org.ale.thot.web.controller;
 
 import java.util.List;
 
-import org.ale.thot.domain.SpeakerDao;
-import org.ale.thot.web.domain.Speaker;
+import org.ale.thot.dao.SpeakerDao;
+import org.ale.thot.domain.Speaker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

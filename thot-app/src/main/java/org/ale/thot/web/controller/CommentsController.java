@@ -6,10 +6,10 @@ import java.net.URLDecoder;
 import javax.servlet.http.HttpServletRequest;
 
 import org.ale.app.TwitterLinkCreator;
-import org.ale.thot.domain.CommentDao;
-import org.ale.thot.domain.LinkDao;
+import org.ale.thot.dao.CommentDao;
+import org.ale.thot.dao.LinkDao;
+import org.ale.thot.dao.SessionDao;
 import org.ale.thot.domain.Session;
-import org.ale.thot.domain.SessionDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

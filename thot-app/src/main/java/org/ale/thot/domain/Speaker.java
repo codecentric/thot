@@ -1,4 +1,4 @@
-package org.ale.thot.web.domain;
+package org.ale.thot.domain;
 
 public class Speaker {
 	private Long id;

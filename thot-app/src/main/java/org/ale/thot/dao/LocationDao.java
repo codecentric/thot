@@ -1,6 +1,8 @@
-package org.ale.thot.domain;
+package org.ale.thot.dao;
 
 import java.util.List;
+
+import org.ale.thot.domain.Location;
 
 public interface LocationDao {
 

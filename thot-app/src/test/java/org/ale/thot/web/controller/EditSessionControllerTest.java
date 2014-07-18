@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Map;
 
-import org.ale.thot.domain.SessionDao;
+import org.ale.thot.dao.SessionDao;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

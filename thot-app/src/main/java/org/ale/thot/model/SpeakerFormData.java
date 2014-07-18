@@ -1,6 +1,6 @@
 package org.ale.thot.model;
 
-import org.ale.thot.web.domain.Speaker;
+import org.ale.thot.domain.Speaker;
 import org.springframework.util.StringUtils;
 
 public class SpeakerFormData {

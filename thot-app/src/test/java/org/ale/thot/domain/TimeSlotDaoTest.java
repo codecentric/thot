@@ -5,6 +5,8 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
+import org.ale.thot.dao.TimeslotDao;
+import org.ale.thot.dao.impl.JsonTimeslotDao;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Test;
 

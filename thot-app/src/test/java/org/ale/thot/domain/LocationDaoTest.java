@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNull;
 
 import java.util.List;
 
+import org.ale.thot.dao.impl.JsonLocationDao;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.BeforeClass;
 import org.junit.Test;

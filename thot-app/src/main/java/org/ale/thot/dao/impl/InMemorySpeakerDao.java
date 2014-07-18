@@ -1,15 +1,16 @@
-package org.ale.thot.domain;
+package org.ale.thot.dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.ale.thot.web.domain.Speaker;
+import org.ale.thot.dao.SpeakerDao;
+import org.ale.thot.domain.Speaker;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository("speakerDao")
 @Transactional
-public class JpaSpeakerDao implements SpeakerDao {
+public class InMemorySpeakerDao implements SpeakerDao {
 
 	private long currentId = 0;
 	private List<Speaker> speakers = new ArrayList<Speaker>();

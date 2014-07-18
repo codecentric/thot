@@ -7,10 +7,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.ale.thot.dao.CommentDao;
+import org.ale.thot.dao.SessionDao;
 import org.ale.thot.domain.Comment;
-import org.ale.thot.domain.CommentDao;
 import org.ale.thot.domain.Session;
-import org.ale.thot.domain.SessionDao;
 import org.ale.thot.model.CommentFormData;
 import org.ale.thot.model.Html;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package org.ale.thot.web.controller;
 
-import org.ale.thot.domain.CommentDao;
+import org.ale.thot.dao.CommentDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

@@ -7,8 +7,8 @@ import java.util.Map;
 import java.util.Set;
 
 import org.ale.app.XlsSessionReader;
+import org.ale.thot.dao.SessionDao;
 import org.ale.thot.domain.Session;
-import org.ale.thot.domain.SessionDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

@@ -1,10 +1,13 @@
-package org.ale.thot.domain;
+package org.ale.thot.dao.impl;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.ale.thot.dao.TimeslotDao;
+import org.ale.thot.domain.Day;
+import org.ale.thot.domain.Timeslot;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;

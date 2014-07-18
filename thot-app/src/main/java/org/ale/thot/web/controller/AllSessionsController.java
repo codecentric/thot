@@ -4,14 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.ale.thot.domain.CommentDao;
+import org.ale.thot.dao.CommentDao;
+import org.ale.thot.dao.LocationDao;
+import org.ale.thot.dao.SessionDao;
+import org.ale.thot.dao.TimeslotDao;
 import org.ale.thot.domain.Day;
 import org.ale.thot.domain.Location;
-import org.ale.thot.domain.LocationDao;
 import org.ale.thot.domain.Session;
-import org.ale.thot.domain.SessionDao;
 import org.ale.thot.domain.Timeslot;
-import org.ale.thot.domain.TimeslotDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

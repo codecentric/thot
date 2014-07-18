@@ -6,10 +6,10 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.ale.thot.dao.SessionDao;
+import org.ale.thot.dao.TimeslotDao;
 import org.ale.thot.domain.Session;
-import org.ale.thot.domain.SessionDao;
 import org.ale.thot.domain.Timeslot;
-import org.ale.thot.domain.TimeslotDao;
 import org.ale.thot.model.Html;
 import org.ale.thot.model.OpenSpaceFormData;
 import org.ale.thot.web.validate.OpenSpaceValidator;

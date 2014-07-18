@@ -1,9 +1,11 @@
-package org.ale.thot.domain;
+package org.ale.thot.dao.impl;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
+import org.ale.thot.dao.LocationDao;
+import org.ale.thot.domain.Location;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;

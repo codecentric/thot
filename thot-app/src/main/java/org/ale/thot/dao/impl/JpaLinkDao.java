@@ -1,4 +1,4 @@
-package org.ale.thot.domain;
+package org.ale.thot.dao.impl;
 
 import java.util.List;
 
@@ -6,6 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.ale.thot.dao.LinkDao;
+import org.ale.thot.domain.Link;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

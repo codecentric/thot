@@ -4,15 +4,13 @@ import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.ale.thot.domain.SpeakerDao;
-import org.ale.thot.model.CommentFormData;
+import org.ale.thot.dao.SpeakerDao;
+import org.ale.thot.domain.Speaker;
 import org.ale.thot.model.SpeakerFormData;
-import org.ale.thot.web.domain.Speaker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

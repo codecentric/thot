@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.ale.thot.dao.TimeslotDao;
 import org.ale.thot.domain.Day;
 import org.ale.thot.domain.Timeslot;
-import org.ale.thot.domain.TimeslotDao;
 
 public class StaticTimeslotDao implements TimeslotDao {
 	
