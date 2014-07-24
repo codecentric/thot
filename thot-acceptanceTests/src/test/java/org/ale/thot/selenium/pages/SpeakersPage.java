@@ -5,9 +5,11 @@ import com.thoughtworks.selenium.Selenium;
 import com.thoughtworks.selenium.condition.ConditionRunner;
 
 public class SpeakersPage extends AbstractPage {
+	
+	
 
-	public SpeakersPage(Selenium selenium, ConditionRunner conditionRunner) {
-		super(selenium, conditionRunner);
+	public SpeakersPage(Selenium selenium, ConditionRunner conditionRunner, String basePath) {
+		super(selenium, conditionRunner, basePath);
 	}
 
 	public void open() {
@@ -20,7 +22,7 @@ public class SpeakersPage extends AbstractPage {
 	}
 
 	private SpeakerPage speakerPage() {
-		return new SpeakerPage(selenium, conditionRunner);
+		return new SpeakerPage(selenium, conditionRunner, basePath);
 	}
 	
 	protected String getExpectedHeadline() {

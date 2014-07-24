@@ -11,9 +11,27 @@ import com.thoughtworks.selenium.condition.ConditionRunner;
 
 public abstract class AbstractPage extends SeleniumPage {
 
-    public AbstractPage(Selenium selenium, ConditionRunner conditionRunner) {
+	String basePath = "";
+
+    public AbstractPage(Selenium selenium, ConditionRunner conditionRunner, String basePath) {
         super(selenium, conditionRunner);
+        this.basePath = basePath;
     }
+
+    
+    
+    
+	@Override
+	public void open(String url) {
+		super.open(basePath+url);
+	}
+
+
+
+
+
+
+
 
 	public void found(String text) {
         textIsVisible(text);

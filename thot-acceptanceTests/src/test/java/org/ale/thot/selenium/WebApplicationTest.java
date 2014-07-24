@@ -8,7 +8,6 @@ import static org.jbehave.core.reporters.Format.TXT;
 import static org.jbehave.core.reporters.Format.XML;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import org.ale.thot.selenium.pages.Pages;
 import org.ale.thot.selenium.steps.SpeakerSteps;
@@ -28,9 +27,10 @@ import org.jbehave.web.selenium.SeleniumContext;
 import org.jbehave.web.selenium.SeleniumStepMonitor;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverBackedSelenium;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.springframework.util.StringUtils;
+
+import com.thoughtworks.selenium.webdriven.WebDriverBackedSelenium;
 
 import de.codecentric.jbehave.junit.monitoring.JUnitReportingRunner;
 
@@ -38,7 +38,7 @@ import de.codecentric.jbehave.junit.monitoring.JUnitReportingRunner;
 public class WebApplicationTest extends JUnitStories {
 
 	// default
-	private static String serverUrl = "http://localhost:8080/thot-app";
+	private static String serverUrl = "http://localhost:8080";
 	private static final String SYSTEM_PROPERTY = "server.url";
 
 	private WebDriverBackedSelenium selenium = createSelenium();
@@ -75,7 +75,7 @@ public class WebApplicationTest extends JUnitStories {
 	@Override
 	public InjectableStepsFactory stepsFactory() {
 		Pages pages = new Pages(selenium,
-				SeleniumConfiguration.defaultConditionRunner(selenium));
+				SeleniumConfiguration.defaultConditionRunner(selenium), "/thot-app");
 		return new InstanceStepsFactory(configuration(), TEAR_DOWN_WEB_DRIVER,
 				new WebApplicationSteps(pages), new SpeakerSteps(pages));
 	}

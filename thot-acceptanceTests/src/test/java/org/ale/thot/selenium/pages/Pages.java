@@ -12,15 +12,18 @@ public class Pages {
 	private Selenium selenium;
 	private ConditionRunner conditionRunner;
 	private SpeakersPage speakers;
+	
+	String basePath = "";
 
-	public Pages(Selenium selenium,ConditionRunner conditionRunner) {
+	public Pages(Selenium selenium,ConditionRunner conditionRunner, String basePath) {
 		this.selenium = selenium;
 		this.conditionRunner = conditionRunner;
+		this.basePath = basePath;
 	}
 
 	public Timeline timeline() {
         if (timeline == null) {
-            timeline = new Timeline(selenium,conditionRunner);
+            timeline = new Timeline(selenium,conditionRunner, basePath);
         }
         return timeline;
     }
@@ -28,14 +31,14 @@ public class Pages {
 	
 	public StaticSessions staticSessions() {
         if (staticSessions == null) {
-            staticSessions = new StaticSessions(selenium,conditionRunner);
+            staticSessions = new StaticSessions(selenium,conditionRunner,basePath);
         }
         return staticSessions;
     }
 	
 	public SpeakersPage speakers() {
 		if (speakers == null) {
-			speakers = new SpeakersPage(selenium, conditionRunner);
+			speakers = new SpeakersPage(selenium, conditionRunner, basePath);
 		}
 		return speakers;
 	}

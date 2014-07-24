@@ -5,8 +5,8 @@ import com.thoughtworks.selenium.condition.ConditionRunner;
 
 public class Timeline extends AbstractPage {
 
-    public Timeline(Selenium selenium, ConditionRunner conditionRunner) {
-        super(selenium, conditionRunner);
+    public Timeline(Selenium selenium, ConditionRunner conditionRunner, String basePath) {
+        super(selenium, conditionRunner, basePath);
     }
 
 	public void open() {
