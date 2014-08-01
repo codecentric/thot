@@ -12,7 +12,7 @@ And user sets last name 'Völkel'
 And user sets the bio 'David's bio'
 And user sets the e-mail-address 'david@voelkel.de'
 And user saves the speaker
-Then a speaker exists with forename 'David', last name 'Völkel' and bio 'David's bio'
+Then a speaker exists with forename 'David', last name 'Völkel' and bio 'David's Bio'
 
 
 Scenario: Update speaker
