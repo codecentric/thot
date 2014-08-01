@@ -25,4 +25,4 @@ And user sets the bio 'David's bio korrigiert'
 And user sets the e-mail-address 'david.korrigiert@voelkel.de'
 And user saves the speaker
 Then a speaker with forename 'David' and with last name 'Völkel' does not exist
-And a speaker exists with forename 'David korrigiert', last name 'Völkel korrigiert' and bio 'David's bio korrigiert'
+And a speaker exists with forename 'David korrigiert', last name 'Völkel korrigiert' and bio 'David's Bio korrigiert'
