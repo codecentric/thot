@@ -71,7 +71,7 @@ public class JpaSessionDao implements SessionDao {
 		return currentSessions;
 	}
 
-	private String getNowAsString() {
+	String getNowAsString() {
 		SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
 		return format.format(new Date());
 	}

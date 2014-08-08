@@ -7,8 +7,9 @@ import com.thoughtworks.selenium.condition.ConditionRunner;
 
 public class SpeakerPage extends AbstractPage {
 
-	public SpeakerPage(Selenium selenium, ConditionRunner conditionRunner) {
-		super(selenium, conditionRunner);
+	
+	public SpeakerPage(Selenium selenium, ConditionRunner conditionRunner, String basePath) {
+		super(selenium, conditionRunner, basePath);
 	}
 
 	public void fillField(String field, String value) {
@@ -28,7 +29,7 @@ public class SpeakerPage extends AbstractPage {
 	}
 
 	public SpeakersPage toSpeakersPage() {
-		return new SpeakersPage(selenium, conditionRunner);
+		return new SpeakersPage(selenium, conditionRunner, basePath);
 	}
 
 	public String getEmailValidationError() {
